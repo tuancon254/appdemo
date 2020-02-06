@@ -63,26 +63,22 @@ const styles = StyleSheet.create({
   infoRecipe: {
     fontSize: 14,
     fontWeight: 'bold',
-    fontFamily: 'normal',
     marginLeft: 5,
   },
   category: {
     fontSize: 14,
     fontWeight: 'bold',
-    fontFamily: 'normal',
     margin: 10,
     color: '#2cd18a'
   },
   infoDescriptionRecipe: {
     textAlign: 'left',
     fontSize: 16,
-    fontFamily: 'normal',
     marginTop: 30,
     margin: 15
   },
   infoRecipeName: {
     fontSize: 28,
-    fontFamily: 'normal',
     margin: 10,
     fontWeight: 'bold',
     color: 'black',

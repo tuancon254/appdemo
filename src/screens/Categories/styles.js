@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
   },
   categoriesName: {
     flex: 1,
-    fontFamily: 'normal',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',

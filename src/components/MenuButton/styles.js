@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     width: 25
   },
   btnText: {
-    fontFamily: 'normal',
     fontSize: 16,
     marginLeft: 10,
     marginTop: 2

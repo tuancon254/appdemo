@@ -33,7 +33,6 @@ export const RecipeCard = StyleSheet.create({
   },
   title: {
     flex: 1,
-    fontFamily: 'normal',
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
