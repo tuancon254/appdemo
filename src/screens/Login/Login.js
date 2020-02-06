@@ -10,7 +10,7 @@ const Resource = {
 
 class Login extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    headerMode: "block"
+    headerMode: "none"
   });
 
   constructor(props) {
