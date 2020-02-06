@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontFamily: 'normal',
     color: '#2cd18a'
   }
 });

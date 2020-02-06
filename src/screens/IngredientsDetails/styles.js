@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     color: 'black',
     fontSize: 13,
-    fontFamily: 'normal',
     textAlign: 'center'
   },
   photo: {
