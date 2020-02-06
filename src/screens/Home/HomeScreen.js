@@ -16,23 +16,15 @@ import { getCategoryName } from "../../data/MockDataAPI";
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Home",
-    headerLeft: (
-      <MenuImage
-        onPress={() => {
-          navigation.openDrawer();
-        }}
-      />
-    )
+    headerLeft: <MenuImage onPress={navigation.openDrawer} />
   });
-
-  
 
   constructor(props) {
     super(props);
   }
 
   onPressRecipe = item => {
-    navigation.navigate("Recipe", { item });
+    this.props.navigation.navigate("Recipe", { item });
   };
 
   renderRecipes = ({ item }) => (
@@ -60,7 +52,7 @@ class HomeScreen extends Component {
         />
       </View>
     );
-  };
-};
+  }
+}
 
-export default HomeScreen
+export default HomeScreen;

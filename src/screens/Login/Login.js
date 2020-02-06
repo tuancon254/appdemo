@@ -16,7 +16,8 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      useName: "abc"
+      username: '',
+      password: ''
     };
   }
 
@@ -24,28 +25,28 @@ class Login extends React.Component {
     this.props.navigation.navigate("Home");
   };
 
+  handleUserChange = (text) => {
+    this.setState({ userName: text });
+  }
+
+  handlePasswordChange = (text) => {
+    this.setState({ password: text });
+  }
+
   render() {
+    const { username, password } = this.state;
+
     return (
       <View style={styles.container}>
         <Image source={Resource.logo} style={styles.logo} />
 
-        <View
-          style={{
-            backgroundColor: "white",
-            width: "70%",
-            height: 90,
-            borderRadius: 5,
-            flexDirection: "column",
-            alignContent: "flex-start",
-            alignItems: "center"
-          }}
-        >
+        <View style={styles.loginContainer}>
           <View style={styles.usernameOrEmailWrapper}>
             <Image source={Resource.mail} style={styles.mailIcon} />
             <TextInput
               placeholder="Username or email"
-              value={this.state.username}
-              onChangeText={text => this.handleUserChange(text)}
+              value={username}
+              onChangeText={this.handleUserChange}
               style={styles.usernameOrEmail}
               returnKeyType="next"
             />
@@ -56,16 +57,17 @@ class Login extends React.Component {
             <TextInput
               placeholder="Password"
               secureTextEntry={true}
-              value={this.state.password}
+              value={password}
               onChangeText={text => this.handlePasswordChange(text)}
               style={styles.passwordInput}
               returnKeyType="done"
             />
           </View>
         </View>
+
         <TouchableOpacity
           style={styles.loginButton}
-          onPress={() => this.onPressLogin()}
+          onPress={this.onPressLogin}
         >
           <Text style={{ fontSize: 18 }}>Sign in</Text>
         </TouchableOpacity>

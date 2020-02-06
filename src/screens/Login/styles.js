@@ -58,6 +58,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#fff",
     marginTop: 50
+  },
+  loginContainer: {
+    backgroundColor: "white",
+    width: "70%",
+    height: 90,
+    borderRadius: 5,
+    flexDirection: "column",
+    alignContent: "flex-start",
+    alignItems: "center"
   }
 });
 
