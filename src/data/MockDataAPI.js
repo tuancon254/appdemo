@@ -5,7 +5,7 @@ import { recipes, categories, ingredients, Lession } from './dataArrays';
 export function getCategoryById(categoryId) {
   let category;
   categories.map(data => {
-    if (data.id == categoryId) {
+    if (data.id === categoryId) {
       category = data;
     }
   });
@@ -15,7 +15,7 @@ export function getCategoryById(categoryId) {
 export function getIngredientName(ingredientID) {
   let name;
   ingredients.map(data => {
-    if (data.ingredientId == ingredientID) {
+    if (data.ingredientId === ingredientID) {
       name = data.name;
     }
   });
@@ -25,7 +25,7 @@ export function getIngredientName(ingredientID) {
 export function getIngredientUrl(ingredientID) {
   let url;
   ingredients.map(data => {
-    if (data.ingredientId == ingredientID) {
+    if (data.ingredientId === ingredientID) {
       url = data.photo_url;
     }
   });
@@ -35,7 +35,7 @@ export function getIngredientUrl(ingredientID) {
 export function getCategoryName(categoryId) {
   let name;
   categories.map(data => {
-    if (data.id == categoryId) {
+    if (data.id === categoryId) {
       name = data.name;
     }
   });
@@ -45,7 +45,7 @@ export function getCategoryName(categoryId) {
 export function getRecipes(categoryId) {
   const recipesArray = [];
   recipes.map(data => {
-    if (data.categoryId == categoryId) {
+    if (data.categoryId === categoryId) {
       recipesArray.push(data);
     }
   });
@@ -57,7 +57,7 @@ export function getRecipesByIngredient(ingredientId) {
   const recipesArray = [];
   recipes.map(data => {
     data.ingredients.map(index => {
-      if (index[0] == ingredientId) {
+      if (index[0] === ingredientId) {
         recipesArray.push(data);
       }
     });
@@ -68,7 +68,7 @@ export function getRecipesByIngredient(ingredientId) {
 export function getNumberOfRecipes(categoryId) {
   let count = 0;
   recipes.map(data => {
-    if (data.categoryId == categoryId) {
+    if (data.categoryId === categoryId) {
       count++;
     }
   });
@@ -79,7 +79,7 @@ export function getAllIngredients(idArray) {
   const ingredientsArray = [];
   idArray.map(index => {
     ingredients.map(data => {
-      if (data.ingredientId == index[0]) {
+      if (data.ingredientId === index[0]) {
         ingredientsArray.push([data, index[1]]);
       }
     });
@@ -101,8 +101,7 @@ export function getRecipesByIngredientName(ingredientName) {
       });
     }
   });
-  const uniqueArray = [...new Set(recipesArray)];
-  return uniqueArray;
+  return [...new Set(recipesArray)];
 }
 
 export function getRecipesByCategoryName(categoryName) {
@@ -133,7 +132,7 @@ export function getRecipesByRecipeName(recipeName) {
 export function getLessionName(LessionId) {
   let name;
   Lession.map(data => {
-    if (data.id == LessionId) {
+    if (data.id === LessionId) {
       name = data.name;
     }
   });

@@ -1,22 +1,13 @@
-import React, { Component } from "react";
-import {
-  FlatList,
-  ScrollView,
-  Text,
-  View,
-  TouchableHighlight,
-  Image
-} from "react-native";
-import styles from "./styles";
-import { recipes } from "../../data/dataArrays";
-import MenuImage from "../../components/MenuImage/MenuImage";
-
+import React, { Component } from 'react';
+import { FlatList, Text, View, TouchableHighlight, Image } from 'react-native';
+import styles from './styles';
+import { recipes } from '../../data/dataArrays';
+import MenuImage from '../../components/MenuImage/MenuImage';
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Home",
-    headerLeft: <MenuImage onPress={navigation.openDrawer} />
-    
+    title: 'Home',
+    headerLeft: <MenuImage onPress={navigation.openDrawer} />,
   });
 
   constructor(props) {
@@ -24,7 +15,7 @@ class HomeScreen extends Component {
   }
 
   onPressRecipe = item => {
-    this.props.navigation.navigate("RecipeScreen", { item });
+    this.props.navigation.navigate('RecipeScreen', { item });
   };
 
   renderRecipes = ({ item }) => (
@@ -42,17 +33,20 @@ class HomeScreen extends Component {
   render() {
     return (
       <View>
-      <View style={styles.wellcome}><Text>ABC</Text></View>
-      <View>
-        <FlatList
-          vertical
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          data={recipes}
-          renderItem={this.renderRecipes}
-          keyExtractor={item => `${item.recipeId}`}
-        />
-      </View></View>
+        <View style={styles.wellcome}>
+          <Text>ABC</Text>
+        </View>
+        <View>
+          <FlatList
+            vertical
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            data={recipes}
+            renderItem={this.renderRecipes}
+            keyExtractor={item => `${item.recipeId}`}
+          />
+        </View>
+      </View>
     );
   }
 }
