@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, Text, View, TouchableHighlight, Image } from 'react-native';
+import { FlatList, Text, View, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
 import MenuImage from '../../components/MenuImage/MenuImage';
@@ -19,15 +19,12 @@ class HomeScreen extends Component {
   };
 
   renderRecipes = ({ item }) => (
-    <TouchableHighlight
-      underlayColor="rgba(73, 182, 77, 1, 0.9)"
-      onPress={() => this.onPressRecipe(item)}
-    >
+    <TouchableOpacity onPress={() => this.onPressRecipe(item)}>
       <View style={styles.container}>
         <Image style={styles.photo} source={{ uri: item.photo_url }} />
         <Text style={styles.title}>{item.title}</Text>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 
   render() {

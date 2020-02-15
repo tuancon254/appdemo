@@ -122,8 +122,8 @@ export default class RecipeScreen extends Component {
           <View style={styles.infoContainer}>
             <ViewIngredientsButton
               onPress={() => {
-                let ingredients = item.ingredients;
-                let title = `Ingredients for ${item.title}`;
+                const ingredients = item.ingredients;
+                const title = `Ingredients for ${item.title}`;
                 navigation.navigate('IngredientsDetailsScreen', {
                   ingredients,
                   title,
