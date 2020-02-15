@@ -8,7 +8,7 @@ import React from "react";
 
 const Stack = createStackNavigator();
 
-function AppNavigation() {
+const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
