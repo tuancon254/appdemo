@@ -1,40 +1,37 @@
-import React, { Component } from "react";
-import { Text, View, TextInput, Image, TouchableOpacity } from "react-native";
-import styles from "./styles";
+import React, { Component } from 'react';
+import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import styles from './styles';
 
 const Resource = {
-  logo: require("../../../assets/images/logo.png"),
-  mail: require("../../../assets/images/mail.png"),
-  key: require("../../../assets/images/key.png")
+  logo: require('../../../assets/images/logo.png'),
+  mail: require('../../../assets/images/mail.png'),
+  key: require('../../../assets/images/key.png'),
 };
 
 class Login extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    headerMode: "none"
+    headerMode: 'none',
   });
 
   constructor(props) {
-
-    
-
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
     };
   }
 
   onPressLogin = () => {
-    this.props.navigation.navigate("HomeScreens");
+    this.props.navigation.navigate('HomeScreen');
   };
 
-  handleUserChange = (text) => {
+  handleUserChange = text => {
     this.setState({ userName: text });
-  }
+  };
 
-  handlePasswordChange = (text) => {
+  handlePasswordChange = text => {
     this.setState({ password: text });
-  }
+  };
 
   render() {
     const { username, password } = this.state;
@@ -74,8 +71,10 @@ class Login extends React.Component {
         >
           <Text style={{ fontSize: 18 }}>Sign in</Text>
         </TouchableOpacity>
-        <TouchableOpacity >
-          <Text style={{ marginTop: 16, color: "#fff", alignContent:"center" }}>
+        <TouchableOpacity>
+          <Text
+            style={{ marginTop: 16, color: '#fff', alignContent: 'center' }}
+          >
             Forgot your password?
           </Text>
         </TouchableOpacity>
