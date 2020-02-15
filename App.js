@@ -10,10 +10,6 @@ import { createStackNavigator } from "react-navigation-stack";
 import SplashScreen from "./src/screens/Splash/SplashScreen";
 
 class FoodApp extends Component {
-  data() {
-    database = tra;
-  }
-
   render() {
     return <AppContainer />;
   }
