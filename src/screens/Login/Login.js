@@ -14,6 +14,9 @@ class Login extends React.Component {
   });
 
   constructor(props) {
+
+    
+
     super(props);
     this.state = {
       username: '',
@@ -22,7 +25,7 @@ class Login extends React.Component {
   }
 
   onPressLogin = () => {
-    this.props.navigation.navigate("Home");
+    this.props.navigation.navigate("HomeScreens");
   };
 
   handleUserChange = (text) => {
@@ -71,8 +74,8 @@ class Login extends React.Component {
         >
           <Text style={{ fontSize: 18 }}>Sign in</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={{ marginLeft: 150, marginTop: 3, color: "#fff" }}>
+        <TouchableOpacity >
+          <Text style={{ marginTop: 16, color: "#fff", alignContent:"center" }}>
             Forgot your password?
           </Text>
         </TouchableOpacity>

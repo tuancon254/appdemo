@@ -10,13 +10,13 @@ import {
 import styles from "./styles";
 import { recipes } from "../../data/dataArrays";
 import MenuImage from "../../components/MenuImage/MenuImage";
-import DrawerActions from "react-navigation";
-import { getCategoryName } from "../../data/MockDataAPI";
+
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Home",
     headerLeft: <MenuImage onPress={navigation.openDrawer} />
+    
   });
 
   constructor(props) {
@@ -24,7 +24,7 @@ class HomeScreen extends Component {
   }
 
   onPressRecipe = item => {
-    this.props.navigation.navigate("Recipe", { item });
+    this.props.navigation.navigate("RecipeScreen", { item });
   };
 
   renderRecipes = ({ item }) => (
@@ -42,6 +42,8 @@ class HomeScreen extends Component {
   render() {
     return (
       <View>
+      <View style={styles.wellcome}><Text>ABC</Text></View>
+      <View>
         <FlatList
           vertical
           showsVerticalScrollIndicator={false}
@@ -50,7 +52,7 @@ class HomeScreen extends Component {
           renderItem={this.renderRecipes}
           keyExtractor={item => `${item.recipeId}`}
         />
-      </View>
+      </View></View>
     );
   }
 }

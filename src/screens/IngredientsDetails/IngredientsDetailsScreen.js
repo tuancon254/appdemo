@@ -14,18 +14,22 @@ import {
 } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays'
 import { CheckBox } from 'react-native-elements';
-import { Answers, Question } from '../../data/dataArrays'
+import { Answers, Question } from '../../data/dataArrays';
+
 export default class IngredientsDetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.getParam('title'),
-      headerTitleStyle: {
-        fontSize: 16
-      }
-    };
-  };
+  // static navigationOptions = ({ navigation, route }) => {
+  //   return {
+  //     title: route.params.title,
+  //     headerTitleStyle: {
+  //       fontSize: 16
+  //     }
+  //   };
+  // };
 
   constructor(props) {
+
+    console.log(props)
+
     super(props);
     this.state = {
       checked: false
@@ -78,8 +82,8 @@ export default class IngredientsDetailsScreen extends React.Component {
 
 
   render() {
-    const { navigation } = this.props;
-    const item = navigation.getParam('ingredients');
+    const { navigation, route } = this.props;
+    const item = route.params.ingredients;
     const ingredientsArray = getAllIngredients(item);
 
     return (

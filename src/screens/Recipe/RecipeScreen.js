@@ -53,8 +53,8 @@ export default class RecipeScreen extends React.Component {
 
   render() {
     const { activeSlide } = this.state;
-    const { navigation } = this.props;
-    const item = navigation.getParam('item');
+    const { navigation, route } = this.props;
+    const item = route.params.item
     const category = getCategoryById(item.categoryId);
     const title = getCategoryName(category.id);
 
@@ -113,8 +113,8 @@ export default class RecipeScreen extends React.Component {
             <ViewIngredientsButton
               onPress={() => {
                 let ingredients = item.ingredients;
-                let title = 'Ingredients for ' + item.title;
-                navigation.navigate('IngredientsDetails', { ingredients, title });
+                let title = 'Ingredients for ${item.title}';
+                navigation.navigate('Ingredient', { ingredients, title });
               }}
             />
           </View>

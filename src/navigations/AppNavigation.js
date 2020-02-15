@@ -1,62 +1,19 @@
-import { createAppContainer } from "react-navigation";
-import { createDrawerNavigator } from "react-navigation-drawer";
-import { createStackNavigator } from "react-navigation-stack";
-import HomeScreen from "../screens/Home/HomeScreen";
-import CategoriesScreen from "../screens/Categories/CategoriesScreen";
-import RecipeScreen from "../screens/Recipe/RecipeScreen";
-import RecipesListScreen from "../screens/RecipesList/RecipesListScreen";
-import DrawerContainer from "../screens/DrawerContainer/DrawerContainer";
-import IngredientScreen from "../screens/Ingredient/IngredientScreen";
-import SearchScreen from "../screens/Search/SearchScreen";
-import IngredientsDetailsScreen from "../screens/IngredientsDetails/IngredientsDetailsScreen";
-import Login from "../screens/Login/Login";
+import { createStackNavigation, createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import RootStackNavigator from "./RootStackNavigator"
+import React from "react";
 
-const MainNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Categories: CategoriesScreen,
-    Recipe: RecipeScreen,
-    RecipesList: RecipesListScreen,
-    Ingredient: IngredientScreen,
-    Search: SearchScreen,
-    IngredientsDetails: IngredientsDetailsScreen,
-    Login: Login
-  },
-  {
-    initialRouteName: "Login",
-    // headerMode: 'block',
-    defaulfNavigationOptions: ({ navigation }) => ({
-      headerTitleStyle: {
-        fontWeight: "bold",
-        textAlign: "center",
-        alignSelf: "center",
-        flex: 1
-      }
-    })
-  }
-);
 
-const RootStack = createStackNavigator(
-  {
-    Login: Login
-  },
-  {
-    headerMode: "block"
-  }
-);
+const Stack = createStackNavigator();
 
-const DrawerStack = createDrawerNavigator(
-  {
-    Main: MainNavigator
-  },
-  {
-    drawerPosition: "left",
-    initialRouteName: "Main",
-    drawerWidth: 250,
-    contentComponent: DrawerContainer
-  }
-);
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="rootstack" component={RootStackNavigator} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 
-export default AppContainer = createAppContainer(DrawerStack);
-
-console.disableYellowBox = true;
+export default App;
