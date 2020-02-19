@@ -4,7 +4,7 @@ import Login from './../screens/Login/Login';
 import HomeScreen from './../screens/Home/HomeScreen';
 import RecipeScreen from './../screens/Recipe/RecipeScreen';
 import IngredientsDetailsScreen from '../screens/IngredientsDetails/IngredientsDetailsScreen';
-
+import TestList from "../screens/TestlistScreens/TestListScreens"
 const RootStack = createStackNavigator();
 
 function RootStackNavigator() {
@@ -20,6 +20,7 @@ function RootStackNavigator() {
         component={HomeScreen}
         options={{ headerShown: false, gestureEnabled: false }}
       />
+      <RootStack.Screen name="TestListScreens" component={TestList}/>
       <RootStack.Screen name="RecipeScreen" component={RecipeScreen} />
       <RootStack.Screen
         name="IngredientsDetailsScreen"
@@ -28,5 +29,6 @@ function RootStackNavigator() {
     </RootStack.Navigator>
   );
 }
+
 
 export default RootStackNavigator;
