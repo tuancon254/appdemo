@@ -6,16 +6,13 @@ import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-
-
-
+import DrawerStackNavigator from './../../navigations/DrawerStack'
 
 function HomeScreen({ navigation }) {
 
-  const onPressRecipe = (props, { item }) => {
+  const onPressRecipe = (item) => {
     navigation.navigate('RecipeScreen', { item });
   };
-
 
   function renderRecipes({ item }) {
     return (
@@ -33,6 +30,8 @@ function HomeScreen({ navigation }) {
   function onPressGetStarted() {
     navigation.navigate("TestListScreens");
   }
+
+  console.log(navigation);
 
   return (
     <View style={styles.container}>

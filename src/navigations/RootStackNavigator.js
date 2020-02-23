@@ -8,6 +8,7 @@ import TestList from "../screens/TestlistScreens/TestListScreens"
 import MenuImage from "../components/MenuImage/MenuImage"
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContainer from "../screens/DrawerContainer/DrawerContainer"
+import TestResultScreens from "../screens/TestResult/TestResultScreens"
 const RootStack = createStackNavigator();
 
 function RootStackNavigator() {
