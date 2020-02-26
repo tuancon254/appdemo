@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     Result: {
         borderBottomWidth: 1,
         flexDirection: 'row',
-        paddingLeft: 20,
+        paddingLeft: 5,
         paddingRight: 5,
         paddingBottom: 10,
         paddingTop: 20,
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     ResultContainer: {
         marginLeft: 33,
         marginRight: 34,
-        marginBottom:44
+        marginBottom: 44
 
     },
     Average: {
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         fontSize: 44,
         color: "#FF7F2D",
         fontWeight: 'bold',
+        marginLeft:9
 
     },
     ResultText: {
@@ -47,24 +48,32 @@ const styles = StyleSheet.create({
         height: "35%",
         width: "100%",
         flex: 40,
-        marginTop: 100
+        marginTop: 62
     },
     Chao_mung: {
         fontSize: 20,
         color: "white",
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginBottom: 9
     },
     profile: {
-        backgroundColor: "white",
-        borderRadius: 20,
-        alignItems: 'center',
         marginLeft: 34,
         marginRight: 34,
-        paddingTop: 20
+    },
+    profile1: {
+        alignItems: 'center',
+        marginTop: 45,
+        paddingTop: 45,
+        backgroundColor: "white",
+        borderRadius: 20,
+        alignSelf: 'center',
+        height: 127
     },
     Avatar: {
         alignSelf: 'center',
-        position: 'relative'
+        position: 'absolute',
+        width:86,
+        height:86
     },
     Name: {
         fontSize: 22,

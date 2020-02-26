@@ -6,7 +6,7 @@ import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import DrawerStackNavigator from './../../navigations/DrawerStack'
+import DrawerStackNavigator from '../../navigations/TestResultNavigator'
 
 function HomeScreen({ navigation }) {
 
@@ -52,7 +52,7 @@ function HomeScreen({ navigation }) {
 
           <View style={styles.rootContainer}>
             <ImageBackground
-              source={require('../../../assets/backgr.jpg')}
+              source={require('../../../assets/backgr.jpg')}        
               style={styles.backgroundImage}
               imageStyle={{ borderRadius: 10 }}>
               <Text style={styles.HomeTitle}>What do you want to test Today?</Text>

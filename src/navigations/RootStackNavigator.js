@@ -9,6 +9,7 @@ import MenuImage from "../components/MenuImage/MenuImage"
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContainer from "../screens/DrawerContainer/DrawerContainer"
 import TestResultScreens from "../screens/TestResult/TestResultScreens"
+import HomeStackNavigator from './HomeScreenNavigator';
 const RootStack = createStackNavigator();
 
 function RootStackNavigator() {
@@ -19,11 +20,7 @@ function RootStackNavigator() {
         component={Login}
         options={{ headerShown: false }}
       />
-      <RootStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{headerShown:false}}
-      />
+      <RootStack.Screen name="HomeScreen" component={HomeStackNavigator} options={{ headerShown: false }} />
       <RootStack.Screen name="TestListScreens" component={TestList} />
       <RootStack.Screen name="RecipeScreen" component={RecipeScreen} />
       <RootStack.Screen
