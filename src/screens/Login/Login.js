@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import firebase from '../../services/FirebaseConfig';
 
 const Resource = {
   logo: require('../../../assets/images/logo.png'),
@@ -9,44 +10,38 @@ const Resource = {
 };
 
 class Login extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    headerMode: 'none',
-  });
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
+    state = {
+      email: '',
       password: '',
+      errorMessages:null
     };
-  }
+  
 
   onPressLogin = () => {
-    this.props.navigation.navigate('HomeScreen');
-  };
-
-  handleUserChange = text => {
-    this.setState({ userName: text });
-  };
-
-  handlePasswordChange = text => {
-    this.setState({ password: text });
-  };
+    const  {email,password} = this.state
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(result => {
+        console.warn(result)
+        this.props.navigation.navigate('HomeScreen', email);
+      })
+      .catch((e) => this.setState({errorMessages: e.message}))
+    
+    };
 
   render() {
-    const { username, password } = this.state;
 
     return (
       <View style={styles.container}>
         <Image source={Resource.logo} style={styles.logo} />
-
+    <View style={{marginBottom:10,width:"71%"}}>{this.state.errorMessages && <Text style={{color:'#E9446A'}}>{this.state.errorMessages} Try Again!</Text>}</View>
         <View style={styles.loginContainer}>
           <View style={styles.usernameOrEmailWrapper}>
             <Image source={Resource.mail} style={styles.mailIcon} />
             <TextInput
               placeholder="Username or email"
-              value={username}
-              onChangeText={this.handleUserChange}
+              value={this.state.email}
+              onChangeText={email => this.setState({email})}
               style={styles.usernameOrEmail}
               returnKeyType="next"
             />
@@ -57,8 +52,8 @@ class Login extends React.Component {
             <TextInput
               placeholder="Password"
               secureTextEntry={true}
-              value={password}
-              onChangeText={text => this.handlePasswordChange(text)}
+              value={this.state.password}
+              onChangeText={password => this.setState({password})}
               style={styles.passwordInput}
               returnKeyType="done"
             />

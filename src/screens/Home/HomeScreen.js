@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { FlatList, Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
@@ -6,7 +6,7 @@ import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import DrawerStackNavigator from '../../navigations/TestResultNavigator'
+import firebase from '../../services/FirebaseConfig';
 
 function HomeScreen({ navigation }) {
 
@@ -31,7 +31,19 @@ function HomeScreen({ navigation }) {
     navigation.navigate("TestListScreens");
   }
 
-  console.log(navigation);
+  const onSignOut = () => {
+    firebase.auth().signOut().then(() => {
+      navigation.navigate('Login');
+    });
+  }
+
+  useEffect(() => {
+    const database = firebase.firestore();
+
+    database.collection('chuong1').onSnapshot(querySnapshot => {
+      querySnapshot.forEach(item => console.log(item.data()));
+    })
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -49,6 +61,10 @@ function HomeScreen({ navigation }) {
               />
             </TouchableOpacity>
           </View>
+
+          <TouchableOpacity onPress={onSignOut}>
+            <Text>Dang Xuat</Text>
+          </TouchableOpacity>
 
           <View style={styles.rootContainer}>
             <ImageBackground
