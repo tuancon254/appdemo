@@ -21,17 +21,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  wellcome: {
-    flex: 1,
+  welcome: {
     borderRadius: 10,
     padding: 15,
     margin: 18,
     marginTop: 10,
     backgroundColor: '#e6f7ff',
   },
+
   div: {
     flex: 1,
   },
+
   photo: {
     width: PHOTO_WIDTH,
     borderRadius: 10,
