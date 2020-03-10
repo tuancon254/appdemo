@@ -48,20 +48,22 @@ class HomeScreen extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.container}>
           <ScrollView style={{ flex: 1 }}>
             <View style={styles.wellcome1}>
               <View style={{ flex: 1, paddingLeft: 5 }}>
-                <Text style={{ fontSize: 20, color: '#666666' }}>Hello,</Text>
+                <Text style={{ fontSize: 20, color: '#666666' }}>Hello</Text>
                 <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
                   Tran Dinh Giang
                 </Text>
               </View>
               <TouchableOpacity
                 style={styles.headerButtonContainer}
-                onPress={() => this.props.navigation.openDrawer()}
+                onPress={navigation.openDrawer}
               >
                 <Image
                   style={styles.headerButtonImage}
@@ -69,10 +71,6 @@ class HomeScreen extends Component {
                 />
               </TouchableOpacity>
             </View>
-
-            <TouchableOpacity onPress={this.onSignOut}>
-              <Text>Dang Xuat</Text>
-            </TouchableOpacity>
 
             <View style={styles.rootContainer}>
               <ImageBackground
