@@ -3,22 +3,15 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
-import React from "react";
-import {
-  ScrollView,
-  TouchableOpacity,
-  View,
-  Text
-} from "@react-navigation/native"
+import React from 'react';
+import { ScrollView, View, Text } from 'react-native';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 
 function CustomDrawerContent(props) {
   return (
     <ScrollView>
-      <View>
-        <Text>Hello</Text>
-        <DrawerNavigatorItems {...props}/>
-      </View>
+      <Text>Hello</Text>
+      <DrawerNavigatorItems {...props} />
     </ScrollView>
   );
 }
