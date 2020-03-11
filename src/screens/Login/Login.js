@@ -11,37 +11,46 @@ const Resource = {
 
 class Login extends React.Component {
 
-    state = {
-      email: '',
-      password: '',
-      errorMessages:null
-    };
-  
+  constructor(props) {
+    super(props);
+  }
+
+  state = {
+    email: '',
+    password: '',
+    errorMessages: null,
+  };
 
   onPressLogin = () => {
-    const  {email,password} = this.state
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
       .then(result => {
-        console.warn(result)
+        console.warn(result);
         this.props.navigation.navigate('HomeScreen', email);
       })
-      .catch((e) => this.setState({errorMessages: e.message}))
-    
-    };
+      .catch(e => this.setState({ errorMessages: e.message }));
+  };
 
   render() {
-
     return (
       <View style={styles.container}>
         <Image source={Resource.logo} style={styles.logo} />
-    <View style={{marginBottom:10,width:"71%"}}>{this.state.errorMessages && <Text style={{color:'#E9446A'}}>{this.state.errorMessages} Try Again!</Text>}</View>
+        <View style={{ marginBottom: 10, width: '71%' }}>
+          {this.state.errorMessages && (
+            <Text style={{ color: '#E9446A' }}>
+              {this.state.errorMessages} Try Again!
+            </Text>
+          )}
+        </View>
         <View style={styles.loginContainer}>
           <View style={styles.usernameOrEmailWrapper}>
             <Image source={Resource.mail} style={styles.mailIcon} />
             <TextInput
               placeholder="Username or email"
               value={this.state.email}
-              onChangeText={email => this.setState({email})}
+              onChangeText={email => this.setState({ email })}
               style={styles.usernameOrEmail}
               returnKeyType="next"
             />
@@ -53,7 +62,7 @@ class Login extends React.Component {
               placeholder="Password"
               secureTextEntry={true}
               value={this.state.password}
-              onChangeText={password => this.setState({password})}
+              onChangeText={password => this.setState({ password })}
               style={styles.passwordInput}
               returnKeyType="done"
             />

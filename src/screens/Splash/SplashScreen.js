@@ -14,8 +14,6 @@ const Resource = {
 class SplashScreen extends React.Component {
   constructor(props) {
     super(props);
-
-    
   }
 
   componentDidMount() {

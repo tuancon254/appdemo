@@ -16,9 +16,10 @@ import {
   getRecipesByIngredientName
 } from '../../data/MockDataAPI';
 
-export default class SearchScreen extends React.Component {
+class SearchScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
+
     return {
       headerRight: (
         <MenuImage
@@ -124,3 +125,5 @@ export default class SearchScreen extends React.Component {
     );
   }
 }
+
+export default SearchScreen;
