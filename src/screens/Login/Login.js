@@ -22,7 +22,7 @@ class Login extends React.Component {
   }
 
   onPressLogin = () => {
-    this.props.navigation.navigate('HomeScreen');
+    this.props.navigation.navigate('Trang chủ');
   };
 
   handleUserChange = text => {

@@ -20,9 +20,9 @@ import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import SearchScreen from './../Search/SearchScreen';
 
-class HomeScreen extends Component {
+class Subject extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Home',
+    title: 'Môn Học',
     headerLeft: <MenuImage onPress={navigation.openDrawer} />,
   });
 
@@ -30,31 +30,33 @@ class HomeScreen extends Component {
     super(props);
   }
 
- // onPress Chapter not Recipes
   onPressChapter = item => {
     this.props.navigation.navigate('RecipeScreen', { item });
   };
 
-  // component Chapter not Recipes - chương...CHƯƠNG...CHƯƠNGGGGGGGGG
   renderChapter = ({ item }) => (
     <View style={styles.wellcome}>
       <TouchableOpacity onPress={() => this.onPressChapter(item)}>
-      <View style={{flex: 1,flexDirection: 'row' }}>
-        <View style={{ flex: 1}}>
+      <View style={{flexDirection: 'column' }}>
+        <View style={{flexDirection: 'row', marginBottom: 20 }}>
           <Image style={styles.iconChapter} 
             //source={{ uri: item.photo_url }}
-            source={require('../../../assets/icons/C1.png')}
+            source={require('../../../assets/icons/iconBook.png')}
           />
+          <Text style={{paddingTop:15, color:'#16A831'}}>Giới thiệu</Text>
         </View>
-        <View style={{ flex: 3, flexDirection: 'row'}}>
-            <View style={{ flex: 1.5, flexDirection: 'column' }}>
+        <View>
+            <View style={{flexDirection: 'column' }}>
                 <Text style={styles.titleChapter}>{item.title}</Text>
-                <Text style={styles.timeChapter}>{item.title}</Text>
+                <Text style={styles.timeChapter}>20 phút</Text>
             </View>
-            <Image style={styles.iconChapter} 
-                //source={{ uri: item.photo_url }}
-                source={require('../../../assets/icons/pass.png')}
-            />
+            <View style={{flexDirection: 'row', marginBottom:20}}>
+              <Image style={styles.iconChapter} 
+                  //source={{ uri: item.photo_url }}
+                  source={require('../../../assets/icons/play-button.png')}
+              />
+              <Text style={{paddingTop:15, color:'#FF7F2D', fontSize:17}}>Làm bài</Text>
+            </View>
         </View>
       </View>
       </TouchableOpacity>
@@ -62,7 +64,7 @@ class HomeScreen extends Component {
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('Môn học');
+    return this.props.navigation.navigate('TestListScreens');
   };
 
   render() {
@@ -73,38 +75,17 @@ class HomeScreen extends Component {
             {/* Header view */}
             <View style={styles.header}>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 16, color: '#000' }}>Hello,</Text>
-                <Text style={{ fontSize: 27, fontWeight: 'bold' }}>
-                  Trần Thị Hồng Ngọc
+                <Text style={{ fontSize: 22, fontWeight: 'bold' }}>
+                  Bộ môn: Tin học ứng dụng
+                </Text>
+                <Text style={{ fontSize: 12,color:'#999' }}>
+                  Giảng viên: Tin học ứng dụng
                 </Text>
               </View>
               <Image
                 source={require('../../../assets/icons/iconMenu.png')}
                 style={styles.iconMenu}
               />
-            </View>
-
-            {/* Search view */}
-            <View style={styles.sectionStyle}>
-              <View
-                style={{
-                  flex: 1,
-                  borderRightWidth: 1,
-                  borderColor: '#AFB4B4',
-                  marginRight: 10,
-                }}
-              >
-                <Image
-                  source={require('../../../assets/icons/search.png')}
-                  style={styles.iconSearch}
-                />
-              </View>
-              <View style={{ flex: 4.5 }}>
-                <TextInput
-                  placeholder="Search"
-                  underlineColorAndroid="transparent"
-                />
-              </View>
             </View>
 
             {/* Get Started view */}
@@ -114,29 +95,25 @@ class HomeScreen extends Component {
                 style={styles.backgroundImage}
                 imageStyle={{ borderRadius: 15 }}
               >
-                <Text style={styles.HomeTitle}>Bạn muốn làm</Text>
-                <Text
-                  style={{ marginLeft: 30, fontSize: 20, fontWeight: 'bold' }}
-                >
-                  bài kiểm tra nào
-                </Text>
-                <Text style={{ marginLeft: 30, fontSize: 20, fontWeight: 'bold' }}>hôm nay?</Text>
-                <TouchableOpacity
-                  style={styles.get_started_button}
-                  onPress={this.onPressGetStarted}
-                >
-                  <Text style={styles.get_started_text}>Bắt đầu</Text>
-                </TouchableOpacity>
               </ImageBackground>
             </View>
+
+            {/* Quickview */}
+            <View style={styles.Quickview}>
+                <Text style={{}}>
+                    <Text style={{fontSize: 14, fontWeight: 'bold'}}>Tin học ứng dụng </Text>
+                    Bộ môn tin học ứng dụng bla bla bla abcxyz...
+                </Text>
+            </View>
+
             <View>
-              <Text style={styles.feedback}>Bài kiểm tra gần đây</Text>
+              <Text style={styles.feedback}>Kiểm tra</Text>
             </View>
             <View style={styles.div}>
               <FlatList
                 vertical
                 showsVerticalScrollIndicator={false}
-                numColumns={1}
+                numColumns={2}
                 data={recipes}
                 renderItem={this.renderChapter}
                 keyExtractor={item => `${item.recipeId}`}
@@ -149,4 +126,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+export default Subject;

@@ -15,19 +15,19 @@ const styles = StyleSheet.create({
 
   header: {
     flex: 1,
-    paddingTop: 34,
+    paddingTop: 5,
     paddingLeft: 24,
     paddingRight:24 ,
     paddingBottom:24,
     flexDirection: "row",
+    
   },
 
   wellcome: {
-    flex: 1,
+    width: '41%',
     borderRadius: 15,
     padding: 15,
     marginLeft: 24,
-    marginRight: 24,
     marginTop: 20,
     backgroundColor: "#F2FCF2",
 
@@ -54,20 +54,21 @@ const styles = StyleSheet.create({
   },
 
  iconChapter: {
-    marginLeft: 5,
-    width:60,height:60,
-    aspectRatio: 1,
-    resizeMode: 'contain',
+    margin: 10,
+    width: '28%',
+    height: '100%'
   },
 
   titleChapter: {
-    flex: 1,
+    marginLeft: 10,
+    marginBottom: 10,
     fontSize: 17,
     fontWeight: 'bold',
     color: '#000',
   },
 
   timeChapter: {
+    marginLeft: 10,
     color: '#999999',
     fontSize: 12
   },
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   rootContainer: {
-    margin: 24,
+    marginLeft: 24,
+    marginRight: 24,
     flex: 1
   },
   backgroundImage: {
@@ -112,26 +114,11 @@ const styles = StyleSheet.create({
     paddingLeft: 24,
     paddingTop: 15,
   },
-  iconSearch:{
-    padding: 10,
-    marginLeft: 20,
-    marginRight: 20,
-    height: 25,
-    width: 25,
-    resizeMode : 'stretch',
-    alignItems: 'center',
-  },
-  sectionStyle:{
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F3F4F9',
-    height: 54,
-    borderRadius: 10,
-    marginLeft: 24,
-    marginRight: 24
+  
+  Quickview: {
+    flex: 1,
+    margin: 24
   }
-
 });
 
 export default styles;
