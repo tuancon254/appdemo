@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import styles from './styles';
 import firebase from '../../services/FirebaseConfig';
 
@@ -12,6 +19,13 @@ const Resource = {
 class Login extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+      errorMessages: null,
+      logging: false,
+    };
   }
 
   onPressLogin = () => {
@@ -20,33 +34,36 @@ class Login extends React.Component {
 
   handleUserChange = text => {
     this.setState({ userName: text });
-
-  state = {
-    email: '',
-    password: '',
-    errorMessages: null,
   };
 
   onPressLogin = () => {
     const { email, password } = this.state;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.props.navigation.navigate('DrawerStackNavigator', email);
-      })
-      .catch(e => this.setState({ errorMessages: e.message }));
+
+    if (!!email && !!password) {
+      this.setState({ logging: true });
+
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log('Hello');
+          this.props.navigation.navigate('DrawerStackNavigator', email);
+        })
+        .catch(e =>
+          this.setState({ errorMessages: e.message, logging: false })
+        );
+    }
   };
 
   render() {
+    const { logging, errorMessages } = this.state;
+
     return (
       <View style={styles.container}>
         <Image source={Resource.logo} style={styles.logo} />
         <View style={{ marginBottom: 10, width: '71%' }}>
-          {this.state.errorMessages && (
-            <Text style={{ color: '#E9446A' }}>
-              {this.state.errorMessages} Try Again!
-            </Text>
+          {errorMessages && (
+            <Text style={{ color: '#E9446A' }}>{errorMessages} Try Again!</Text>
           )}
         </View>
         <View style={styles.loginContainer}>
@@ -79,6 +96,9 @@ class Login extends React.Component {
           onPress={this.onPressLogin}
         >
           <Text style={{ fontSize: 18 }}>Sign in</Text>
+          {logging && (
+            <ActivityIndicator size={'small'} style={styles.loadingIcon} />
+          )}
         </TouchableOpacity>
         <TouchableOpacity>
           <Text
