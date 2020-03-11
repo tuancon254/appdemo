@@ -16,16 +16,10 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
-import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import SearchScreen from './../Search/SearchScreen';
 
 class HomeScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Home',
-    headerLeft: <MenuImage onPress={navigation.openDrawer} />,
-  });
-
   constructor(props) {
     super(props);
   }
@@ -66,6 +60,8 @@ class HomeScreen extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <View style={{ backgroundColor: 'white' }}>
         <View>

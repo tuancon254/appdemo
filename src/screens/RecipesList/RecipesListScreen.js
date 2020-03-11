@@ -9,7 +9,7 @@ import {
 import styles from './styles';
 import { getRecipes, getCategoryName } from '../../data/MockDataAPI';
 
-export default class RecipesListScreen extends React.Component {
+class RecipesListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.getParam('title')
@@ -52,3 +52,5 @@ export default class RecipesListScreen extends React.Component {
     );
   }
 }
+
+export default RecipesListScreen; 

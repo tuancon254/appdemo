@@ -1,35 +1,41 @@
-import React from "react";
-import {
-  FlatList,
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-  AsyncImageAnimated,
-  Image,
-  TouchableHighlight
-} from "react-native";
-import styles from "./styles";
+import React from 'react';
+import { View, Image, ActivityIndicator } from 'react-native';
+import styles from './styles';
+import firebase from '../../services/FirebaseConfig';
 
 const Resource = {
-  cookie: require("../../../assets/icons/cookie100.png"),
-}
+  cookie: require('../../../assets/icons/cookie100.png'),
+};
 
 class SplashScreen extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.navigation.navigate('DrawerStackNavigator');
+      } else {
+        this.props.navigation.navigate('Login');
+      }
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Image
           style={styles.photo}
-          source={Resource.cookie}
+          source={require('../../../assets/images/logo.png')}
+        />
+        <ActivityIndicator
+          size="large"
+          style={{ position: 'absolute', bottom: '10%' }}
         />
       </View>
     );
   }
 }
 
-export default SplashScreen
+export default SplashScreen;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   FlatList,
   ScrollView,
@@ -14,7 +14,7 @@ import {
   getCategoryName,
 } from '../../data/MockDataAPI';
 
-class IngredientScreen extends React.Component {
+class IngredientScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.getParam('name'),
@@ -54,6 +54,7 @@ class IngredientScreen extends React.Component {
     const ingredientId = navigation.getParam('ingredient');
     const ingredientUrl = getIngredientUrl(ingredientId);
     const ingredientName = navigation.getParam('name');
+    
     return (
       <ScrollView style={styles.mainContainer}>
         <View

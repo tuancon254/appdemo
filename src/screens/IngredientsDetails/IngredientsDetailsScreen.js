@@ -17,9 +17,8 @@ export default class IngredientsDetailsScreen extends React.Component {
   // };
 
   constructor(props) {
-    console.log(props);
-
     super(props);
+
     this.state = {
       checkedId: null,
     };
@@ -30,6 +29,7 @@ export default class IngredientsDetailsScreen extends React.Component {
     let ingredient = item.ingredientId;
     this.props.navigation.navigate('Ingredient', { ingredient, name });
   };
+  
   onCheck = a => {
     if (this.state.checked === false) this.setState({ checked: true });
   };
