@@ -47,14 +47,21 @@ class RootStackNavigator extends Component {
             options={{ headerShown: false, gestureEnabled: false }}
           />
         ) : (
-          <RootStack.Screen
-            name="Login"
-            component={Login}
-            options={{
-              headerShown: false,
-              gestureEnabled: false,
-            }}
-          />
+          <>
+            <RootStack.Screen
+              name="Login"
+              component={Login}
+              options={{
+                headerShown: false,
+                gestureEnabled: false,
+              }}
+            />
+            <RootStack.Screen
+              name="DrawerStackNavigator"
+              component={DrawerStackNavigator}
+              options={{ headerShown: false, gestureEnabled: false }}
+            />
+          </>
         )}
       </RootStack.Navigator>
     );
