@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  BackHandler,
+  ToastAndroid,
 } from 'react-native';
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
@@ -36,6 +38,18 @@ class HomeScreen extends Component {
         </View>
       </TouchableOpacity>
     );
+  }
+
+  handleBackButton() {
+    return true;
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
   }
 
   render() {

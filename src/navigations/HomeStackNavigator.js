@@ -14,7 +14,10 @@ class HomeStackNavigator extends Component {
         <HomeStack.Screen
           name={'HomeScreen'}
           component={HomeScreen}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
         />
         <HomeStack.Screen
           name={'TestListScreens'}
