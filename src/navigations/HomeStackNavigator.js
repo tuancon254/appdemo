@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import HomeScreen from '../screens/Home/HomeScreen';
 import RecipeScreen from '../screens/Recipe/RecipeScreen';
 import IngredientsDetailsScreen from '../screens/IngredientsDetails/IngredientsDetailsScreen';
+import TestListScreens from '../screens/TestlistScreens/TestListScreens';
 
 const HomeStack = createStackNavigator();
 
@@ -14,6 +15,10 @@ class HomeStackNavigator extends Component {
           name={'HomeScreen'}
           component={HomeScreen}
           options={{ headerShown: false }}
+        />
+        <HomeStack.Screen
+          name={'TestListScreens'}
+          component={TestListScreens}
         />
         <HomeStack.Screen name={'RecipeScreen'} component={RecipeScreen} />
         <HomeStack.Screen
