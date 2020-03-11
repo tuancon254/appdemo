@@ -5,11 +5,10 @@ import SplashScreen from './../screens/Splash/SplashScreen';
 import HomeScreen from './../screens/Home/HomeScreen';
 import RecipeScreen from './../screens/Recipe/RecipeScreen';
 import IngredientsDetailsScreen from '../screens/IngredientsDetails/IngredientsDetailsScreen';
-import TestList from "../screens/TestlistScreens/TestListScreens"
-import MenuImage from "../components/MenuImage/MenuImage"
+import TestList from '../screens/TestlistScreens/TestListScreens';
+import MenuImage from '../components/MenuImage/MenuImage';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerContainer from "../screens/DrawerContainer/DrawerContainer"
-
+import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 
 const RootStack = createStackNavigator();
 
@@ -24,9 +23,16 @@ function RootStackNavigator() {
       <RootStack.Screen
         name="Login"
         component={Login}
+        options={{
+          headerShown: false,
+          gestureEnabled: false,
+        }}
+      />
+      <RootStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
         options={{ headerShown: false }}
       />
-      <RootStack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
       <RootStack.Screen name="TestListScreens" component={TestList} />
       <RootStack.Screen name="RecipeScreen" component={RecipeScreen} />
       <RootStack.Screen
@@ -36,7 +42,5 @@ function RootStackNavigator() {
     </RootStack.Navigator>
   );
 }
-
-
 
 export default RootStackNavigator;
