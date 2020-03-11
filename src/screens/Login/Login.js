@@ -10,7 +10,6 @@ const Resource = {
 };
 
 class Login extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -26,9 +25,8 @@ class Login extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(result => {
-        console.warn(result);
-        this.props.navigation.navigate('HomeScreen', email);
+      .then(() => {
+        this.props.navigation.navigate('DrawerStackNavigator', email);
       })
       .catch(e => this.setState({ errorMessages: e.message }));
   };

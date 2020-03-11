@@ -1,15 +1,11 @@
-import React from "react";
-import {
-  View,
-  Image,
-  ActivityIndicator
-} from "react-native";
-import styles from "./styles";
+import React from 'react';
+import { View, Image, ActivityIndicator } from 'react-native';
+import styles from './styles';
 import firebase from '../../services/FirebaseConfig';
 
 const Resource = {
-  cookie: require("../../../assets/icons/cookie100.png"),
-}
+  cookie: require('../../../assets/icons/cookie100.png'),
+};
 
 class SplashScreen extends React.Component {
   constructor(props) {
@@ -19,21 +15,24 @@ class SplashScreen extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.props.navigation.navigate('HomeScreen');
+        this.props.navigation.navigate('DrawerStackNavigator');
       } else {
         this.props.navigation.navigate('Login');
       }
     });
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
         <Image
           style={styles.photo}
-          source={require("../../../assets/images/logo.png")}
+          source={require('../../../assets/images/logo.png')}
         />
-        <ActivityIndicator size='large' style={{ position: 'absolute', bottom: '10%' }} />
+        <ActivityIndicator
+          size="large"
+          style={{ position: 'absolute', bottom: '10%' }}
+        />
       </View>
     );
   }
