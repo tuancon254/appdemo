@@ -65,36 +65,7 @@ export default class RecipeScreen extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
-            {/* <Carousel
-              ref={c => {
-                this.slider1Ref = c;
-              }}
-              data={item.photosArray}
-              renderItem={this.renderImage}
-              sliderWidth={viewportWidth}
-              itemWidth={viewportWidth}
-              inactiveSlideScale={1}
-              inactiveSlideOpacity={1}
-              firstItem={0}
-              loop={false}
-              autoplay={false}
-              autoplayDelay={500}
-              autoplayInterval={3000}
-              onSnapToItem={index => this.setState({ activeSlide: index })}
-            /> */}
             <Image style={styles.image} source={{ uri: item.photo_url }} />
-            {/* <Pagination
-              dotsLength={item.photosArray.length}
-              activeDotIndex={activeSlide}
-              containerStyle={styles.paginationContainer}
-              dotColor="rgba(255, 255, 255, 0.92)"
-              dotStyle={styles.paginationDot}
-              inactiveDotColor="white"
-              inactiveDotOpacity={0.4}
-              inactiveDotScale={0.6}
-              carouselRef={this.slider1Ref}
-              tappableDots={!!this.slider1Ref}
-            /> */}
           </View>
         </View>
         <View style={styles.infoRecipeContainer}>
@@ -139,11 +110,3 @@ export default class RecipeScreen extends Component {
     );
   }
 }
-
-/*cooking steps
-<View style={styles.infoContainer}>
-  <Image style={styles.infoPhoto} source={require('../../../assets/icons/info.png')} />
-  <Text style={styles.infoRecipe}>Cooking Steps</Text>
-</View>
-<Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
-*/
