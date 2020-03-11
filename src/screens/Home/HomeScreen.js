@@ -40,17 +40,17 @@ class HomeScreen extends Component {
     );
   }
 
-  handleBackButton() {
-    return true;
-  }
-
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
-  }
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
-  }
+  // handleBackButton() {
+  //   return true;
+  // }
+  //
+  // componentDidMount() {
+  //   BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  // }
+  //
+  // componentWillUnmount() {
+  //   BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  // }
 
   render() {
     const { navigation } = this.props;
