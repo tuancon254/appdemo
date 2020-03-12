@@ -29,7 +29,7 @@ class Login extends React.Component {
   }
 
   onPressLogin = () => {
-    this.props.navigation.navigate('Trang chủ');
+    this.props.navigation.navigate('DrawerStackNavigator');
   };
 
   handleUserChange = text => {
@@ -54,6 +54,15 @@ class Login extends React.Component {
         );
     }
   };
+
+  componentWillUnmount() {
+    this.setState({
+      email: '',
+      password: '',
+      errorMessages: null,
+      logging: false,
+    });
+  }
 
   render() {
     const { logging, errorMessages } = this.state;

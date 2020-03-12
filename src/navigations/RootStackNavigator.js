@@ -1,78 +1,42 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
-import Login from './../screens/Login/Login';
 import SplashScreen from './../screens/Splash/SplashScreen';
 import DrawerStackNavigator from './DrawerStackNavigator';
 import firebase from '../services/FirebaseConfig';
+import SignOut from '../screens/SignOut';
+import LoginStackNavigator from './LoginStackNavigator';
 
 const RootStack = createStackNavigator();
 
 class RootStackNavigator extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isLoggedIn: undefined,
-    };
-  }
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ isLoggedIn: true });
-      } else {
-        this.setState({ isLoggedIn: false });
-      }
-    });
+  constructor(props) {
+    super(props);
   }
 
   render() {
-    const { isLoggedIn } = this.state;
-
     return (
       <RootStack.Navigator>
-        {isLoggedIn === undefined && (
-          <RootStack.Screen
-            name="SplashScreen"
-            component={SplashScreen}
-            options={{
-              headerShown: false,
-            }}
-          />
-        )}
-        {isLoggedIn ? (
-          <>
-            <RootStack.Screen
-              name="DrawerStackNavigator"
-              component={DrawerStackNavigator}
-              options={{ headerShown: false, gestureEnabled: false }}
-            />
-            <RootStack.Screen
-              name="Login"
-              component={Login}
-              options={{
-                headerShown: false,
-                gestureEnabled: false,
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <RootStack.Screen
-              name="Login"
-              component={Login}
-              options={{
-                headerShown: false,
-                gestureEnabled: false,
-              }}
-            />
-            <RootStack.Screen
-              name="DrawerStackNavigator"
-              component={DrawerStackNavigator}
-              options={{ headerShown: false, gestureEnabled: false }}
-            />
-          </>
-        )}
+        <RootStack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <RootStack.Screen
+          name="DrawerStackNavigator"
+          component={DrawerStackNavigator}
+          options={{ headerShown: false, gestureEnabled: false }}
+        />
+        <RootStack.Screen
+          name="LoginStackNavigator"
+          component={LoginStackNavigator}
+          options={{
+            headerShown: false,
+            gestureEnabled: false,
+          }}
+        />
+        <RootStack.Screen name="SignOut" component={SignOut} />
       </RootStack.Navigator>
     );
   }

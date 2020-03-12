@@ -9,7 +9,7 @@ class SignOut extends Component {
       .signOut()
       .then(() => {
         console.log('Sign out');
-        this.props.navigation.navigate('Login', { onReset: 'reset' });
+        this.props.navigation.navigate('LoginStackNavigator');
       })
       .catch(e => console.log(e.message));
   }
