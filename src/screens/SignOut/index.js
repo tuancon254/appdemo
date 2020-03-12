@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../services/FirebaseConfig';
 import { View } from 'react-native';
+import ActivityIndicator from 'react-native-web/dist/exports/ActivityIndicator';
 
 class SignOut extends Component {
   componentDidMount() {
@@ -15,7 +16,11 @@ class SignOut extends Component {
   }
 
   render() {
-    return <View />;
+    return (
+      <View style={{ flex: 1 }}>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
   }
 }
 

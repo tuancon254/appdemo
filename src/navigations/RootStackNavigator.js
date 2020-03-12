@@ -2,7 +2,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
 import SplashScreen from './../screens/Splash/SplashScreen';
 import DrawerStackNavigator from './DrawerStackNavigator';
-import firebase from '../services/FirebaseConfig';
 import SignOut from '../screens/SignOut';
 import LoginStackNavigator from './LoginStackNavigator';
 
@@ -24,17 +23,17 @@ class RootStackNavigator extends Component {
           }}
         />
         <RootStack.Screen
-          name="DrawerStackNavigator"
-          component={DrawerStackNavigator}
-          options={{ headerShown: false, gestureEnabled: false }}
-        />
-        <RootStack.Screen
           name="LoginStackNavigator"
           component={LoginStackNavigator}
           options={{
             headerShown: false,
             gestureEnabled: false,
           }}
+        />
+        <RootStack.Screen
+          name="DrawerStackNavigator"
+          component={DrawerStackNavigator}
+          options={{ headerShown: false, gestureEnabled: false }}
         />
         <RootStack.Screen name="SignOut" component={SignOut} />
       </RootStack.Navigator>
