@@ -4,11 +4,9 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
   TouchableHighlight,
 } from 'react-native';
 import styles from './styles';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
 import {
   getIngredientName,
   getCategoryName,
@@ -17,9 +15,8 @@ import {
 } from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
 import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
-const { width: viewportWidth } = Dimensions.get('window');
 
-export default class RecipeScreen extends Component {
+class RecipeView extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTransparent: 'true',
@@ -35,6 +32,7 @@ export default class RecipeScreen extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       activeSlide: 0,
     };
@@ -49,7 +47,7 @@ export default class RecipeScreen extends Component {
   );
 
   onPressIngredient = item => {
-    var name = getIngredientName(item);
+    const name = getIngredientName(item);
     let ingredient = item;
     this.props.navigation.navigate('Ingredient', { ingredient, name });
   };
@@ -57,9 +55,11 @@ export default class RecipeScreen extends Component {
   render() {
     const { activeSlide } = this.state;
     const { navigation, route } = this.props;
-    const item = route.params.item;
+    const item = navigation.getParam('item');
     const category = getCategoryById(item.categoryId);
     const title = getCategoryName(category.id);
+
+    console.log(this.props);
 
     return (
       <ScrollView style={styles.container}>
@@ -110,3 +110,5 @@ export default class RecipeScreen extends Component {
     );
   }
 }
+
+export default RecipeView;

@@ -27,7 +27,7 @@ class HomeView extends Component {
 
   // onPress Chapter not Recipes
   onPressChapter = item => {
-    this.props.navigation.navigate('RecipeScreen', { item });
+    this.props.navigation.navigate('Recipe', { item });
   };
 
   // component Chapter not Recipes - chương...CHƯƠNG...CHƯƠNGGGGGGGGG
