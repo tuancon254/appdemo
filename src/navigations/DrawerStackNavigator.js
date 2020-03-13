@@ -1,29 +1,35 @@
-import React, { Component } from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React from 'react';
 import TestResultScreens from '../screens/TestResult/TestResultScreens';
 import SignOut from '../screens/SignOut';
 import HomeStackNavigator from './HomeStackNavigator';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
-const DrawerStack = createDrawerNavigator();
-
-class DrawerStackNavigator extends Component {
-  render() {
-    return (
-      <DrawerStack.Navigator
-        drawerPosition="left"
-        drawerType="slide"
-        drawerStyle={{
-          width: 215,
-          color: 'white',
-        }}
-        backBehavior="initialRoute"
-      >
-        <DrawerStack.Screen name="Trang chủ" component={HomeStackNavigator} />
-        <DrawerStack.Screen name="Hồ sơ" component={TestResultScreens} />
-        <DrawerStack.Screen name="Đăng xuất" component={SignOut} />
-      </DrawerStack.Navigator>
-    );
+const DrawerStackNavigator = createDrawerNavigator(
+  {
+    HomeStackNavigator: {
+      screen: HomeStackNavigator,
+      navigationOptions: {
+        drawerLabel: 'Trang chủ',
+      },
+    },
+    TestResultScreens: {
+      screen: TestResultScreens,
+      navigationOptions: {
+        drawerLabel: 'Hồ sơ',
+      },
+    },
+    SignOut: {
+      screen: SignOut,
+      navigationOptions: {
+        drawerLabel: 'Đăng xuất',
+      },
+    },
+  },
+  {
+    navigationOptions: {
+      header: null,
+    },
   }
-}
+);
 
 export default DrawerStackNavigator;

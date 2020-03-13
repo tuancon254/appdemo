@@ -17,6 +17,10 @@ const Resource = {
 };
 
 class Login extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor(props) {
     super(props);
 
@@ -27,10 +31,6 @@ class Login extends React.Component {
       logging: false,
     };
   }
-
-  onPressLogin = () => {
-    this.props.navigation.navigate('DrawerStackNavigator');
-  };
 
   handleUserChange = text => {
     this.setState({ userName: text });
@@ -46,13 +46,26 @@ class Login extends React.Component {
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(() => {
-          console.log('Hello');
-          this.props.navigation.navigate('DrawerStackNavigator', email);
+          this.setState({ logging: false });
+          this.props.navigation.navigate('RootStackNavigator', email);
         })
         .catch(e =>
           this.setState({ errorMessages: e.message, logging: false })
         );
     }
+  };
+
+  onLoginDev = () => {
+    this.setState({ logging: true });
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword('test@gmail.com', '123456')
+      .then(() => {
+        this.setState({ logging: false });
+        this.props.navigation.navigate('DrawerStackNavigator', email);
+      })
+      .catch(e => this.setState({ errorMessages: e.message, logging: false }));
   };
 
   componentWillUnmount() {
@@ -109,6 +122,14 @@ class Login extends React.Component {
             <ActivityIndicator size={'small'} style={styles.loadingIcon} />
           )}
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.loginButton} onPress={this.onLoginDev}>
+          <Text style={{ fontSize: 18 }}>Sign in Dev</Text>
+          {logging && (
+            <ActivityIndicator size={'small'} style={styles.loadingIcon} />
+          )}
+        </TouchableOpacity>
+
         <TouchableOpacity>
           <Text
             style={{ marginTop: 16, color: '#fff', alignContent: 'center' }}

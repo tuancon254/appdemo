@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { createSwitchNavigator } from 'react-navigation';
+import SplashScreen from '../screens/Splash/SplashScreen';
 import RootStackNavigator from './RootStackNavigator';
-import { createStackNavigator } from '@react-navigation/stack';
+import LoginStackNavigator from './LoginStackNavigator';
 
-const Stack = createStackNavigator();
-
-class AppNavigation extends Component {
-  render() {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="RootStackNavigator"
-            component={RootStackNavigator}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    );
-  }
-}
+const AppNavigation = createSwitchNavigator(
+  {
+    SplashScreen,
+    RootStackNavigator,
+    LoginStackNavigator,
+  },
+  {}
+);
 
 export default AppNavigation;

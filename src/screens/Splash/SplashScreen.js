@@ -15,7 +15,7 @@ class SplashScreen extends React.Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.props.navigation.navigate('DrawerStackNavigator');
+        this.props.navigation.navigate('RootStackNavigator');
       } else {
         this.props.navigation.navigate('LoginStackNavigator');
       }

@@ -4,6 +4,7 @@
  * @LastModifiedBy:
  * @LastModifiedDate:
  */
+
 import React, { Component } from 'react';
 import {
   FlatList,
@@ -20,6 +21,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 import SearchScreen from './../Search/SearchScreen';
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   constructor(props) {
     super(props);
   }

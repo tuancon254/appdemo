@@ -75,7 +75,7 @@ export const Lession = [
 
 export const recipes = [
   {
-    recipeId: 122,
+    recipeId: 1,
     categoryId: 3,
     LessionId: 1,
     title: 'Chương 1',
@@ -98,7 +98,7 @@ export const recipes = [
       '- Lịch sử hình thành \n \n - Mô hình hóa khả năng của SAP2000 \n \n - Các định nghĩa',
   },
   {
-    recipeId: 3,
+    recipeId: 2,
     categoryId: 3,
     LessionId: 2,
     title: 'Chương 2',
@@ -120,7 +120,7 @@ export const recipes = [
       'In a blender, combine all ingredients and blend until smooth. Then divide between 2 cups and top with blackberries, if desired.',
   },
   {
-    recipeId: 2,
+    recipeId: 3,
     categoryId: 3,
     LessionId: 3,
     title: 'Chương 3',
@@ -149,7 +149,7 @@ export const recipes = [
       '-- Beat the egg and then combine it with water in a bowl. Stir. Combine the flour, salt, MSG, pepper, onion powder and garlic powder in a gallon size zip lock bag. Pound each of the breast filets until about 1/4-inch thick. Then cut into bite sized pieces. Coat each piece with the flour mixture by shaking in the zip lock bag. Remove and coat in the egg mixture. Then coat in the flour mixture again. Shake to coat. Deep fry at 375 degrees for 10-12 minutes, until browned and crispy.',
   },
   {
-    recipeId: 3,
+    recipeId: 4,
     categoryId: 3,
     LessionId: 4,
     title: 'Chương 4',
@@ -181,7 +181,7 @@ export const recipes = [
       '-- In a medium pot over medium heat, heat 1 tablespoon oil. Add onion and cook until soft, 5 minutes. Add garlic and cook until fragrant, 1 minute more. Add tomato paste and stir to coat onion and garlic. Add ground beef and cook, breaking up meat with a wooden spoon, until no longer pink, 6 minutes. Drain fat.\n\n -- Return beef to pot and season with chili powder, paprika, salt, and pepper. Add tomato sauce and kidney beans. Bring to a boil, then reduce heat and let simmer 15 minutes. Add some chili to center of each tortilla, leaving room to fold in edges. Top with Fritos, then cheddar. Fold edges of tortillas toward the center, creating pleats. Invert Crunchwraps so pleats are on the bottom and stay together.\n\n -- In medium skillet over medium heat, heat remaining tablespoon oil. Add a Crunchwrap seam side down and cook until tortilla is golden, 3 to 5 minutes per side. Repeat with remaining Crunchwraps',
   },
   {
-    recipeId: 1,
+    recipeId: 5,
     categoryId: 3,
     LessionId: 5,
     title: 'Chương 5',
@@ -216,7 +216,7 @@ export const recipes = [
       '-- Preheat fryer to 350°F. Thoroughly mix together all spices. Combine spices with flour, brown sugar and salt. Dip chicken pieces in egg white to lightly coat them, then transfer to flour mixture. Turn a few times and make sure the flour mix is really stuck to the chicken.\n\n -- Repeat with all the chicken pieces. Let chicken pieces rest for 5 minutes so crust has a chance to dry a bit. Fry chicken in batches. Breasts and wings should take 12-14 minutes, and legs and thighs will need a few more minutes. Chicken pieces are done when a meat thermometer inserted into the thickest part reads 165°F. Let chicken drain on a few paper towels when it comes out of the fryer. Serve hot.',
   },
   {
-    recipeId: 4,
+    recipeId: 6,
     categoryId: 3,
     LessionId: 6,
     title: 'Chương 6',
