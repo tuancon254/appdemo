@@ -54,12 +54,10 @@ class RecipeView extends Component {
 
   render() {
     const { activeSlide } = this.state;
-    const { navigation, route } = this.props;
+    const { navigation } = this.props;
     const item = navigation.getParam('item');
     const category = getCategoryById(item.categoryId);
     const title = getCategoryName(category.id);
-
-    console.log(this.props);
 
     return (
       <ScrollView style={styles.container}>
