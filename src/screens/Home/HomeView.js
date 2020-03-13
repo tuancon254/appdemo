@@ -18,13 +18,9 @@ import {
 import styles from './styles';
 import { recipes } from '../../data/dataArrays';
 import { ScrollView } from 'react-native-gesture-handler';
-import SearchScreen from './../Search/SearchScreen';
+import uuid from 'uuid/v4';
 
-class HomeScreen extends Component {
-  static navigationOptions = {
-    header: null,
-  };
-
+class HomeView extends Component {
   constructor(props) {
     super(props);
   }
@@ -147,7 +143,7 @@ class HomeScreen extends Component {
               numColumns={1}
               data={recipes}
               renderItem={this.renderChapter}
-              keyExtractor={item => `${item.recipeId}`}
+              keyExtractor={uuid}
             />
           </View>
         </ScrollView>
@@ -156,4 +152,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+export default HomeView;

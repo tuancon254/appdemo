@@ -16,7 +16,7 @@ const Resource = {
   key: require('../../../assets/images/key.png'),
 };
 
-class Login extends React.Component {
+class LoginView extends React.Component {
   static navigationOptions = {
     header: null,
   };
@@ -28,45 +28,8 @@ class Login extends React.Component {
       email: '',
       password: '',
       errorMessages: null,
-      logging: false,
     };
   }
-
-  handleUserChange = text => {
-    this.setState({ userName: text });
-  };
-
-  onPressLogin = () => {
-    const { email, password } = this.state;
-
-    if (!!email && !!password) {
-      this.setState({ logging: true });
-
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          this.setState({ logging: false });
-          this.props.navigation.navigate('RootStackNavigator', email);
-        })
-        .catch(e =>
-          this.setState({ errorMessages: e.message, logging: false })
-        );
-    }
-  };
-
-  onLoginDev = () => {
-    this.setState({ logging: true });
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword('test@gmail.com', '123456')
-      .then(() => {
-        this.setState({ logging: false });
-        this.props.navigation.navigate('DrawerStackNavigator', email);
-      })
-      .catch(e => this.setState({ errorMessages: e.message, logging: false }));
-  };
 
   componentWillUnmount() {
     this.setState({
@@ -78,7 +41,10 @@ class Login extends React.Component {
   }
 
   render() {
-    const { logging, errorMessages } = this.state;
+    const { errorMessages } = this.state;
+    const { onLoginDev, logging, onPressLogin } = this.props;
+
+    console.log(this.props);
 
     return (
       <View style={styles.container}>
@@ -113,17 +79,14 @@ class Login extends React.Component {
           </View>
         </View>
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={this.onPressLogin}
-        >
+        <TouchableOpacity style={styles.loginButton} onPress={onPressLogin}>
           <Text style={{ fontSize: 18 }}>Sign in</Text>
           {logging && (
             <ActivityIndicator size={'small'} style={styles.loadingIcon} />
           )}
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.loginButton} onPress={this.onLoginDev}>
+        <TouchableOpacity style={styles.loginButton} onPress={onLoginDev}>
           <Text style={{ fontSize: 18 }}>Sign in Dev</Text>
           {logging && (
             <ActivityIndicator size={'small'} style={styles.loadingIcon} />
@@ -142,4 +105,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default LoginView;
