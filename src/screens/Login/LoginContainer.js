@@ -22,7 +22,7 @@ class LoginContainer extends Component {
           .auth()
           .signInWithEmailAndPassword(email, password);
         this.setState({ logging: false });
-        this.props.navigation.navigate('RootStackNavigator', email);
+        this.props.navigation.navigate('RootStackNavigator', result.user.email);
       } catch (e) {
         alert(e.message);
       }
