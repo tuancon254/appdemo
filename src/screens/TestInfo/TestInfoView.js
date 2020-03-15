@@ -16,19 +16,7 @@ import {
 import BackButton from '../../components/BackButton/BackButton';
 import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
 
-class RecipeView extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerTransparent: 'true',
-      headerLeft: (
-        <BackButton
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-      ),
-    };
-  };
+class TestInfoView extends Component {
 
   constructor(props) {
     super(props);
@@ -93,7 +81,7 @@ class RecipeView extends Component {
               onPress={() => {
                 const ingredients = item.ingredients;
                 const title = `Ingredients for ${item.title}`;
-                navigation.navigate('IngredientsDetailsScreen', {
+                navigation.navigate('testscreen', {
                   ingredients,
                   title,
                 });
@@ -109,4 +97,4 @@ class RecipeView extends Component {
   }
 }
 
-export default RecipeView;
+export default TestInfoView;

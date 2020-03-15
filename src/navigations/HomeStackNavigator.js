@@ -1,20 +1,20 @@
 import React from 'react';
-import IngredientsDetailsScreen from '../screens/IngredientsDetails/IngredientsDetailsScreen';
-import TestListScreens from '../screens/TestlistScreens/TestListScreens';
 import { createStackNavigator } from 'react-navigation-stack';
-import Home from '../screens/Home';
-import Recipe from '../screens/Recipe';
+import Home from '../screens/Home/index';
+import Subject from '../screens/Subject/Subject'
+import TestInfo from '../screens/TestInfo/index';
+import TestScreen from '../screens/TestScreen/TestScreen'
 
 const HomeStackNavigator = createStackNavigator(
   {
-    Home,
-    TestListScreens,
-    Recipe,
-    IngredientsDetailsScreen,
+    Home: Home,
+    subject :Subject,
+    testinfo:TestInfo,
+    testscreen: TestScreen,
   },
   {
     navigationOptions: {
-      header: null,
+      headerMode: "none",
     },
   }
 );

@@ -59,7 +59,7 @@ class HomeView extends Component {
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('Môn học');
+    return this.props.navigation.navigate('subject');
   };
 
   render() {
@@ -78,7 +78,7 @@ class HomeView extends Component {
             </View>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Image
-                source={require('../../../assets/icons/iconMenu.png')}
+                source={require('../../../assets/icons/menu.png')}
                 style={styles.iconMenu}
               />
             </TouchableOpacity>
@@ -92,12 +92,12 @@ class HomeView extends Component {
                 borderRightWidth: 1,
                 borderColor: '#AFB4B4',
                 marginRight: 10,
-              }}
-            >
-              <Image
-                source={require('../../../assets/icons/search.png')}
-                style={styles.iconSearch}
-              />
+              }}>
+              <TouchableOpacity>
+                <Image
+                  source={require('../../../assets/icons/search.png')}
+                  style={styles.iconSearch}
+                /></TouchableOpacity>
             </View>
             <View style={{ flex: 4.5 }}>
               <TextInput

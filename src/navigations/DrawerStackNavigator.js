@@ -26,9 +26,13 @@ const DrawerStackNavigator = createDrawerNavigator(
     },
   },
   {
-    navigationOptions: {
-      header: null,
+    navigationOptions:{
+      header:null
     },
+    drawerPosition: "right",
+    drawerType: "slide",
+    drawerWidth:220,
+    overlayColor:1,
   }
 );
 

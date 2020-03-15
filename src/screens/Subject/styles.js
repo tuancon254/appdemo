@@ -8,13 +8,17 @@ const SCREEN_WIDTH = width < height ? width : height;
 const TITLE_WIDTH = "70%";
 const PHOTO_WIDTH = "20%";
 
+const recipeNumColums = 2;
+// item size
+const RECIPE_ITEM_HEIGHT = 130;
+const RECIPE_ITEM_MARGIN = 24;
+
 const styles = StyleSheet.create({
   container: RecipeCard.container,
   category: RecipeCard.category,
 
 
   header: {
-    flex: 1,
     paddingTop: 5,
     paddingLeft: 24,
     paddingRight:24 ,
@@ -27,7 +31,9 @@ const styles = StyleSheet.create({
     width: '41%',
     borderRadius: 15,
     padding: 15,
-    marginLeft: 24,
+    marginLeft: RECIPE_ITEM_MARGIN,
+    width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
+    height: RECIPE_ITEM_HEIGHT + 75,
     marginTop: 20,
     backgroundColor: "#F2FCF2",
 
@@ -44,6 +50,8 @@ const styles = StyleSheet.create({
 
   div: {
     flex: 1,
+    paddingBottom:15
+  
   },
   photo: {
     width: PHOTO_WIDTH,
@@ -82,11 +90,12 @@ const styles = StyleSheet.create({
   rootContainer: {
     marginLeft: 24,
     marginRight: 24,
-    flex: 1
+    flex:100,
   },
   backgroundImage: {
-    height: 200,
-    flex: 1
+    width:"100%",
+    borderRadius:23,
+    flex:1
   },
   HomeTitle: {
     marginLeft: 30,
@@ -116,9 +125,32 @@ const styles = StyleSheet.create({
   },
   
   Quickview: {
-    flex: 1,
-    margin: 24
+    flex: 20,
+    marginLeft: 24,
+    marginRight:24,
+    marginTop:24
+  },
+  Menu:{
+    paddingTop:20,
+    justifyContent:'space-between',
+    flexDirection:'row',
+  },
+  iconMenu:{
+    width: 34,
+    height: 34
+  },
+  button:{
+    marginRight:25,
+    marginTop:15
+  },
+  icon:{
+    width:35.3,
+    height:36.53,
+    marginTop:10,
+    marginRight:15,
+    marginLeft:10
   }
 });
+
 
 export default styles;

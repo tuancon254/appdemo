@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   },
   profile: {
    margin: 32,
+   marginTop:7
   },
   profile1: {
     alignItems: 'center',

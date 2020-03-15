@@ -8,7 +8,7 @@ export default class BackButton extends React.Component {
   render() {
     return (
       <TouchableHighlight onPress={this.props.onPress} style={styles.btnContainer}>
-        <Image source={require('../../../assets/icons/backArrow.png')} style={styles.btnIcon} />
+        <Image source={require('../../../assets/icons/black.png')} style={styles.btnIcon} />
       </TouchableHighlight>
     );
   }
