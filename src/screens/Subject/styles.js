@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 
 
   header: {
+    flex: 1,
     paddingTop: 5,
     paddingLeft: 24,
     paddingRight:24 ,
@@ -50,7 +51,6 @@ const styles = StyleSheet.create({
 
   div: {
     flex: 1,
-    paddingBottom:15
   
   },
   photo: {
@@ -90,11 +90,10 @@ const styles = StyleSheet.create({
   rootContainer: {
     marginLeft: 24,
     marginRight: 24,
-    flex:100,
+    flex: 1
   },
   backgroundImage: {
-    width:"100%",
-    borderRadius:23,
+    height: 200,
     flex:1
   },
   HomeTitle: {

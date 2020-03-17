@@ -8,6 +8,24 @@ import { Answers, Question } from '../../data/dataArrays';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton'
 
+const data = {
+  "Bai1" : {
+    "Cau1" : {
+      "Answer" : {
+        "Answer1" : "Phần tử hữu hạn",
+        "Answer2" : "Phân phối trực tiếp",
+        "Answer3" : "Khung tương đương",
+        "Answer4" : "Phương pháp lực"
+      },
+      "CorrectAnswer" : "Answer1",
+      "Question" : "Phần mềm SAP2000 là phần mềm Phân Tích và Thiết Kế Kết cấu dựa trên phương pháp phân tích nào?"
+    }
+  }
+}
+
+
+
+
 export default class TestScreen extends React.Component {
   static navigationOptions = {
     header: null
