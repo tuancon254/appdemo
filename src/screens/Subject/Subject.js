@@ -31,12 +31,12 @@ class Subject extends Component {
   }
 
   onPressChapter = item => {
-    this.props.navigation.navigate('RecipeScreen', { item });
+    this.props.navigation.navigate('testinfo', { item });
   };
 
   renderChapter = ({ item }) => (
     <View style={styles.wellcome}>
-      <TouchableOpacity onPress={() => this.onPressChapter(item)}>
+
         <View style={{ flexDirection: 'column' }}>
           <View style={{ flexDirection: 'row', marginBottom: 20 }}>
             <Image style={styles.iconChapter}
@@ -50,22 +50,23 @@ class Subject extends Component {
               <Text style={styles.titleChapter}>{item.title}</Text>
               <Text style={styles.timeChapter}>20 phút</Text>
             </View>
+            <TouchableOpacity onPress={() => this.onPressChapter(item)}>
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
               <Image style={styles.iconChapter}
                 //source={{ uri: item.photo_url }}
                 source={require('../../../assets/icons/play-button.png')}
               />
+              
               <Text style={{ paddingTop: 15, color: '#FF7F2D', fontSize: 17 }}>Làm bài</Text>
-            </View>
+            
+            </View>  
+            </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+     
     </View>
   );
 
-  onPressGetStarted = () => {
-    return this.props.navigation.navigate('TestListScreens');
-  };
 
   render() {
     const { navigation} = this.props;

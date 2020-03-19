@@ -7,6 +7,7 @@ import { CheckBox } from 'react-native-elements';
 import { Answers, Question } from '../../data/dataArrays';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton'
+import Pagination,{Icon,Dot} from 'react-native-pagination'; 
 
 const data = {
   "Bai1" : {
@@ -44,33 +45,28 @@ export default class TestScreen extends React.Component {
     if (this.state.checked === false) this.setState({ checked: true });
   };
 
-  questionItem = (question, index) => {
-    return (
-      <View style={styles.Answers} key={index}>
-        <CheckBox
-          checkedIcon="dot-circle-o"
-          uncheckedIcon="circle-o"
-          checked={this.state.checkedId === index + 1}
-          title={question.question}
-          onPress={() => this.setState({ checkedId: question.id })}
-          containerStyle={{ backgroundColor: 'transparent' }}
-        />
-      </View>
-    );
-  };
+  // questionItem = (question, index) => {
+  //   return (
+  //     <View style={styles.Answers} key={index}>
+  //       <CheckBox
+  //         checkedIcon="dot-circle-o"
+  //         uncheckedIcon="circle-o"
+  //         checked={this.state.checkedId === index + 1}
+  //         title={question.question}
+  //         onPress={() => this.setState({ checkedId: question.id })}
+  //         containerStyle={{ backgroundColor: 'transparent' }}
+  //       />
+  //     </View>
+  //   );
+  // };
 
-  renderQuestion = ({ item, index }) => {
+  renderQuestion = () => {
     return (
-      <View key={index}>
-        <View style={styles.container}>
-          <View style={styles.Question}>
-            <Text>{item.title}</Text>
-          </View>
-
-          {item.questions.map((question, index) => {
-            return this.questionItem(question, index);
-          })}
-        </View>
+      <View style={styles.AnswerContainer}>
+      <TouchableOpacity style={styles.StyleAnswer}>
+        <View style={styles.ABCD}><Text style={styles.text1}>a</Text></View>
+        <View style={styles.Answer}><Text style={styles.text}>Liên kết cứng</Text></View>
+      </TouchableOpacity>
       </View>
     );
   };
@@ -122,8 +118,8 @@ export default class TestScreen extends React.Component {
               <View style={styles.ABCD}><Text style={styles.text1}>d</Text></View>
               <View style={styles.Answer}><Text style={styles.text}>Chọn template Grid Only > tùy chỉnh trên cửa sổ Quick Grid Lines</Text></View>
             </TouchableOpacity>
+            <Pagination horizontal="true"/>
           </View>
-
         </View>
       </View>
     );
