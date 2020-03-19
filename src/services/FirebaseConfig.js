@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @flow
  * @format
  */
@@ -7,6 +7,7 @@
  import * as firebase from 'firebase/app';
  import 'firebase/auth';
  import 'firebase/firestore';
+ import 'firebase/database';
 
  const FirebaseConfig = {
     apiKey: "AIzaSyBVMaHLwqeFDNddBHP9mjk8sl28MvnQg0A",

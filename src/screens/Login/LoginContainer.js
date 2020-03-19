@@ -11,10 +11,8 @@ class LoginContainer extends Component {
     };
   }
 
-  onPressLogin = async () => {
-    const { email, password } = this.state;
-
-    if (!!email && !!password) {
+  onPressLogin = async (email, password) => {
+    if (email && password) {
       this.setState({ logging: true });
 
       try {
