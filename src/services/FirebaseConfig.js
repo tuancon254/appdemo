@@ -9,14 +9,14 @@
  import 'firebase/firestore';
 
  const FirebaseConfig = {
-  apiKey: "AIzaSyAsctHuW_u5KKfVswBeuhuRuAn4Uc47BWM",
-  authDomain: "it-hau-120fc.firebaseapp.com",
-  databaseURL: "https://it-hau-120fc.firebaseio.com",
-  projectId: "it-hau-120fc",
-  storageBucket: "it-hau-120fc.appspot.com",
-  messagingSenderId: "516942380236",
-  appId: "1:516942380236:web:422a3f98571b371a9e5669",
-  measurementId: "G-VQPMQDVGME"
+    apiKey: "AIzaSyDTM2DgOTnBsU0uJhHnjUmK0YJMrx-Pqsc",
+    authDomain: "it-hau-project.firebaseapp.com",
+    databaseURL: "https://it-hau-project.firebaseio.com",
+    projectId: "it-hau-project",
+    storageBucket: "it-hau-project.appspot.com",
+    messagingSenderId: "366386610976",
+    appId: "1:366386610976:web:39f46e2e8066f660758d45",
+    measurementId: "G-YZHNYX2YXR"
  }
 
 firebase.initializeApp(FirebaseConfig);
