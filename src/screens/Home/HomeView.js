@@ -16,40 +16,42 @@ import {
   TextInput,
 } from 'react-native';
 import styles from './styles';
-import { recipes } from '../../data/dataArrays';
 import { ScrollView } from 'react-native-gesture-handler';
 import uuid from 'uuid/v4';
+import firebase from '../../services/FirebaseConfig';
 
 class HomeView extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      email: '',
+    };
   }
 
   // onPress Chapter not Recipes
   onPressChapter = item => {
-    this.props.navigation.navigate('Recipe', { item });
+    this.props.navigation.navigate('Subject', { item });
   };
 
   // component Chapter not Recipes - chương...CHƯƠNG...CHƯƠNGGGGGGGGG
-  renderChapter = ({ item }) => (
+  renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
       <TouchableOpacity onPress={() => this.onPressChapter(item)}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
             <Image
               style={styles.iconChapter}
-              //source={{ uri: item.photo_url }}
               source={require('../../../assets/icons/C1.png')}
             />
           </View>
           <View style={{ flex: 3, flexDirection: 'row' }}>
             <View style={{ flex: 1.5, flexDirection: 'column' }}>
-              <Text style={styles.titleChapter}>{item.title}</Text>
+              <Text style={styles.titleChapter}>Chương {index + 1}</Text>
               <Text style={styles.timeChapter}>{item.title}</Text>
             </View>
             <Image
               style={styles.iconChapter}
-              //source={{ uri: item.photo_url }}
               source={require('../../../assets/icons/pass.png')}
             />
           </View>
@@ -62,8 +64,15 @@ class HomeView extends Component {
     return this.props.navigation.navigate('subject');
   };
 
+  componentDidMount() {
+    const currentUser = firebase.auth().currentUser;
+
+    this.setState({ email: currentUser.email });
+  }
+
   render() {
-    const { navigation } = this.props;
+    const { navigation, data } = this.props;
+    const { email } = this.state;
 
     return (
       <View style={{ backgroundColor: 'white' }}>
@@ -72,9 +81,7 @@ class HomeView extends Component {
           <View style={styles.header}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 16, color: '#000' }}>Hello,</Text>
-              <Text style={{ fontSize: 27, fontWeight: 'bold' }}>
-                Trần Thị Hồng Ngọc
-              </Text>
+              <Text style={{ fontSize: 27, fontWeight: 'bold' }}>{email}</Text>
             </View>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Image
@@ -92,12 +99,14 @@ class HomeView extends Component {
                 borderRightWidth: 1,
                 borderColor: '#AFB4B4',
                 marginRight: 10,
-              }}>
+              }}
+            >
               <TouchableOpacity>
                 <Image
                   source={require('../../../assets/icons/search.png')}
                   style={styles.iconSearch}
-                /></TouchableOpacity>
+                />
+              </TouchableOpacity>
             </View>
             <View style={{ flex: 4.5 }}>
               <TextInput
@@ -138,12 +147,11 @@ class HomeView extends Component {
           </View>
           <View style={styles.div}>
             <FlatList
-              vertical
               showsVerticalScrollIndicator={false}
               numColumns={1}
-              data={recipes}
+              data={data.Chapters}
               renderItem={this.renderChapter}
-              keyExtractor={uuid}
+              keyExtractor={() => uuid()}
             />
           </View>
         </ScrollView>

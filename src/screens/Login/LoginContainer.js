@@ -14,32 +14,35 @@ class LoginContainer extends Component {
   onPressLogin = async (email, password) => {
     if (email && password) {
       this.setState({ logging: true });
-
       try {
         const result = await firebase
           .auth()
           .signInWithEmailAndPassword(email, password);
         this.setState({ logging: false });
-        this.props.navigation.navigate('RootStackNavigator', result.user.email);
+        this.props.navigation.navigate('RootStackNavigator', {
+          email: result.user.email,
+        });
       } catch (e) {
         alert(e.message);
+        this.setState({ logging: false });
       }
     }
   };
 
   onLoginDev = async () => {
     this.setState({ logging: true });
-
     try {
       const result = await firebase
         .auth()
         .signInWithEmailAndPassword('test@gmail.com', '123456');
-      this.setState({ logging: false });
+
       this.props.navigation.navigate('RootStackNavigator', {
         email: result.user.email,
       });
+      this.setState({ logging: false });
     } catch (e) {
       alert(e.message);
+      this.setState({ logging: false });
     }
   };
 
