@@ -41,10 +41,8 @@ class LoginView extends React.Component {
   }
 
   render() {
-    const { errorMessages } = this.state;
+    const { errorMessages, email, password } = this.state;
     const { onLoginDev, logging, onPressLogin } = this.props;
-
-    console.log(this.props);
 
     return (
       <View style={styles.container}>
@@ -79,7 +77,10 @@ class LoginView extends React.Component {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.loginButton} onPress={onPressLogin}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => onPressLogin(email, password)}
+        >
           <Text style={{ fontSize: 18 }}>Sign in</Text>
           {logging && (
             <ActivityIndicator size={'small'} style={styles.loadingIcon} />
