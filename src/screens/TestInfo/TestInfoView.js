@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-  TouchableOpacity
-} from 'react-native';
+import { Text, View, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
 import {
   getIngredientName,
@@ -16,10 +9,8 @@ import {
 } from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
 import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 class TestInfoView extends Component {
-
   constructor(props) {
     super(props);
 
@@ -43,19 +34,16 @@ class TestInfoView extends Component {
   };
 
   render() {
-    const { activeSlide } = this.state;
     const { navigation } = this.props;
     const item = navigation.getParam('item');
-    const category = getCategoryById(item.categoryId);
-    const title = getCategoryName(category.id);
+
+    console.log(item);
 
     return (
       <View style={styles.container}>
-
         <View style={styles.Menu}>
           <BackButton onPress={() => navigation.goBack()} />
         </View>
-
 
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
@@ -63,27 +51,23 @@ class TestInfoView extends Component {
           </View>
         </View>
 
-
         <View style={styles.infoRecipeContainer}>
-          <Text style={styles.infoRecipeName}>{item.title}</Text>
-
+          <Text style={styles.infoRecipeName}>{item.CH1.title}</Text>
           <View>
             <View>
               <Text style={styles.category}>
-                {getLessionName(item.LessionId).toUpperCase()}
+                {/*{getLessionName(item.LessionId).toUpperCase()}*/}
               </Text>
             </View>
           </View>
 
-          <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Image
               style={styles.infoPhoto}
               source={require('../../../assets/icons/time.png')}
             />
             <Text style={styles.infoRecipe}>{item.time} minutes </Text>
           </View>
-
-          
 
           <View>
             <ViewIngredientsButton

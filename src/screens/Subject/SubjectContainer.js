@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import HomeView from './HomeView';
 import { AppContext } from '../../providers/AppProvider';
+import Subject from './Subject';
 
-class HomeContainer extends Component {
+class SubjectContainer extends Component {
+  static navigationOptions = {
+    headerShown: false,
+  };
+
   constructor(props) {
     super(props);
   }
@@ -10,10 +14,10 @@ class HomeContainer extends Component {
   render() {
     return (
       <AppContext.Consumer>
-        {value => <HomeView {...this.props} data={value} />}
+        {value => <Subject value={value} {...this.props} />}
       </AppContext.Consumer>
     );
   }
 }
 
-export default HomeContainer;
+export default SubjectContainer;

@@ -35,7 +35,6 @@ class LoginContainer extends Component {
       const result = await firebase
         .auth()
         .signInWithEmailAndPassword('test@gmail.com', '123456');
-
       this.props.navigation.navigate('RootStackNavigator', {
         email: result.user.email,
       });
