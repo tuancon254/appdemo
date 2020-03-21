@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import HomeView from './HomeView';
+import firebase from '../../services/FirebaseConfig';
+import { AppContext } from '../../providers/AppProvider';
 
 class HomeContainer extends Component {
   constructor(props) {
@@ -7,7 +9,11 @@ class HomeContainer extends Component {
   }
 
   render() {
-    return <HomeView {...this.props} />;
+    return (
+      <AppContext.Consumer>
+        {value => <HomeView {...this.props} data={value} />}
+      </AppContext.Consumer>
+    );
   }
 }
 

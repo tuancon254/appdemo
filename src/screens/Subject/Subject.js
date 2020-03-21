@@ -31,7 +31,7 @@ class Subject extends Component {
   }
 
   onPressChapter = item => {
-    this.props.navigation.navigate('testinfo', { item });
+    this.props.navigation.navigate('TestInfo', { item });
   };
 
   renderChapter = ({ item }) => (

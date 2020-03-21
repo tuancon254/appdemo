@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginLeft: 24,
     marginRight: 24,
-    marginTop: 20,
+    marginBottom:20,
     backgroundColor: '#F2FCF2',
     // shadow
     shadowColor: '#000',
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   div: {
     flex: 1,
+    paddingBottom:25
   },
   photo: {
     width: PHOTO_WIDTH,

@@ -51,27 +51,31 @@ class TestInfoView extends Component {
 
     return (
       <View style={styles.container}>
+
         <View style={styles.Menu}>
           <BackButton onPress={() => navigation.goBack()} />
         </View>
+
+
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
             <Image style={styles.image} source={{ uri: item.photo_url }} />
           </View>
         </View>
+
+
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.title}</Text>
-          <View style={styles.infoContainer}>
-            <View
-              onPress={() =>
-                navigation.navigate('RecipesList', { category, title })}>
+
+          <View>
+            <View>
               <Text style={styles.category}>
                 {getLessionName(item.LessionId).toUpperCase()}
               </Text>
             </View>
           </View>
 
-          <View style={styles.infoContainer}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', }}>
             <Image
               style={styles.infoPhoto}
               source={require('../../../assets/icons/time.png')}
@@ -79,19 +83,22 @@ class TestInfoView extends Component {
             <Text style={styles.infoRecipe}>{item.time} minutes </Text>
           </View>
 
-          <View style={styles.infoContainer}>
+          
+
+          <View>
             <ViewIngredientsButton
               onPress={() => {
                 const ingredients = item.ingredients;
                 const title = `Ingredients for ${item.title}`;
-                navigation.navigate('testscreen', {
+                navigation.navigate('TestScreen', {
                   ingredients,
                   title,
                 });
               }}
             />
           </View>
-          <View style={styles.infoContainer}>
+
+          <View>
             <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
           </View>
         </View>

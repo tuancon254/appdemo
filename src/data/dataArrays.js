@@ -95,7 +95,7 @@ export const recipes = [
       [2, '300g'],
     ],
     description:
-      '- Lịch sử hình thành \n \n - Mô hình hóa khả năng của SAP2000 \n \n - Các định nghĩa',
+      '- Lịch sử hình thành\n\n- Mô hình hóa khả năng của SAP2000\n\n- Các định nghĩa',
   },
   {
     recipeId: 2,

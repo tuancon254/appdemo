@@ -14,8 +14,20 @@ const RECIPE_ITEM_MARGIN = RECIPE_ITEM_OFFSET * 2;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white',
-    borderWidth:1
+    backgroundColor: '#2C2C46',
+  },
+  timeCowndown: {
+    marginTop: 35,
+    alignItems: "center",
+    position: 'absolute',
+    alignSelf: 'center'
+  },
+  timeout: {
+    color: "white",
+    fontSize: 15,
+    fontWeight: '600',
+    paddingLeft: 15,
+    paddingRight: 15
   },
   title: {
     margin: 10,
@@ -29,90 +41,147 @@ const styles = StyleSheet.create({
     height: RECIPE_ITEM_HEIGHT,
     borderRadius: 60
   },
-  Answers:{
+  Answers: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  Question: {
     flex:1,
-    flexDirection:'row',
-    alignItems:'center'
+    marginTop:10,
+    marginLeft:10,
+    marginRight:10,
+    alignItems:'center',
+    
   },
-  Question:{
-    alignItems: 'center',
-    flex:1,
-    width:'100%',
-    paddingTop: 20,
-    backgroundColor: 'silver',
-    paddingBottom: 20,
-    borderTopRightRadius:10,
-    borderTopLeftRadius: 10
-  },
-  StyleAnswer:{
-    flexDirection:"row",
-    marginTop:7,
-    marginBottom:7,
-    minHeight:59,
-    maxHeight:70,
-    shadowColor:"red",
-    shadowOffset:{
-      width:4,
-      height:4
-    },
-    shadowOpacity:20
-  },
-  ABCD:{
-    backgroundColor:"#5776D8",
-    flex:15,
-    borderTopLeftRadius:12,
-    borderBottomLeftRadius:12,
-    fontSize:24,
-    fontWeight:'bold',
-    flexDirection:'row',
-    alignItems:'center',  
-    paddingLeft:20,
-  },
-  Answer:{  
-    backgroundColor:"#7991E0",
-    flex:85,
-    paddingLeft:20,
-    paddingTop:10,
-    paddingBottom:10,
-    borderTopRightRadius:12,
-    borderBottomRightRadius:12,
-    paddingRight:10,
-    alignItems:'center', 
-    flexDirection:'row',
-  },
-  text:{
+  question:{
     fontSize:17,
     fontWeight:'bold',
+    marginBottom:5
   },
-  text1:{
-    fontSize:24,
-    fontWeight:'bold',
-    textTransform:'uppercase',
-    color:'#FFF',
-    alignSelf:'center',
-    paddingLeft:5
+  Questioncontainer: {
+    
   },
-  AnswerContainer:{
-    flex:50,
-    marginLeft:28,
-    marginRight:28,
-    borderWidth:1
+  AnswerContainer: {
+    paddingBottom:20,
+
   },
-  Menu:{
-    paddingTop:20,
-    justifyContent:'space-between',
-    flexDirection:'row',
-    borderWidth:1
+  StyleAnswer: {
+    marginTop: 7,
+    marginBottom: 7,
+    minHeight: 59,
+    maxHeight: 70,
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#BFBFBF",
+    borderRadius: 12,
+    alignItems: 'center'
   },
-  iconMenu:{
+  Answer: {
+    flex: 85,
+    paddingLeft: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingRight: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    textAlign: 'center'
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    alignSelf: 'center'
+  },
+  text1: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    color: '#FFF',
+    alignSelf: 'center',
+    paddingLeft: 5
+  },
+
+  MainContainer: {
+    flex: 1,
+    marginLeft: 24,
+    marginRight: 24,
+    borderWidth: 1,
+    borderRadius: 28,
+    backgroundColor: "white",
+    padding: 16,
+    marginBottom: 20,
+    justifyContent:'space-between'
+  },
+  Menu: {
+    paddingTop: 20,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingBottom: 20,
+  },
+  iconMenu: {
     width: 34,
     height: 34,
   },
-  button:{
-    marginRight:25,
-    marginTop:15,
-    borderWidth:1
+  button: {
+    marginRight: 25,
+    marginTop: 15,
+    backgroundColor: "#FF7F2D",
+    maxHeight: 34,
+    minHeight: 25,
+    height: 34,
+    borderRadius: 10,
+    alignItems: 'center',
+    flexDirection: 'row'
+
   },
+  btnContainer: {
+    alignItems: 'center',
+    backgroundColor: '#2C2C46',
+    marginTop: 20,
+    marginLeft: 24,
+  },
+  btnIcon: {
+    height: 22,
+    width: 16,
+    backgroundColor: '#2C2C46'
+  },
+  Main: {
+    flex: 1
+  },
+  q1: {
+  },
+  score: {
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderRadius: 12,
+    alignItems: 'center',
+    maxWidth: 80,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  numberContainer: {
+    margin: 24,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  number: {
+
+    width: 32,
+    height: 32,
+    borderWidth: 2,
+    borderColor: "white",
+    borderRadius: 8,
+    borderStyle: 'solid',
+    alignItems: 'center',
+    marginRight: 7,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  numberT: {
+    fontSize: 22,
+    color: 'white',
+    textAlign: 'center'
+  }
 
 });
 

@@ -1,20 +1,20 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
-import Home from '../screens/Home/index';
+import Home from '../screens/Home';
 import Subject from '../screens/Subject/Subject';
 import TestInfo from '../screens/TestInfo/index';
 import TestScreen from '../screens/TestScreen/TestScreen';
 
 const HomeStackNavigator = createStackNavigator(
   {
-    Home: Home,
-    subject: Subject,
-    testinfo: TestInfo,
-    testscreen: TestScreen,
+    Home,
+    Subject,
+    TestInfo,
+    TestScreen,
   },
   {
     navigationOptions: {
-      headerMode: 'none',
+      headerShown: false,
     },
   }
 );
