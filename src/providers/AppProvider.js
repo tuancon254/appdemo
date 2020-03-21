@@ -27,8 +27,6 @@ class AppProvider extends Component {
   render() {
     const { data } = this.state;
 
-    this.getData().done();
-
     return (
       <AppContext.Provider value={data}>
         {this.props.children}
