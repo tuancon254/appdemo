@@ -8,16 +8,17 @@ const styles = StyleSheet.create({
     flex: 1
   },
   carouselContainer: {
-    minHeight: 250,
-    margin:20
+    minHeight: 200,
+    marginTop:20
   },
   carousel: {
+    marginLeft:25,
+    marginRight:25
   },
 
   image: {
-    ...StyleSheet.absoluteFillObject,
     width: '100%',
-    height: 250,
+    height: 200,
     borderRadius: 25,
   },
   imageContainer: {
@@ -26,31 +27,18 @@ const styles = StyleSheet.create({
     width: viewportWidth,
     height: 250
   },
-  paginationContainer: {
-    flex: 1,
-    position: 'absolute',
-    alignSelf: 'center',
-    paddingVertical: 8,
-    marginTop: 200
-  },
-  paginationDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginHorizontal: 0
-  },
+
   infoRecipeContainer: {
     flex: 1,
-    margin: 25,
-    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center'
   },
+  
   infoContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    borderWidth:1,
   },
   buttonContainer: {
     flex: 1,
@@ -61,7 +49,6 @@ const styles = StyleSheet.create({
   infoPhoto: {
     height: 20,
     width: 20,
-    marginRight: 0
   },
   infoRecipe: {
     fontSize: 14,
@@ -71,7 +58,6 @@ const styles = StyleSheet.create({
   category: {
     fontSize: 14,
     fontWeight: 'bold',
-    margin: 10,
     color: '#2cd18a'
   },
   infoDescriptionRecipe: {
@@ -86,7 +72,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center'
-  }
+  },
+  Menu:{
+    paddingTop:20,
+    justifyContent:'space-between',
+    flexDirection:'row',
+  },
+  iconMenu:{
+    width: 34,
+    height: 34
+  },
+  button:{
+    marginRight:25,
+    marginTop:15
+  },
 });
 
 export default styles;

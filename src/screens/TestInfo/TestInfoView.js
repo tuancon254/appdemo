@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 import styles from './styles';
 import {
@@ -15,6 +16,7 @@ import {
 } from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
 import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 class TestInfoView extends Component {
 
@@ -48,7 +50,10 @@ class TestInfoView extends Component {
     const title = getCategoryName(category.id);
 
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.Menu}>
+          <BackButton onPress={() => navigation.goBack()} />
+        </View>
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
             <Image style={styles.image} source={{ uri: item.photo_url }} />
@@ -57,15 +62,13 @@ class TestInfoView extends Component {
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.title}</Text>
           <View style={styles.infoContainer}>
-            <TouchableHighlight
+            <View
               onPress={() =>
-                navigation.navigate('RecipesList', { category, title })
-              }
-            >
+                navigation.navigate('RecipesList', { category, title })}>
               <Text style={styles.category}>
                 {getLessionName(item.LessionId).toUpperCase()}
               </Text>
-            </TouchableHighlight>
+            </View>
           </View>
 
           <View style={styles.infoContainer}>
@@ -92,7 +95,7 @@ class TestInfoView extends Component {
             <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
           </View>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
