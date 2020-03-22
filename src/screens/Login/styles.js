@@ -3,26 +3,24 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#3b5998',
   },
   logo: {
     width: 128,
     height: 118,
-    marginBottom: 80,
   },
   mailIcon: {
-    width: 30,
-    height: 30,
-    marginTop: 8,
-    marginLeft: 10,
+    width: 20,
+    height: 22,
   },
   usernameOrEmail: {
-    width: '65%',
+    width: '100%',
     height: '100%',
-    marginLeft: 20,
-    marginTop: 2,
+    marginLeft: 15,
+    borderWidth:1,
+    fontSize:17
   },
   usernameOrEmailWrapper: {
     backgroundColor: 'white',
@@ -40,24 +38,20 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
   },
   passwordIcon: {
-    width: 25,
-    height: 25,
-    marginLeft: 15,
-    marginTop: 10,
+    width: 20,
+    height: 20,
   },
   passwordInput: {
-    width: '65%',
-    height: '100%',
-    marginLeft: 20,
+    fontSize: 17, 
+    color: "#586BCA",
+    marginTop:3
   },
   loginButton: {
-    width: '70%',
     alignItems: 'center',
     height: 50,
     justifyContent: 'center',
-    borderRadius: 5,
-    backgroundColor: '#fff',
-    marginTop: 50,
+    borderRadius: 11,
+    backgroundColor: '#FF7F2D',
   },
   loginContainer: {
     backgroundColor: 'white',

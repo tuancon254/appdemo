@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View, Image } from 'react-native';
+import { FlatList, Text, View, Image,Alert } from 'react-native';
 import styles from './styles';
 import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays';
@@ -28,36 +28,13 @@ export default class TestScreen extends React.Component {
     if (this.state.checked === false) this.setState({ checked: true });
   };
 
-  // questionItem = (question, index) => {
-  //   return (
-  //     <View style={styles.Answers} key={index}>
-  //       <CheckBox
-  //         checkedIcon="dot-circle-o"
-  //         uncheckedIcon="circle-o"
-  //         checked={this.state.checkedId === index + 1}
-  //         title={question.question}
-  //         onPress={() => this.setState({ checkedId: question.id })}
-  //         containerStyle={{ backgroundColor: 'transparent' }}
-  //       />
-  //     </View>
-  //   );
-  // };
-
-  renderQuestion = () => {
-    return (
-      <TouchableOpacity style={styles.StyleAnswer}>
-        <View style={styles.Answer}><Text style={styles.text}>Liên kết cứng</Text></View>
-      </TouchableOpacity>
-    );
-  };
-
 
   render() {
     const { navigation } = this.props;
 
     const test: [] = navigation.getParam('question');
     console.log(test);
-    
+
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
@@ -65,7 +42,21 @@ export default class TestScreen extends React.Component {
         </View>
         <View style={styles.Menu}>
 
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btnContainer}>
+          <TouchableOpacity onPress={() =>{
+            Alert.alert(
+              'Thoát',
+              'Bạn chưa hoàn thành bài kiểm tra, có muốn thoát?',
+              [
+                {
+                  text: 'Không',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+                },
+                {text: 'Có', onPress: () => navigation.goBack()},
+              ],
+              {cancelable: false},
+            );
+            }} style={styles.btnContainer}>
             <Image source={require('../../../assets/icons/White1.png')} style={styles.btnIcon} />
           </TouchableOpacity>
 
@@ -135,8 +126,6 @@ export default class TestScreen extends React.Component {
               <TouchableOpacity style={styles.StyleAnswer}>
                 <View style={styles.Answer}><Text style={styles.text}>Chọn template Grid Only > tùy chỉnh trên cửa sổ Quick Grid Lines</Text></View>
               </TouchableOpacity>
-              
-
 
             </View>
           </View>
@@ -148,9 +137,4 @@ export default class TestScreen extends React.Component {
 
 
 
-{/* <FlatList
-          showsVerticalScrollIndicator={false}
-          data={Answers}
-          renderItem={this.renderQuestion}
-          keyExtractor={item => `${item.recipeId}`}
-        /> */}
+

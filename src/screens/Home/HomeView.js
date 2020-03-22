@@ -81,7 +81,7 @@ class HomeView extends Component {
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('subject');
+    return this.props.navigation.navigate('SubjectContainer');
   };
 
   componentDidMount() {

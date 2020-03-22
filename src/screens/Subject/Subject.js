@@ -32,16 +32,7 @@ class Subject extends Component {
 
   renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
-<<<<<<< HEAD
 
-        <View style={{ flexDirection: 'column',}}>
-          <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-            <Image style={styles.iconChapter}
-              //source={{ uri: item.photo_url }}
-              source={require('../../../assets/icons/iconBook.png')}
-            />
-            <Text style={{ paddingTop: 15, color: '#16A831' }}>Giới thiệu</Text>
-=======
       <View style={{ flexDirection: 'column' }}>
         <View style={{ flexDirection: 'row', marginBottom: 20 }}>
           <Image
@@ -55,7 +46,6 @@ class Subject extends Component {
           <View style={{ flexDirection: 'column' }}>
             <Text style={styles.titleChapter}>Chương {index + 1}</Text>
             <Text style={styles.timeChapter}>20 phút</Text>
->>>>>>> e1d3115740a028c75f9732d0aeb4d20a8d811373
           </View>
           <TouchableOpacity onPress={() => this.onPressChapter(item)}>
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
