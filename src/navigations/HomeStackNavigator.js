@@ -1,14 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import Home from '../screens/Home';
-import Subject from '../screens/Subject/Subject';
 import TestInfo from '../screens/TestInfo/index';
 import TestScreen from '../screens/TestScreen/TestScreen';
+import SubjectContainer from '../screens/Subject/SubjectContainer';
 
 const HomeStackNavigator = createStackNavigator(
   {
     Home,
-    Subject,
+    SubjectContainer,
     TestInfo,
     TestScreen,
   },

@@ -55,6 +55,9 @@ export default class TestScreen extends React.Component {
   render() {
     const { navigation } = this.props;
 
+    const test: [] = navigation.getParam('question');
+    console.log(test);
+    
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
@@ -133,7 +136,7 @@ export default class TestScreen extends React.Component {
                 <View style={styles.Answer}><Text style={styles.text}>Chọn template Grid Only > tùy chỉnh trên cửa sổ Quick Grid Lines</Text></View>
               </TouchableOpacity>
               
-              
+
 
             </View>
           </View>
