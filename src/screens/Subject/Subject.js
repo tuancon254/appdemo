@@ -19,13 +19,9 @@ import { recipes } from '../../data/dataArrays';
 import MenuImage from '../../components/MenuImage/MenuImage';
 import { ScrollView } from 'react-native-gesture-handler';
 import SearchScreen from './../Search/SearchScreen';
-import BackButton from '../../components/BackButton/BackButton'
+import BackButton from '../../components/BackButton/BackButton';
 
 class Subject extends Component {
-  static navigationOptions =  {
-      header:null
-  }
-
   constructor(props) {
     super(props);
   }
@@ -34,42 +30,44 @@ class Subject extends Component {
     this.props.navigation.navigate('TestInfo', { item });
   };
 
-  renderChapter = ({ item }) => (
+  renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
-
-        <View style={{ flexDirection: 'column' }}>
-          <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-            <Image style={styles.iconChapter}
-              //source={{ uri: item.photo_url }}
-              source={require('../../../assets/icons/iconBook.png')}
-            />
-            <Text style={{ paddingTop: 15, color: '#16A831' }}>Giới thiệu</Text>
+      <View style={{ flexDirection: 'column' }}>
+        <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+          <Image
+            style={styles.iconChapter}
+            //source={{ uri: item.photo_url }}
+            source={require('../../../assets/icons/iconBook.png')}
+          />
+          <Text style={{ paddingTop: 15, color: '#16A831' }}>Giới thiệu</Text>
+        </View>
+        <View>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+            <Text style={styles.timeChapter}>20 phút</Text>
           </View>
-          <View>
-            <View style={{ flexDirection: 'column' }}>
-              <Text style={styles.titleChapter}>{item.title}</Text>
-              <Text style={styles.timeChapter}>20 phút</Text>
-            </View>
-            <TouchableOpacity onPress={() => this.onPressChapter(item)}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item)}>
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-              <Image style={styles.iconChapter}
+              <Image
+                style={styles.iconChapter}
                 //source={{ uri: item.photo_url }}
                 source={require('../../../assets/icons/play-button.png')}
               />
-              
-              <Text style={{ paddingTop: 15, color: '#FF7F2D', fontSize: 17 }}>Làm bài</Text>
-            
-            </View>  
-            </TouchableOpacity>
-          </View>
+              <Text style={{ paddingTop: 15, color: '#FF7F2D', fontSize: 17 }}>
+                Làm bài
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
-     
+      </View>
     </View>
   );
 
-
   render() {
-    const { navigation} = this.props;
+    const { navigation, value } = this.props;
+
+    const data = value.Chapters;
+
     return (
       <View style={{ backgroundColor: 'white' }}>
         <View style={styles.Menu}>
@@ -95,7 +93,6 @@ class Subject extends Component {
                   Giảng viên: Tin học ứng dụng
                 </Text>
               </View>
-
             </View>
 
             {/* Get Started view */}
@@ -104,31 +101,30 @@ class Subject extends Component {
                 source={require('../../../assets/backgrHome1.png')}
                 style={styles.backgroundImage}
                 imageStyle={{ borderRadius: 15 }}
-              >
-              </ImageBackground>
+              />
             </View>
 
             {/* Quickview */}
             <View style={styles.Quickview}>
               <Text style={{}}>
-                <Text style={{ fontSize: 14, fontWeight: 'bold' }}>Tin học ứng dụng </Text>
-                    Bộ môn tin học ứng dụng bla bla bla abcxyz...
+                <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                  Tin học ứng dụng{' '}
                 </Text>
+                Bộ môn tin học ứng dụng bla bla bla abcxyz...
+              </Text>
             </View>
 
             <View>
               <Text style={styles.feedback}>Kiểm tra</Text>
             </View>
-            <View style={styles.div}>
-              <FlatList
-                vertical
-                showsVerticalScrollIndicator={false}
-                numColumns={2}
-                data={recipes}
-                renderItem={this.renderChapter}
-                keyExtractor={item => `${item.recipeId}`}
-              />
-            </View>
+
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              numColumns={2}
+              data={data}
+              renderItem={this.renderChapter}
+              keyExtractor={item => `${item}`}
+            />
           </ScrollView>
         </View>
       </View>
@@ -137,7 +133,3 @@ class Subject extends Component {
 }
 
 export default Subject;
-
-
-
-

@@ -3,14 +3,14 @@ import TestInfoContainer from './TestInfoContainer';
 
 class TestInfo extends Component {
   static navigationOptions = {
-    header:null
+    headerShown: false,
   };
+
   constructor(props) {
     super(props);
   }
 
   render() {
-
     return <TestInfoContainer {...this.props} />;
   }
 }

@@ -73,6 +73,8 @@ export default class TestScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const test: [] = navigation.getParam('question');
+    console.log(test);
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
