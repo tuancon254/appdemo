@@ -100,6 +100,8 @@ const styles = StyleSheet.create({
 
   MainContainer: {
     flex: 1,
+    minWidth:375,
+    maxWidth:375,
     marginLeft: 24,
     marginRight: 24,
     borderWidth: 1,
@@ -143,6 +145,7 @@ const styles = StyleSheet.create({
   },
   Main: {
     flex: 1,
+    
   },
   q1: {},
   score: {

@@ -29,21 +29,8 @@ class TestScreenView extends React.Component {
     if (this.state.checked === false) this.setState({ checked: true });
   };
 
-  renderQuestion = () => {
-    return (
-      <View style={styles.AnswerContainer}>
-        <TouchableOpacity style={styles.StyleAnswer}>
-          <View style={styles.ABCD}>
-            <Text style={styles.text1}>a</Text>
-          </View>
-          <View style={styles.Answer}>
-            <Text style={styles.text}>Liên kết cứng</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
+  
+  _keyExtractor = (data) => data.id;
   render() {
     const {
       navigation,
@@ -53,12 +40,67 @@ class TestScreenView extends React.Component {
       active,
     } = this.props;
 
+    
+    const data = navigation.getParam('question')
     const answer = [
-      questions.cau1,
-      questions.cau2,
-      questions.cau3,
-      questions.cau4,
+      data.A,
+      data.A,
+      data.A,
+      data.A,
     ];
+    console.log(data);
+    
+
+    const renderQuestion = () => {
+    
+      
+      return (
+        <View style={styles.Main}>
+          <View style={styles.MainContainer}>
+            <View style={styles.Questioncontainer}>
+              <View
+                style={{
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  marginBottom: 10,
+                }}
+              >
+                <View style={styles.q1}>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{data.ID}.</Text>
+                </View>
+                <View style={styles.score}>
+                  <Text
+                    style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
+                  >
+                    3 Điểm
+                </Text>
+                </View>
+              </View>
+  
+              <View style={styles.Question}>
+                <Text style={styles.question}>
+                  {data.question}
+                </Text>
+                {data.link == true ? <Image
+                  source={require('../../../assets/images/II-8.png')}
+                  style={{ width: 90, height: 90 }}
+                /> : null}
+              </View>
+            </View>
+  
+            <View style={styles.AnswerContainer}>
+              {answer.map((item, index) => (
+                <TouchableOpacity key={index} style={styles.StyleAnswer}>
+                  <View style={styles.Answer}>
+                    <Text style={styles.text}>{item}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        </View>
+      );
+    };
 
     return (
       <View style={styles.container}>
@@ -109,8 +151,25 @@ class TestScreenView extends React.Component {
             )}
           />
         </View>
+        <FlatList
+          data={data}
+          ref={r => this.refs = r}
+          keyExtractor={this._keyExtractor}//map your keys to whatever unique ids the have (mine is a "id" prop)
+          renderItem={renderQuestion}//render each item
+          onViewableItemsChanged={this.onViewableItemsChanged}//need this
+          horizontal
+        />
 
-        <View style={styles.Main}>
+        <Pagination
+          // dotThemeLight //<--use with backgroundColor:"grey"
+          listRef={this.refs}//to allow React Native Pagination to scroll to item when clicked  (so add "ref={r=>this.refs=r}" to your list)
+          paginationVisibleItems={this.state.viewableItems}//needs to track what the user sees
+          paginationItems={data}//pass the same list as data
+          paginationItemPadSize={3} //num of items to pad above and below your visable items
+          horizontal='true'
+          pagingEnabled='true'
+        />
+        {/* <View style={styles.Main}>
           <View style={styles.MainContainer}>
             <View style={styles.Questioncontainer}>
               <View
@@ -121,7 +180,7 @@ class TestScreenView extends React.Component {
                 }}
               >
                 <View style={styles.q1}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>3.</Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{questions.ID}.</Text>
                 </View>
                 <View style={styles.score}>
                   <Text
@@ -134,12 +193,12 @@ class TestScreenView extends React.Component {
 
               <View style={styles.Question}>
                 <Text style={styles.question}>
-                  Biểu tượng này trên thanh công cụ là gì?
+                  {questions.question}
                 </Text>
-                <Image
+                {questions.link == true ? <Image
                   source={require('../../../assets/images/II-8.png')}
                   style={{ width: 90, height: 90 }}
-                />
+                /> : null}
               </View>
             </View>
 
@@ -153,7 +212,7 @@ class TestScreenView extends React.Component {
               ))}
             </View>
           </View>
-        </View>
+        </View> */}
       </View>
     );
   }

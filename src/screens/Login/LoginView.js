@@ -87,7 +87,8 @@ class LoginView extends React.Component {
                   value={this.state.email}
                   onChangeText={email => this.setState({ email })}
                   returnKeyType="next"
-                  style={{ fontSize: 17, color: "#586BCA", marginTop: 3 }} />
+                  style={{ fontSize: 17, color: "#586BCA", marginTop: 3 }}
+                   />
               </View>
               <Image />
             </View>
@@ -105,7 +106,9 @@ class LoginView extends React.Component {
                     value={this.state.password}
                     onChangeText={password => this.setState({ password })}
                     style={styles.passwordInput}
-                    returnKeyType="done" />
+                    returnKeyType="done"
+                   
+                     />
                   <TouchableOpacity onPress={this.onPressVisible}>
                     {this.state.secureTextEntry == true
                       ?
