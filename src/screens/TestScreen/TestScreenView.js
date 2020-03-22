@@ -22,6 +22,10 @@ class TestScreenView extends React.Component {
 
     this.state = {
       checkedId: null,
+      answer: [this.props.questions[0].A,this.props.questions[0].B,this.props.questions[0].C,this.props.questions[0].D],
+      question: this.props.questions[0].question,
+      imgLink: this.props.questions[0].link,
+      active: 0
     };
   }
 
@@ -29,37 +33,14 @@ class TestScreenView extends React.Component {
     if (this.state.checked === false) this.setState({ checked: true });
   };
 
-  renderQuestion = () => {
-    return (
-      <View style={styles.AnswerContainer}>
-        <TouchableOpacity style={styles.StyleAnswer}>
-          <View style={styles.ABCD}>
-            <Text style={styles.text1}>a</Text>
-          </View>
-          <View style={styles.Answer}>
-            <Text style={styles.text}>Liên kết cứng</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
+  myAnswer = index => {
+    this.setState({answer: [this.props.questions[index].A,this.props.questions[index].B,this.props.questions[index].C,this.props.questions[index].D]});
+    this.setState({question: this.props.questions[index].question});
+    this.setState({imgLink: this.props.questions[index].link});
   };
 
   render() {
-    const {
-      navigation,
-      questionsCount,
-      questions,
-      getQuestion,
-      active,
-    } = this.props;
-
-    const answer = [
-      questions.cau1,
-      questions.cau2,
-      questions.cau3,
-      questions.cau4,
-    ];
-
+    const {active} = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
@@ -76,7 +57,7 @@ class TestScreenView extends React.Component {
         </View>
         <View style={styles.Menu}>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => this.props.navigation.goBack()}
             style={styles.btnContainer}
           >
             <Image
@@ -94,13 +75,13 @@ class TestScreenView extends React.Component {
 
         <View style={styles.numberContainer}>
           <FlatList
-            data={questionsCount}
+            data={this.props.questions}
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 style={active === index ? styles.active : styles.number}
-                onPress={() => getQuestion(index)}
+                onPress={() => this.myAnswer(index)}
               >
                 <Text style={active === index ? styles.numberActive : styles.numberT}>
                   {index + 1}
@@ -127,27 +108,32 @@ class TestScreenView extends React.Component {
                   <Text
                     style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
                   >
-                    3 Điểm
+                    1 Điểm
                   </Text>
                 </View>
               </View>
 
               <View style={styles.Question}>
                 <Text style={styles.question}>
-                  Biểu tượng này trên thanh công cụ là gì?
+                  {this.state.question}
                 </Text>
+                
                 <Image
-                  source={require('../../../assets/images/II-8.png')}
+                  source={{uri: this.state.imgLink}}
                   style={{ width: 90, height: 90 }}
                 />
               </View>
             </View>
 
             <View style={styles.AnswerContainer}>
-              {answer.map((item, index) => (
+              {this.state.answer.map((item, index) => (
                 <TouchableOpacity key={index} style={styles.StyleAnswer}>
                   <View style={styles.Answer}>
                     <Text style={styles.text}>{item}</Text>
+                    <Image
+                      source={{uri: item}}
+                      style={{ width: 90, height: 90 }}
+                />
                   </View>
                 </TouchableOpacity>
               ))}
