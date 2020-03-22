@@ -17,7 +17,7 @@ class SplashScreen extends React.Component {
       if (user) {
         this.props.navigation.navigate('RootStackNavigator');
       } else {
-        this.props.navigation.navigate('LoginStackNavigator');
+        this.props.navigation.navigate('login');
       }
     });
   }

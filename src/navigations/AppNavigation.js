@@ -4,15 +4,14 @@ import SplashScreen from '../screens/Splash/SplashScreen';
 import RootStackNavigator from './RootStackNavigator';
 import LoginStackNavigator from './LoginStackNavigator';
 
-
 const AppNavigation = createSwitchNavigator(
   {
-    // SplashScreen,
-    login : LoginStackNavigator,
+    SplashScreen,
+    login: LoginStackNavigator,
     RootStackNavigator,
   },
   {
-    initialRouteName:"login"
+    initialRouteName: 'login',
   }
 );
 

@@ -18,64 +18,61 @@ const styles = StyleSheet.create({
   },
   timeCowndown: {
     marginTop: 35,
-    alignItems: "center",
+    alignItems: 'center',
     position: 'absolute',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   timeout: {
-    color: "white",
+    color: 'white',
     fontSize: 15,
     fontWeight: '600',
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
   },
   title: {
     margin: 10,
     marginBottom: 5,
     color: 'black',
     fontSize: 13,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   photo: {
-    width: (SCREEN_WIDTH - RECIPE_ITEM_MARGIN) / numColumns - RECIPE_ITEM_OFFSET,
+    width:
+      (SCREEN_WIDTH - RECIPE_ITEM_MARGIN) / numColumns - RECIPE_ITEM_OFFSET,
     height: RECIPE_ITEM_HEIGHT,
-    borderRadius: 60
+    borderRadius: 60,
   },
   Answers: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   Question: {
-    flex:1,
-    marginTop:10,
-    marginLeft:10,
-    marginRight:10,
-    alignItems:'center',
-    
+    flex: 1,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    alignItems: 'center',
   },
-  question:{
-    fontSize:17,
-    fontWeight:'bold',
-    marginBottom:5
+  question: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
-  Questioncontainer: {
-    
-  },
+  Questioncontainer: {},
   AnswerContainer: {
-    paddingBottom:20,
-
+    paddingBottom: 20,
   },
   StyleAnswer: {
     marginTop: 7,
     marginBottom: 7,
     minHeight: 59,
     maxHeight: 70,
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: "#BFBFBF",
+    borderColor: '#BFBFBF',
     borderRadius: 12,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   Answer: {
     flex: 85,
@@ -85,12 +82,12 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   text: {
     fontSize: 17,
     fontWeight: 'bold',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   text1: {
     fontSize: 24,
@@ -98,7 +95,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: '#FFF',
     alignSelf: 'center',
-    paddingLeft: 5
+    paddingLeft: 5,
   },
 
   MainContainer: {
@@ -107,10 +104,10 @@ const styles = StyleSheet.create({
     marginRight: 24,
     borderWidth: 1,
     borderRadius: 28,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     padding: 16,
     marginBottom: 20,
-    justifyContent:'space-between'
+    justifyContent: 'space-between',
   },
   Menu: {
     paddingTop: 20,
@@ -125,14 +122,13 @@ const styles = StyleSheet.create({
   button: {
     marginRight: 25,
     marginTop: 15,
-    backgroundColor: "#FF7F2D",
+    backgroundColor: '#FF7F2D',
     maxHeight: 34,
     minHeight: 25,
     height: 34,
     borderRadius: 10,
     alignItems: 'center',
-    flexDirection: 'row'
-
+    flexDirection: 'row',
   },
   btnContainer: {
     alignItems: 'center',
@@ -143,46 +139,61 @@ const styles = StyleSheet.create({
   btnIcon: {
     height: 22,
     width: 16,
-    backgroundColor: '#2C2C46'
+    backgroundColor: '#2C2C46',
   },
   Main: {
-    flex: 1
+    flex: 1,
   },
-  q1: {
-  },
+  q1: {},
   score: {
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 12,
     alignItems: 'center',
     maxWidth: 80,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   numberContainer: {
     margin: 24,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   number: {
-
     width: 32,
     height: 32,
     borderWidth: 2,
-    borderColor: "white",
+    borderColor: 'white',
     borderRadius: 8,
     borderStyle: 'solid',
     alignItems: 'center',
     marginRight: 7,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   numberT: {
     fontSize: 22,
     color: 'white',
-    textAlign: 'center'
-  }
-
+    textAlign: 'center',
+  },
+  active: {
+    width: 30,
+    height: 30,
+    borderWidth: 2,
+    borderColor: 'white',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    borderStyle: 'solid',
+    alignItems: 'center',
+    marginRight: 7,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  numberActive: {
+    fontSize: 22,
+    color: 'black',
+    textAlign: 'center',
+  },
 });
 
 export default styles;

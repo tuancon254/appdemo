@@ -50,8 +50,6 @@ class TestInfoView extends Component {
     const { navigation } = this.props;
     const item = navigation.getParam('item');
 
-    console.log(item);
-
     return (
       <View style={styles.container}>
         <View style={styles.Menu}>
@@ -87,8 +85,8 @@ class TestInfoView extends Component {
               onPress={() => {
                 const questions = this.shuffle(item.questions);
                 navigation.navigate('TestScreen', {
-                  question : questions,
-                  title : item.title,
+                  question: questions,
+                  title: item.title,
                 });
               }}
             />
