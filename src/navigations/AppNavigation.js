@@ -7,11 +7,12 @@ import LoginStackNavigator from './LoginStackNavigator';
 
 const AppNavigation = createSwitchNavigator(
   {
-    SplashScreen,
-    LoginStackNavigator,
+    // SplashScreen,
+    login : LoginStackNavigator,
     RootStackNavigator,
   },
   {
+    initialRouteName:"login"
   }
 );
 

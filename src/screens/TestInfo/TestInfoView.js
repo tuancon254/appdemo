@@ -33,6 +33,19 @@ class TestInfoView extends Component {
     this.props.navigation.navigate('Ingredient', { ingredient, name });
   };
 
+  // trộn câu hỏi với thuật toán Fisher–Yates shuffle
+  shuffle(array) {
+    var newArray = new Array(10);
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    for (let i = newArray.length - 1; i >= 0; i--) {
+      newArray[i] = array[i];
+    }
+    return newArray;
+  }
+
   render() {
     const { navigation } = this.props;
     const item = navigation.getParam('item');
@@ -52,7 +65,7 @@ class TestInfoView extends Component {
         </View>
 
         <View style={styles.infoRecipeContainer}>
-          <Text style={styles.infoRecipeName}>{item.CH1.title}</Text>
+          <Text style={styles.infoRecipeName}>{item.title}</Text>
           <View>
             <View>
               <Text style={styles.category}>
@@ -66,17 +79,16 @@ class TestInfoView extends Component {
               style={styles.infoPhoto}
               source={require('../../../assets/icons/time.png')}
             />
-            <Text style={styles.infoRecipe}>{item.time} minutes </Text>
+            <Text style={styles.infoRecipe}>10 phút </Text>
           </View>
 
           <View>
             <ViewIngredientsButton
               onPress={() => {
-                const ingredients = item.ingredients;
-                const title = `Ingredients for ${item.title}`;
+                const questions = this.shuffle(item.questions);
                 navigation.navigate('TestScreen', {
-                  ingredients,
-                  title,
+                  question : questions,
+                  title : item.title,
                 });
               }}
             />

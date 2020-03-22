@@ -29,15 +29,35 @@ class HomeView extends Component {
     };
   }
 
-  // onPress Chapter not Recipes
-  onPressChapter = item => {
-    this.props.navigation.navigate('SubjectContainer', { item });
+  // onPress Chapter
+  onPressChapter = (item, index) => {
+    console.log(index);
+    if (index + 1 == 1)
+      this.props.navigation.navigate('TestInfo', { item: item.CH1 });
+    else if (index + 1 == 2)
+      this.props.navigation.navigate('TestInfo', { item: item.CH2 });
+    else if (index + 1 == 3)
+      this.props.navigation.navigate('TestInfo', { item: item.CH3 });
+    else if (index + 1 == 4)
+      this.props.navigation.navigate('TestInfo', { item: item.CH4 });
+    else if (index + 1 == 5)
+      this.props.navigation.navigate('TestInfo', { item: item.CH5 });
+    else if (index + 1 == 6)
+      this.props.navigation.navigate('TestInfo', { item: item.CH6 });
+    else if (index + 1 == 7)
+      this.props.navigation.navigate('TestInfo', { item: item.CH7 });
+    else if (index + 1 == 8)
+      this.props.navigation.navigate('TestInfo', { item: item.CH8 });
+    else if (index + 1 == 9)
+      this.props.navigation.navigate('TestInfo', { item: item.CH9 });
+    else if (index + 1 == 10)
+      this.props.navigation.navigate('TestInfo', { item: item.CH10 });
   };
 
   // component Chapter not Recipes - chương...CHƯƠNG...CHƯƠNGGGGGGGGG
   renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
-      <TouchableOpacity onPress={() => this.onPressChapter(item)}>
+      <TouchableOpacity onPress={() => this.onPressChapter(item, index)}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
             <Image
@@ -48,7 +68,7 @@ class HomeView extends Component {
           <View style={{ flex: 3, flexDirection: 'row' }}>
             <View style={{ flex: 1.5, flexDirection: 'column' }}>
               <Text style={styles.titleChapter}>Chương {index + 1}</Text>
-              <Text style={styles.timeChapter}>{item.title}</Text>
+              <Text style={styles.timeChapter}>10 phút</Text>
             </View>
             <Image
               style={styles.iconChapter}
@@ -61,18 +81,15 @@ class HomeView extends Component {
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('Subject');
+    return this.props.navigation.navigate('subject');
   };
 
   componentDidMount() {
     const currentUser = firebase.auth().currentUser;
-
-    this.setState({ email: currentUser.email });
   }
 
   render() {
-    const { navigation, data } = this.props;
-    const { email } = this.state;
+    const { navigation, chapters, profile } = this.props;
 
     return (
       <View style={{ backgroundColor: 'white' }}>
@@ -81,7 +98,9 @@ class HomeView extends Component {
           <View style={styles.header}>
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 16, color: '#000' }}>Hello,</Text>
-              <Text style={{ fontSize: 27, fontWeight: 'bold' }}>{email}</Text>
+              <Text style={{ fontSize: 27, fontWeight: 'bold' }}>
+                {profile?.name}
+              </Text>
             </View>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Image
@@ -149,7 +168,7 @@ class HomeView extends Component {
             <FlatList
               showsVerticalScrollIndicator={false}
               numColumns={1}
-              data={data.Chapters}
+              data={chapters}
               renderItem={this.renderChapter}
               keyExtractor={() => uuid()}
             />
