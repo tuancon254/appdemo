@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../services/FirebaseConfig';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const Resource = {
   logo: require('../../../assets/images/logo.png'),
@@ -45,13 +44,13 @@ class LoginView extends React.Component {
 
 
   onPressVisible = () => {
-    this.state.secureTextEntry==true?
-    this.setState({
-      secureTextEntry: false
-    }):
-    this.setState({
-      secureTextEntry: true
-    });
+    this.state.secureTextEntry == true ?
+      this.setState({
+        secureTextEntry: false
+      }) :
+      this.setState({
+        secureTextEntry: true
+      });
     return (
       <Image source={require('../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />
     )
@@ -66,20 +65,22 @@ class LoginView extends React.Component {
       <View style={styles.container}>
 
         {/* logo  */}
-        <View style={{ flex: 40, justifyContent: 'center', alignItems: 'center', }}>
+        <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
         </View>
-        <View style={{ flex: 60, backgroundColor: 'white', borderTopLeftRadius: 30, borderTopRightRadius: 30, paddingLeft: 39, paddingRight: 39 }}>
-          <View style={{ marginTop: 30, marginBottom: 23 }}><Text style={{ fontSize: 30, fontWeight: '500' }}>Xin chào!</Text></View>
+
+        <View style={styles.loginContainer}>
+          <View style={styles.hello}>
+            <Text style={styles.helloText}>Xin chào!</Text>
+          </View>
 
 
-          <View style={{}}>
-
-            <View style={{ flexDirection: 'row', paddingBottom: 23 }}>
-              <View style={{ padding: 16, borderRadius: 12, backgroundColor: "rgba(187, 197, 250, 0.2)" }}>
+          <View>
+            <View style={styles.usernameOrEmailWrapper}>
+              <View style={styles.mailIconWrapper}>
                 <Image source={Resource.mail} style={styles.mailIcon} />
               </View>
-              <View style={{ borderBottomWidth: 1, flex: 1, marginLeft: 15, borderColor: "rgba(173, 173, 173, 0.6)" }}>
+              <View style={styles.textInput}>
                 <Text style={{ fontSize: 12 }}>Email</Text>
                 <TextInput
                   placeholder="Username or email"
@@ -91,11 +92,11 @@ class LoginView extends React.Component {
               <Image />
             </View>
 
-            <View style={{ flexDirection: 'row', paddingBottom: 23 }}>
-              <View style={{ padding: 16, borderRadius: 12, backgroundColor: "rgba(187, 197, 250, 0.2)" }}>
+            <View style={styles.usernameOrEmailWrapper}>
+              <View style={styles.mailIconWrapper}>
                 <Image source={Resource.key} style={styles.passwordIcon} />
               </View>
-              <View style={{ borderBottomWidth: 1, flex: 1, marginLeft: 15, borderColor: "rgba(173, 173, 173, 0.6)" }}>
+              <View style={styles.textInput}>
                 <Text style={{ fontSize: 12 }}>Password</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <TextInput
@@ -106,7 +107,11 @@ class LoginView extends React.Component {
                     style={styles.passwordInput}
                     returnKeyType="done" />
                   <TouchableOpacity onPress={this.onPressVisible}>
-                    {this.state.secureTextEntry == true ? <Image source={require('../../../assets/icons/visibility_off.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} /> : <Image source={require('../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />}
+                    {this.state.secureTextEntry == true
+                      ?
+                      <Image source={require('../../../assets/icons/visibility_off.png')} style={styles.visibleIcon}/>
+                      :
+                      <Image source={require('../../../assets/icons/visibility.png')} style={styles.visibleIcon}/>}
                   </TouchableOpacity>
 
                 </View>
