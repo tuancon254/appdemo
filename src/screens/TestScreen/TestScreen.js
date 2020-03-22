@@ -5,26 +5,9 @@ import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays';
 import { CheckBox } from 'react-native-elements';
 import { Answers, Question } from '../../data/dataArrays';
-import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
-import BackButton from '../../components/BackButton/BackButton'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
-
-const data = {
-  "Bai1": {
-    "Cau1": {
-      "Answer": {
-        "Answer1": "Phần tử hữu hạn",
-        "Answer2": "Phân phối trực tiếp",
-        "Answer3": "Khung tương đương",
-        "Answer4": "Phương pháp lực"
-      },
-      "CorrectAnswer": "Answer1",
-      "Question": "Phần mềm SAP2000 là phần mềm Phân Tích và Thiết Kế Kết cấu dựa trên phương pháp phân tích nào?"
-    }
-  }
-}
-
-
+import CountDown from './CountDown'
 
 
 export default class TestScreen extends React.Component {
@@ -62,21 +45,20 @@ export default class TestScreen extends React.Component {
 
   renderQuestion = () => {
     return (
-      <View style={styles.AnswerContainer}>
-        <TouchableOpacity style={styles.StyleAnswer}>
-          <View style={styles.ABCD}><Text style={styles.text1}>a</Text></View>
-          <View style={styles.Answer}><Text style={styles.text}>Liên kết cứng</Text></View>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={styles.StyleAnswer}>
+        <View style={styles.Answer}><Text style={styles.text}>Liên kết cứng</Text></View>
+      </TouchableOpacity>
     );
   };
 
+
   render() {
     const { navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
-          <Text style={{ fontSize: 22, color: 'white', fontWeight: 'bold', letterSpacing: 0.35 }}>14:30</Text>
+          <CountDown />
         </View>
         <View style={styles.Menu}>
 
@@ -120,8 +102,6 @@ export default class TestScreen extends React.Component {
             <Text style={styles.numberT}>8</Text>
           </TouchableOpacity>
 
-
-
         </View>
         <View style={styles.Main}>
           <View style={styles.MainContainer}>
@@ -134,7 +114,7 @@ export default class TestScreen extends React.Component {
 
               <View style={styles.Question}>
                 <Text style={styles.question}>Biểu tượng này trên thanh công cụ là gì?</Text>
-                <Image source={require('../../../assets/images/II-8.png')} style={{ width: 90,height:90 }} />
+                <Image source={require('../../../assets/images/II-8.png')} style={{ width: 90, height: 90 }} />
               </View>
             </View>
 
@@ -152,6 +132,9 @@ export default class TestScreen extends React.Component {
               <TouchableOpacity style={styles.StyleAnswer}>
                 <View style={styles.Answer}><Text style={styles.text}>Chọn template Grid Only > tùy chỉnh trên cửa sổ Quick Grid Lines</Text></View>
               </TouchableOpacity>
+              
+              
+
             </View>
           </View>
         </View>

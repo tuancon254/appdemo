@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
     height: RECIPE_ITEM_HEIGHT + 75,
     marginTop: 20,
     backgroundColor: "#F2FCF2",
+    marginBottom:2,
+   
 
     // shadow
     shadowColor: "#000",
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
 
   div: {
     flex: 1,
+    paddingBottom:160
   
   },
   photo: {

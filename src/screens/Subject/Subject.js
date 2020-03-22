@@ -37,7 +37,7 @@ class Subject extends Component {
   renderChapter = ({ item }) => (
     <View style={styles.wellcome}>
 
-        <View style={{ flexDirection: 'column' }}>
+        <View style={{ flexDirection: 'column',}}>
           <View style={{ flexDirection: 'row', marginBottom: 20 }}>
             <Image style={styles.iconChapter}
               //source={{ uri: item.photo_url }}
