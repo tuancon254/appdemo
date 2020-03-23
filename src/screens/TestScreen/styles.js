@@ -57,11 +57,9 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 17,
     fontWeight: 'bold',
-    marginBottom: 5,
   },
   Questioncontainer: {},
   AnswerContainer: {
-    paddingBottom: 20,
   },
   StyleAnswer: {
     marginTop: 7,
@@ -100,7 +98,6 @@ const styles = StyleSheet.create({
 
   MainContainer: {
     flex: 1,
-    minWidth:375,
     maxWidth:375,
     marginLeft: 24,
     marginRight: 24,
@@ -161,6 +158,7 @@ const styles = StyleSheet.create({
     margin: 24,
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop:0
   },
   number: {
     width: 32,

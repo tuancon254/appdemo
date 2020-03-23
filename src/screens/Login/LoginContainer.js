@@ -22,7 +22,7 @@ class LoginContainer extends Component {
         this.props.navigation.navigate('RootStackNavigator', {
           email: result.user.email,
         });
-      } catch (e) {
+      } catch (error) {
         alert(e.message);
         this.setState({ logging: false });
       }

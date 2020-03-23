@@ -14,9 +14,6 @@ import Pagination, { Icon, Dot } from 'react-native-pagination';
 import _ from 'lodash';
 
 
-let Data = new _.times
-
-
 class TestScreenView extends React.Component {
   static navigationOptions = {
     header: null,
@@ -28,12 +25,12 @@ class TestScreenView extends React.Component {
     this.state = {
       checkedId: null,
       answer: [this.props.questions[0].A, this.props.questions[0].B, this.props.questions[0].C, this.props.questions[0].D],
-      question: this.props.questions[0].question,
+      question: [this.props.questions[0].question],
       imgLink: this.props.questions[0].link,
-      active: this.props.questions,
-      id: this.props.questions[0].ID
+      active: 0,
     };
   }
+
 
 
   myAnswer = index => {
@@ -42,65 +39,11 @@ class TestScreenView extends React.Component {
     this.setState({ imgLink: this.props.questions[index].link });
   };
 
-
-  renderQuestion = (data) => {
-    return (
-      <View style={styles.MainContainer}>
-        <View style={styles.Questioncontainer}>
-          <View
-            style={{
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-              marginBottom: 10,
-            }}
-          >
-            <View style={styles.q1}>
-              <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
-            </View>
-            <View style={styles.score}>
-              <Text
-                style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
-              >
-                1 Điểm
-              </Text>
-            </View>
-          </View>
-
-          <View style={styles.Question}>
-            <Text style={styles.question}>
-              {this.state.question}
-            </Text>
-
-            {/* <Image
-              source={{uri: this.state.imgLink}}
-              style={{ width: 90, height: 90 }}
-            />  */}
-          </View>
-        </View>
-
-        <View style={styles.AnswerContainer}>
-          {this.state.answer.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.StyleAnswer}>
-              <View style={styles.Answer}>
-                <Text style={styles.text}>{item}</Text>
-                <Image
-                  source={{ uri: item }}
-                  style={{ width: 90, height: 90 }}
-                />
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
-    );
-  };
+  _keyExtractor = (item, index) => index;
 
 
   render() {
-    const { active } = this.state;
-    console.log(active)
-
-
+    const  active = [] = this.props.questions;
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
@@ -134,13 +77,13 @@ class TestScreenView extends React.Component {
         </View>
 
         <View style={styles.numberContainer}>
-          {/* <FlatList
+          <FlatList
             data={active}
             horizontal
             showsHorizontalScrollIndicator={false}
-            renderItem={({ item, index }) => (
+            renderItem={({ index }) => (
               <TouchableOpacity
-                style={active === index ? styles.active : styles.number}
+                style={this.state.id === index ? styles.active : styles.number}
                 onPress={() => this.myAnswer(index)}
               >
                 <Text style={active === index ? styles.numberActive : styles.numberT}>
@@ -148,32 +91,17 @@ class TestScreenView extends React.Component {
                 </Text>
               </TouchableOpacity>
             )}
-          /> */}
-        </View>
-        {/* <Pagination
-          // dotThemeLight //<--use with backgroundColor:"grey"
-          listRef={this.refs}//to allow React Native Pagination to scroll to item when clicked  (so add "ref={r=>this.refs=r}" to your list)
-          paginationVisibleItems={this.state.viewableItems}//needs to track what the user sees
-          paginationItems={data}//pass the same list as data
-          paginationItemPadSize={3} //num of items to pad above and below your visable items
-          horizontal='true'
-          pagingEnabled='true'
-        /> */}
-        <View style={styles.Main}>
-          <FlatList
-            data={this.state.active}
-            renderItem={this.renderQuestion}//render each item
-            horizontal
           />
-          {/* <View style={styles.MainContainer}>
+        </View>
+        <View style={styles.Main}>
+          <View style={styles.MainContainer}>
             <View style={styles.Questioncontainer}>
               <View
                 style={{
                   justifyContent: 'space-between',
                   flexDirection: 'row',
                   marginBottom: 10,
-                }}
-              >
+                }}>
                 <View style={styles.q1}>
                   <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
                 </View>
@@ -189,13 +117,13 @@ class TestScreenView extends React.Component {
               <View style={styles.Question}>
                 <Text style={styles.question}>
                   {this.state.question}
-                </Text> */}
+                </Text>
 
-          {/* <Image
-                  source={{uri: this.state.imgLink}}
+                <Image
+                  source={{ uri: this.state.imgLink }}
                   style={{ width: 90, height: 90 }}
-                />  */}
-          {/* </View>
+                />
+              </View>
             </View>
 
             <View style={styles.AnswerContainer}>
@@ -203,15 +131,17 @@ class TestScreenView extends React.Component {
                 <TouchableOpacity key={index} style={styles.StyleAnswer}>
                   <View style={styles.Answer}>
                     <Text style={styles.text}>{item}</Text>
+
                     <Image
                       source={{ uri: item }}
                       style={{ width: 90, height: 90 }}
                     />
+
                   </View>
                 </TouchableOpacity>
               ))}
             </View>
-          </View> */}
+          </View>
         </View>
       </View>
     );
@@ -219,3 +149,58 @@ class TestScreenView extends React.Component {
 }
 
 export default TestScreenView;
+
+
+
+// renderQuestion = (data, index) => {
+  //   return (
+  //     <View style={styles.MainContainer}>
+  //       <View style={styles.Questioncontainer}>
+  //         <View
+  //           style={{
+  //             justifyContent: 'space-between',
+  //             flexDirection: 'row',
+  //             marginBottom: 10,
+  //           }}
+  //         >
+  //           <View style={styles.q1}>
+  //             <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
+  //           </View>
+  //           <View style={styles.score}>
+  //             <Text
+  //               style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
+  //             >
+  //               1 Điểm
+  //             </Text>
+  //           </View>
+  //         </View>
+
+  //         <View style={styles.Question}>
+  //           <Text style={styles.question}>
+  //             {this.state.question}
+  //           </Text>
+
+
+  //           {/* <Image
+  //             source={{uri: this.state.imgLink}}
+  //             style={{ width: 90, height: 90 }}
+  //           />  */}
+  //         </View>
+  //       </View>
+
+  //       <View style={styles.AnswerContainer}>
+  //         {this.state.answer.map((item) => (
+  //           <TouchableOpacity key={index} style={styles.StyleAnswer}>
+  //             <View style={styles.Answer}>
+  //               <Text style={styles.text}>{item}</Text>
+  //               {/* <Image
+  //                 source={{ uri: data }}
+  //                 style={{ width: 90, height: 90 }}
+  //               /> */}
+  //             </View>
+  //           </TouchableOpacity>
+  //         ))}
+  //       </View>
+  //     </View>
+  //   );
+  // };

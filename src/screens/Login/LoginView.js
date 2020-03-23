@@ -27,7 +27,7 @@ class LoginView extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errorMessages: null,
+      errorMessage: null,
       secureTextEntry: true
     };
   }
@@ -58,7 +58,7 @@ class LoginView extends React.Component {
 
 
   render() {
-    const { errorMessages, email, password } = this.state;
+    const {errorMessage, email, password } = this.state;
     const { onLoginDev, logging, onPressLogin } = this.props;
 
     return (
@@ -132,8 +132,8 @@ class LoginView extends React.Component {
           </View>
           <View style={{ marginTop: 32 }}>
             <View style={{ marginBottom: 10 }}>
-              {errorMessages && (
-                <Text style={{ color: '#E9446A' }}>{errorMessages} Try Again!</Text>
+              {errorMessage && (
+                <Text style={{ color: '#E9446A' }}>{errorMessage} Try Again!</Text>
               )}
             </View>
             <TouchableOpacity
