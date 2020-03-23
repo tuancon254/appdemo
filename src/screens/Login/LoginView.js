@@ -6,10 +6,10 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  KeyboardAvoidingView
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../services/FirebaseConfig';
-
 const Resource = {
   logo: require('../../../assets/images/logo.png'),
   mail: require('../../../assets/icons/Email.png'),
@@ -62,34 +62,39 @@ class LoginView extends React.Component {
     const { onLoginDev, logging, onPressLogin } = this.props;
 
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="height">
 
         {/* logo  */}
+
         <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
         </View>
+
+
 
         <View style={styles.loginContainer}>
           <View style={styles.hello}>
             <Text style={styles.helloText}>Xin chào!</Text>
           </View>
-
-
           <View>
             <View style={styles.usernameOrEmailWrapper}>
               <View style={styles.mailIconWrapper}>
                 <Image source={Resource.mail} style={styles.mailIcon} />
               </View>
+
               <View style={styles.textInput}>
                 <Text style={{ fontSize: 12 }}>Email</Text>
+
                 <TextInput
                   placeholder="Username or email"
                   value={this.state.email}
                   onChangeText={email => this.setState({ email })}
                   returnKeyType="next"
-                  style={{ fontSize: 17, color: "#586BCA", marginTop: 3 }}
-                   />
+                  style={{ fontSize: 17, color: "#586BCA", marginTop: 3, flex: 1 }}
+                />
+
               </View>
+
               <Image />
             </View>
 
@@ -107,17 +112,19 @@ class LoginView extends React.Component {
                     onChangeText={password => this.setState({ password })}
                     style={styles.passwordInput}
                     returnKeyType="done"
-                   
-                     />
+                    onFocus={() => { }}
+
+                  />
                   <TouchableOpacity onPress={this.onPressVisible}>
                     {this.state.secureTextEntry == true
                       ?
-                      <Image source={require('../../../assets/icons/visibility_off.png')} style={styles.visibleIcon}/>
+                      <Image source={require('../../../assets/icons/visibility_off.png')} style={styles.visibleIcon} />
                       :
-                      <Image source={require('../../../assets/icons/visibility.png')} style={styles.visibleIcon}/>}
+                      <Image source={require('../../../assets/icons/visibility.png')} style={styles.visibleIcon} />}
                   </TouchableOpacity>
 
                 </View>
+
               </View>
 
             </View>
@@ -140,8 +147,14 @@ class LoginView extends React.Component {
             </TouchableOpacity>
           </View>
 
+          <View style={{ marginTop: 16, marginLeft: 12 }}>
+            <TouchableOpacity>
+              <Text style={{ color: "#586BCA" }}>Quên mật khẩu?</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+
+      </KeyboardAvoidingView>
     );
   }
 }

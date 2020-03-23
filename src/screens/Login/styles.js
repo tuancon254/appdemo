@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
   visibleIcon: {
     width: 24,
     height: 20,
-    borderWidth: 1,
     marginRight: 4,
     marginTop: 8
   }

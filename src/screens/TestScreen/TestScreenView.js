@@ -11,6 +11,11 @@ import {
 } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
+import _ from 'lodash';
+
+
+let Data = new _.times
+
 
 class TestScreenView extends React.Component {
   static navigationOptions = {
@@ -22,85 +27,79 @@ class TestScreenView extends React.Component {
 
     this.state = {
       checkedId: null,
+      answer: [this.props.questions[0].A, this.props.questions[0].B, this.props.questions[0].C, this.props.questions[0].D],
+      question: this.props.questions[0].question,
+      imgLink: this.props.questions[0].link,
+      active: this.props.questions,
+      id: this.props.questions[0].ID
     };
   }
 
-  onCheck = a => {
-    if (this.state.checked === false) this.setState({ checked: true });
+
+  myAnswer = index => {
+    this.setState({ answer: [this.props.questions[index].A, this.props.questions[index].B, this.props.questions[index].C, this.props.questions[index].D] });
+    this.setState({ question: this.props.questions[index].question });
+    this.setState({ imgLink: this.props.questions[index].link });
   };
 
-  
-  _keyExtractor = (data) => data.id;
-  render() {
-    const {
-      navigation,
-      questionsCount,
-      questions,
-      getQuestion,
-      active,
-    } = this.props;
 
-    
-    const data = navigation.getParam('question')
-    const answer = [
-      data.A,
-      data.A,
-      data.A,
-      data.A,
-    ];
-    console.log(data);
-    
-
-    const renderQuestion = () => {
-    
-      
-      return (
-        <View style={styles.Main}>
-          <View style={styles.MainContainer}>
-            <View style={styles.Questioncontainer}>
-              <View
-                style={{
-                  justifyContent: 'space-between',
-                  flexDirection: 'row',
-                  marginBottom: 10,
-                }}
-              >
-                <View style={styles.q1}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{data.ID}.</Text>
-                </View>
-                <View style={styles.score}>
-                  <Text
-                    style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
-                  >
-                    3 Điểm
-                </Text>
-                </View>
-              </View>
-  
-              <View style={styles.Question}>
-                <Text style={styles.question}>
-                  {data.question}
-                </Text>
-                {data.link == true ? <Image
-                  source={require('../../../assets/images/II-8.png')}
-                  style={{ width: 90, height: 90 }}
-                /> : null}
-              </View>
+  renderQuestion = (data) => {
+    return (
+      <View style={styles.MainContainer}>
+        <View style={styles.Questioncontainer}>
+          <View
+            style={{
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              marginBottom: 10,
+            }}
+          >
+            <View style={styles.q1}>
+              <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
             </View>
-  
-            <View style={styles.AnswerContainer}>
-              {answer.map((item, index) => (
-                <TouchableOpacity key={index} style={styles.StyleAnswer}>
-                  <View style={styles.Answer}>
-                    <Text style={styles.text}>{item}</Text>
-                  </View>
-                </TouchableOpacity>
-              ))}
+            <View style={styles.score}>
+              <Text
+                style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
+              >
+                1 Điểm
+              </Text>
             </View>
           </View>
+
+          <View style={styles.Question}>
+            <Text style={styles.question}>
+              {this.state.question}
+            </Text>
+
+            {/* <Image
+              source={{uri: this.state.imgLink}}
+              style={{ width: 90, height: 90 }}
+            />  */}
+          </View>
         </View>
-      );
-    };
+
+        <View style={styles.AnswerContainer}>
+          {this.state.answer.map((item, index) => (
+            <TouchableOpacity key={index} style={styles.StyleAnswer}>
+              <View style={styles.Answer}>
+                <Text style={styles.text}>{item}</Text>
+                <Image
+                  source={{ uri: item }}
+                  style={{ width: 90, height: 90 }}
+                />
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+    );
+  };
+
+
+  render() {
+    const { active } = this.state;
+    console.log(active)
+
 
     return (
       <View style={styles.container}>
@@ -118,7 +117,7 @@ class TestScreenView extends React.Component {
         </View>
         <View style={styles.Menu}>
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => this.props.navigation.goBack()}
             style={styles.btnContainer}
           >
             <Image
@@ -135,32 +134,23 @@ class TestScreenView extends React.Component {
         </View>
 
         <View style={styles.numberContainer}>
-          <FlatList
-            data={questionsCount}
+          {/* <FlatList
+            data={active}
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 style={active === index ? styles.active : styles.number}
-                onPress={() => getQuestion(index)}
+                onPress={() => this.myAnswer(index)}
               >
                 <Text style={active === index ? styles.numberActive : styles.numberT}>
                   {index + 1}
                 </Text>
               </TouchableOpacity>
             )}
-          />
+          /> */}
         </View>
-        <FlatList
-          data={data}
-          ref={r => this.refs = r}
-          keyExtractor={this._keyExtractor}//map your keys to whatever unique ids the have (mine is a "id" prop)
-          renderItem={renderQuestion}//render each item
-          onViewableItemsChanged={this.onViewableItemsChanged}//need this
-          horizontal
-        />
-
-        <Pagination
+        {/* <Pagination
           // dotThemeLight //<--use with backgroundColor:"grey"
           listRef={this.refs}//to allow React Native Pagination to scroll to item when clicked  (so add "ref={r=>this.refs=r}" to your list)
           paginationVisibleItems={this.state.viewableItems}//needs to track what the user sees
@@ -168,9 +158,14 @@ class TestScreenView extends React.Component {
           paginationItemPadSize={3} //num of items to pad above and below your visable items
           horizontal='true'
           pagingEnabled='true'
-        />
-        {/* <View style={styles.Main}>
-          <View style={styles.MainContainer}>
+        /> */}
+        <View style={styles.Main}>
+          <FlatList
+            data={this.state.active}
+            renderItem={this.renderQuestion}//render each item
+            horizontal
+          />
+          {/* <View style={styles.MainContainer}>
             <View style={styles.Questioncontainer}>
               <View
                 style={{
@@ -180,39 +175,44 @@ class TestScreenView extends React.Component {
                 }}
               >
                 <View style={styles.q1}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{questions.ID}.</Text>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
                 </View>
                 <View style={styles.score}>
                   <Text
                     style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
                   >
-                    3 Điểm
+                    1 Điểm
                   </Text>
                 </View>
               </View>
 
               <View style={styles.Question}>
                 <Text style={styles.question}>
-                  {questions.question}
-                </Text>
-                {questions.link == true ? <Image
-                  source={require('../../../assets/images/II-8.png')}
+                  {this.state.question}
+                </Text> */}
+
+          {/* <Image
+                  source={{uri: this.state.imgLink}}
                   style={{ width: 90, height: 90 }}
-                /> : null}
-              </View>
+                />  */}
+          {/* </View>
             </View>
 
             <View style={styles.AnswerContainer}>
-              {answer.map((item, index) => (
+              {this.state.answer.map((item, index) => (
                 <TouchableOpacity key={index} style={styles.StyleAnswer}>
                   <View style={styles.Answer}>
                     <Text style={styles.text}>{item}</Text>
+                    <Image
+                      source={{ uri: item }}
+                      style={{ width: 90, height: 90 }}
+                    />
                   </View>
                 </TouchableOpacity>
               ))}
             </View>
-          </View>
-        </View> */}
+          </View> */}
+        </View>
       </View>
     );
   }

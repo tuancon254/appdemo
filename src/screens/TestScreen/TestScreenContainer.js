@@ -7,55 +7,16 @@ class TestScreenContainer extends Component {
     super(props);
 
     this.state = {
-      questions: {},
-      questionsCount: [],
-      active: 0,
+      questions: this.props.navigation.getParam('question'),
     };
   }
 
-  getQuestionCount = async () => {
-    try {
-      return await firebase
-        .database()
-        .ref()
-        .child('/Chapters/0/CH1/questions')
-        .on('value', snap => {
-          this.setState({ questionsCount: snap.val() });
-        });
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
-  getQuestion = async index => {
-    this.setState({ active: index });
-    try {
-      return await firebase
-        .database()
-        .ref()
-        .child(`/Chapters/0/CH1/questions/${index}`)
-        .on('value', snap => {
-          this.setState({ questions: snap.val() });
-        });
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
-  componentDidMount() {
-    this.getQuestionCount().done();
-  }
-
   render() {
-    const { questionsCount, questions, active } = this.state;
-
+    console.log(this.props.navigation.getParam('question'));
     return (
       <TestScreenView
         {...this.props}
-        questionsCount={questionsCount}
-        questions={questions}
-        getQuestion={this.getQuestion}
-        active={active}
+        questions={this.state.questions}
       />
     );
   }
