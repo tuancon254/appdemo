@@ -7,6 +7,7 @@ const AppContainer = createAppContainer(AppNavigation);
 
 class App extends Component {
   render() {
+    console.disableYellowBox = true;
     return (
       <AppProvider>
         <AppContainer />
