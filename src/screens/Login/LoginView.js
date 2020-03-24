@@ -59,18 +59,15 @@ class LoginView extends React.Component {
 
   render() {
     const {errorMessage, email, password } = this.state;
-    const { onLoginDev, logging, onPressLogin } = this.props;
+    const { logging, onPressLogin } = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">
 
         {/* logo  */}
-
         <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
         </View>
-
-
 
         <View style={styles.loginContainer}>
           <View style={styles.hello}>
@@ -86,7 +83,7 @@ class LoginView extends React.Component {
                 <Text style={{ fontSize: 12 }}>Email</Text>
 
                 <TextInput
-                  placeholder="Username or email"
+                  placeholder="Email address"
                   value={this.state.email}
                   onChangeText={email => this.setState({ email })}
                   returnKeyType="next"
@@ -149,7 +146,7 @@ class LoginView extends React.Component {
 
           <View style={{ marginTop: 16, marginLeft: 12 }}>
             <TouchableOpacity>
-              <Text style={{ color: "#586BCA" }}>Quên mật khẩu?</Text>
+              <Text style={{ color: "#586BCA", alignContent: 'center' }}>Quên mật khẩu?</Text>
             </TouchableOpacity>
           </View>
         </View>
