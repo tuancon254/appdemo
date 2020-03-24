@@ -205,16 +205,13 @@ class TestScreenView extends React.Component {
               dotFontSizeNotActive={15}
               horizontal={true}
               pagingEnabled={true}
-              paginationStyle={{ alignItems: "center", justifyContent: 'space-between', position: "absolute", top: 0, margin: 0, bottom: 0, right: 0, bottom: 0, padding: 0, flex: 1, }}
-
+              paginationStyle={{ alignItems: "center", justifyContent: 'space-between', position: "absolute", top: 0, margin: 0, bottom: 0, right: 0, bottom: 0, padding: 0 }}
               textStyle={textStyle}
               dotIconHide={true}
               startDotTextHide={true}
               dotEmptyHide={true}
               textEmptyHide={true}
-            // dotOnPress={()=>{
-            //   this.setState({textStyle:styles.textStyleActive})
-            // }}
+              
             />
           </View>
           <View style={styles.flatlist}>

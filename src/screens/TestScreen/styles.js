@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 17,
     fontWeight: 'bold',
-    textAlign:'center'
+    textAlign:'center',
   },
   Questioncontainer: {
     flex: 1
@@ -63,12 +63,13 @@ const styles = StyleSheet.create({
     marginTop: 7,
     marginBottom: 7,
     minHeight: 59,
-    maxHeight: 70,
+    maxHeight: 95,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: '#BFBFBF',
     borderRadius: 12,
     alignItems: 'center',
+    justifyContent:'center',
   },
   StyleImgAnswer:{
     marginTop: 15,
@@ -84,19 +85,16 @@ const styles = StyleSheet.create({
     minHeight: 120,
   },
   Answer: {
-    flex: 85,
     paddingLeft: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingRight: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingRight: 20,
     alignItems: 'center',
     flexDirection: 'row',
-    textAlign: 'center',
   },
   text: {
     fontSize: 17,
     fontWeight: 'bold',
-    alignSelf: 'center',
   },
   text1: {
     fontSize: 24,
@@ -121,7 +119,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    paddingBottom: 20,
+    paddingBottom: 12,
   },
   iconMenu: {
     width: 34,
@@ -205,11 +203,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   pagination: {
-    flex: 10,
+    flex: 7,
 
   },
   flatlist: {
-    flex: 90,
+    flex: 95,
   },
   textStyle: {
     borderWidth: 1,
@@ -226,7 +224,7 @@ const styles = StyleSheet.create({
     color: 'black',
     borderRadius: 8,
     marginTop: 1,
-    backgroundColor:'white'
+    backgroundColor:'white',
   }
 });
 
