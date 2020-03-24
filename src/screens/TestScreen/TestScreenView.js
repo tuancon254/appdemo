@@ -151,7 +151,7 @@ class TestScreenView extends React.Component {
                     onPress: () => console.log('Cancel Pressed'),
                     style: 'cancel',
                   },
-                  {text: 'Có', onPress: () => navigation.goBack()},
+                  {text: 'Có', onPress: () => this.props.navigation.goBack()},
                 ],
                 {cancelable: false},
               );
