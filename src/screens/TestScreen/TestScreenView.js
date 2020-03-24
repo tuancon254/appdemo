@@ -11,8 +11,6 @@ import {
 } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
-import _ from 'lodash';
-
 
 class TestScreenView extends React.Component {
   static navigationOptions = {
@@ -23,27 +21,111 @@ class TestScreenView extends React.Component {
     super(props);
 
     this.state = {
-      checkedId: null,
-      answer: [this.props.questions[0].A, this.props.questions[0].B, this.props.questions[0].C, this.props.questions[0].D],
-      question: [this.props.questions[0].question],
-      imgLink: this.props.questions[0].link,
-      active: 0,
+      items: this.props.questions,
+      textStyle: styles.textStyle,
+      ImgContainer: null
     };
   }
 
+  _keyExtractor = (item, index) => item.ID;
 
+  onViewableItemsChanged = ({ viewableItems, changed }) => {
+    this.setState({ viewableItems })
+  }
+  _renderItem = ({ item }) => {
+    return (
+      <View style={styles.Main}>
+        <View style={styles.MainContainer}>
+          <View style={styles.Questioncontainer}>
+            <View
+              style={{
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                marginBottom: 10,
+              }}
+            >
+              <View style={styles.q1}>
+                <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{item.index + 1}.</Text>
+              </View>
+              <View style={styles.score}>
+                <Text
+                  style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
+                >
+                  1 Điểm
+                  </Text>
+              </View>
+            </View>
+            <View style={{justifyContent:'center',flex:1}}>
+              <View style={styles.Question}>
+                <Text style={styles.question}>
+                  {item.question}
+                </Text>
+                {item.status === 1 ? <Image
+                  source={{ uri: item.link }}
+                  style={{ width: 90, height: 90 }}
+                /> : null
+                }
 
-  myAnswer = index => {
-    this.setState({ answer: [this.props.questions[index].A, this.props.questions[index].B, this.props.questions[index].C, this.props.questions[index].D] });
-    this.setState({ question: this.props.questions[index].question });
-    this.setState({ imgLink: this.props.questions[index].link });
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.AnswerContainer}>
+            <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
+              <TouchableOpacity key={'A'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer}>
+                <View style={styles.Answer}>
+
+                  {item.status === 2 ?
+                    <Image
+                      source={{ uri: item.A }}
+                      style={{ width: 90, height: 90 }}
+                    /> : <Text style={styles.text}>{item.A}</Text>
+                  }
+
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity key={'B'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer}>
+                <View style={styles.Answer}>
+                  {item.status === 2 ?
+                    <Image
+                      source={{ uri: item.B }}
+                      style={{ width: 90, height: 90 }}
+                    /> : <Text style={styles.text}>{item.B}</Text>
+                  }
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
+              <TouchableOpacity key={'C'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer}>
+                <View style={styles.Answer}>
+                  {item.status === 2 ?
+                    <Image
+                      source={{ uri: item.C }}
+                      style={{ width: 90, height: 90 }}
+                    /> : <Text style={styles.text}>{item.C}</Text>
+                  }
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity key={'D'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer}>
+                <View style={styles.Answer}>
+                  {item.status === 2 ?
+                    <Image
+                      source={{ uri: item.D }}
+                      style={{ width: 90, height: 90 }}
+                    /> : <Text style={styles.text}>{item.D}</Text>
+                  }
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </View>
+    )
   };
 
-  _keyExtractor = (item, index) => index;
-
-
   render() {
-    const  active = [] = this.props.questions;
+    const textStyle = this.state.textStyle;
+    console.log(this.state.items)
     return (
       <View style={styles.container}>
         <View style={styles.timeCowndown}>
@@ -76,72 +158,40 @@ class TestScreenView extends React.Component {
           </View>
         </View>
 
-        <View style={styles.numberContainer}>
-          <FlatList
-            data={active}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ index }) => (
-              <TouchableOpacity
-                style={this.state.id === index ? styles.active : styles.number}
-                onPress={() => this.myAnswer(index)}
-              >
-                <Text style={active === index ? styles.numberActive : styles.numberT}>
-                  {index + 1}
-                </Text>
-              </TouchableOpacity>
-            )}
-          />
-        </View>
         <View style={styles.Main}>
-          <View style={styles.MainContainer}>
-            <View style={styles.Questioncontainer}>
-              <View
-                style={{
-                  justifyContent: 'space-between',
-                  flexDirection: 'row',
-                  marginBottom: 10,
-                }}>
-                <View style={styles.q1}>
-                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
-                </View>
-                <View style={styles.score}>
-                  <Text
-                    style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
-                  >
-                    1 Điểm
-                  </Text>
-                </View>
-              </View>
+          <View style={styles.pagination}>
+            <Pagination
+              listRef={this.refs}
+              paginationVisibleItems={this.state.viewableItems}
+              paginationItems={this.state.items}
+              paginationItemPadSize={2}
+              dotFontSizeActive={20}
+              dotFontSizeNotActive={15}
+              horizontal={true}
+              pagingEnabled={true}
+              paginationStyle={{ alignItems: "center", justifyContent: 'space-between', position: "absolute", top: 0, margin: 0, bottom: 0, right: 0, bottom: 0, padding: 0, flex: 1, }}
 
-              <View style={styles.Question}>
-                <Text style={styles.question}>
-                  {this.state.question}
-                </Text>
-
-                <Image
-                  source={{ uri: this.state.imgLink }}
-                  style={{ width: 90, height: 90 }}
-                />
-              </View>
-            </View>
-
-            <View style={styles.AnswerContainer}>
-              {this.state.answer.map((item, index) => (
-                <TouchableOpacity key={index} style={styles.StyleAnswer}>
-                  <View style={styles.Answer}>
-                    <Text style={styles.text}>{item}</Text>
-
-                    <Image
-                      source={{ uri: item }}
-                      style={{ width: 90, height: 90 }}
-                    />
-
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </View>
+              textStyle={textStyle}
+              dotIconHide={true}
+              startDotTextHide={true}
+              dotEmptyHide={true}
+              textEmptyHide={true}
+            // dotOnPress={()=>{
+            //   this.setState({textStyle:styles.textStyleActive})
+            // }}
+            />
           </View>
+          <View style={styles.flatlist}>
+            <FlatList
+              data={this.state.items}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              onViewableItemsChanged={this.onViewableItemsChanged}
+              keyExtractor={this._keyExtractor}
+              ref={r => this.refs = r}
+              renderItem={this._renderItem}
+              pagingEnabled={true}
+            /></View>
         </View>
       </View>
     );
@@ -149,58 +199,3 @@ class TestScreenView extends React.Component {
 }
 
 export default TestScreenView;
-
-
-
-// renderQuestion = (data, index) => {
-  //   return (
-  //     <View style={styles.MainContainer}>
-  //       <View style={styles.Questioncontainer}>
-  //         <View
-  //           style={{
-  //             justifyContent: 'space-between',
-  //             flexDirection: 'row',
-  //             marginBottom: 10,
-  //           }}
-  //         >
-  //           <View style={styles.q1}>
-  //             <Text style={{ fontWeight: 'bold', fontSize: 22 }}>.</Text>
-  //           </View>
-  //           <View style={styles.score}>
-  //             <Text
-  //               style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
-  //             >
-  //               1 Điểm
-  //             </Text>
-  //           </View>
-  //         </View>
-
-  //         <View style={styles.Question}>
-  //           <Text style={styles.question}>
-  //             {this.state.question}
-  //           </Text>
-
-
-  //           {/* <Image
-  //             source={{uri: this.state.imgLink}}
-  //             style={{ width: 90, height: 90 }}
-  //           />  */}
-  //         </View>
-  //       </View>
-
-  //       <View style={styles.AnswerContainer}>
-  //         {this.state.answer.map((item) => (
-  //           <TouchableOpacity key={index} style={styles.StyleAnswer}>
-  //             <View style={styles.Answer}>
-  //               <Text style={styles.text}>{item}</Text>
-  //               {/* <Image
-  //                 source={{ uri: data }}
-  //                 style={{ width: 90, height: 90 }}
-  //               /> */}
-  //             </View>
-  //           </TouchableOpacity>
-  //         ))}
-  //       </View>
-  //     </View>
-  //   );
-  // };

@@ -5,11 +5,9 @@ const { width, height } = Dimensions.get('window');
 // orientation must fixed
 const SCREEN_WIDTH = width < height ? width : height;
 
-const numColumns = 3;
+const numColumns = 2;
 // item size
-const RECIPE_ITEM_HEIGHT = 40;
-const RECIPE_ITEM_OFFSET = 10;
-const RECIPE_ITEM_MARGIN = RECIPE_ITEM_OFFSET * 2;
+const RECIPE_ITEM_MARGIN = 20;
 
 const styles = StyleSheet.create({
   container: {
@@ -36,19 +34,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
   },
-  photo: {
-    width:
-      (SCREEN_WIDTH - RECIPE_ITEM_MARGIN) / numColumns - RECIPE_ITEM_OFFSET,
-    height: RECIPE_ITEM_HEIGHT,
-    borderRadius: 60,
-  },
   Answers: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
   Question: {
-    flex: 1,
     marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
@@ -57,9 +48,16 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 17,
     fontWeight: 'bold',
+    textAlign:'center'
   },
-  Questioncontainer: {},
+  Questioncontainer: {
+    flex: 1
+  },
   AnswerContainer: {
+  },
+  imgContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
   StyleAnswer: {
     marginTop: 7,
@@ -71,6 +69,19 @@ const styles = StyleSheet.create({
     borderColor: '#BFBFBF',
     borderRadius: 12,
     alignItems: 'center',
+  },
+  StyleImgAnswer:{
+    marginTop: 15,
+    marginBottom: 7,
+    width:(SCREEN_WIDTH - (numColumns + 3) * RECIPE_ITEM_MARGIN) / numColumns,
+    paddingTop:5,
+    paddingBottom:5,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#BFBFBF',
+    borderRadius: 12,
+    alignItems: 'center',
+    minHeight: 120,
   },
   Answer: {
     flex: 85,
@@ -98,10 +109,8 @@ const styles = StyleSheet.create({
 
   MainContainer: {
     flex: 1,
-    maxWidth:375,
     marginLeft: 24,
     marginRight: 24,
-    borderWidth: 1,
     borderRadius: 28,
     backgroundColor: 'white',
     padding: 16,
@@ -142,7 +151,7 @@ const styles = StyleSheet.create({
   },
   Main: {
     flex: 1,
-    
+    width: width
   },
   q1: {},
   score: {
@@ -158,7 +167,7 @@ const styles = StyleSheet.create({
     margin: 24,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop:0
+    marginTop: 0
   },
   number: {
     width: 32,
@@ -195,6 +204,30 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
+  pagination: {
+    flex: 10,
+
+  },
+  flatlist: {
+    flex: 90,
+  },
+  textStyle: {
+    borderWidth: 1,
+    aspectRatio: 1,
+    borderColor: 'white',
+    color: 'white',
+    borderRadius: 8,
+    marginTop: 1
+  },
+  textStyleActive: {
+    borderWidth: 1,
+    aspectRatio: 1,
+    borderColor: 'white',
+    color: 'black',
+    borderRadius: 8,
+    marginTop: 1,
+    backgroundColor:'white'
+  }
 });
 
 export default styles;

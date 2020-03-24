@@ -57,19 +57,16 @@ class LoginView extends React.Component {
   }
 
   render() {
-    const { errorMessage, email, password } = this.state;
-    const { onLoginDev, logging, onPressLogin, onPressForgot } = this.props;
+    const {errorMessage, email, password } = this.state;
+    const { logging, onPressLogin,onPressForgot } = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">
 
         {/* logo  */}
-
         <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
         </View>
-
-
 
         <View style={styles.loginContainer}>
           <View style={styles.hello}>
@@ -85,7 +82,7 @@ class LoginView extends React.Component {
                 <Text style={{ fontSize: 12 }}>Email</Text>
 
                 <TextInput
-                  placeholder="Username or email"
+                  placeholder="Email address"
                   value={this.state.email}
                   onChangeText={email => this.setState({ email })}
                   returnKeyType="next"

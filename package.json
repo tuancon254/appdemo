@@ -41,6 +41,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "prettier": "1.19.1"
   }
 }
