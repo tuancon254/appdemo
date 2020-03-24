@@ -1,12 +1,11 @@
 import React from 'react';
-import { FlatList, Text, View, Image } from 'react-native';
+import { FlatList, Text, View, Image,Alert} from 'react-native';
 import styles from './styles';
 import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays';
 import { CheckBox } from 'react-native-elements';
 import { Answers, Question } from '../../data/dataArrays';
 import {
-  TouchableHighlight,
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton';
@@ -142,9 +141,21 @@ class TestScreenView extends React.Component {
         </View>
         <View style={styles.Menu}>
           <TouchableOpacity
-            onPress={() => this.props.navigation.goBack()}
-            style={styles.btnContainer}
-          >
+            onPress={() =>{
+              Alert.alert(
+                'Thoát',
+                'Bạn chưa hoàn thành bài kiểm tra, có muốn thoát?',
+                [
+                  {
+                    text: 'Không',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                  },
+                  {text: 'Có', onPress: () => navigation.goBack()},
+                ],
+                {cancelable: false},
+              );
+              }} style={styles.btnContainer}>
             <Image
               source={require('../../../assets/icons/White1.png')}
               style={styles.btnIcon}
