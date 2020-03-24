@@ -56,10 +56,9 @@ class LoginView extends React.Component {
     )
   }
 
-
   render() {
-    const {errorMessage, email, password } = this.state;
-    const { onLoginDev, logging, onPressLogin } = this.props;
+    const { errorMessage, email, password } = this.state;
+    const { onLoginDev, logging, onPressLogin, onPressForgot } = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">
@@ -148,7 +147,7 @@ class LoginView extends React.Component {
           </View>
 
           <View style={{ marginTop: 16, marginLeft: 12 }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPressForgot}>
               <Text style={{ color: "#586BCA" }}>Quên mật khẩu?</Text>
             </TouchableOpacity>
           </View>

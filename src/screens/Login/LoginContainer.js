@@ -45,6 +45,9 @@ class LoginContainer extends Component {
     }
   };
 
+  onPressForgot = () =>{
+    this.props.navigation.navigate('ForgotPassword')
+  }
   render() {
     const { logging } = this.state;
 
@@ -53,6 +56,7 @@ class LoginContainer extends Component {
         onLoginDev={this.onLoginDev}
         logging={logging}
         onPressLogin={this.onPressLogin}
+        onPressForgot={this.onPressForgot}
       />
     );
   }
