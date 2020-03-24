@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View, Image,Alert} from 'react-native';
+import { FlatList, Text, View, Image,Alert,BackHandler} from 'react-native';
 import styles from './styles';
 import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays';
@@ -24,6 +24,31 @@ class TestScreenView extends React.Component {
       textStyle: styles.textStyle,
       ImgContainer: null
     };
+  }
+
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove()
+  }
+
+  handleBackPress = () => {
+    Alert.alert(
+      'Thoát',
+      'Bạn chưa hoàn thành bài kiểm tra, có muốn thoát?',
+      [
+        {
+          text: 'Không',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'Có', onPress: () => this.props.navigation.goBack()},
+      ],
+      {cancelable: false},
+    );
+    return true;
   }
 
   _keyExtractor = (item, index) => item.ID;
