@@ -9,11 +9,11 @@ import {
   KeyboardAvoidingView
 } from 'react-native';
 import styles from './styles';
-import firebase from '../../services/FirebaseConfig';
+import firebase from '../../../services/FirebaseConfig';
 const Resource = {
-  logo: require('../../../assets/images/logo.png'),
-  mail: require('../../../assets/icons/Email.png'),
-  key: require('../../../assets/icons/Pasword.png'),
+  logo: require('../../../../assets/images/logo.png'),
+  mail: require('../../../../assets/icons/Email.png'),
+  key: require('../../../../assets/icons/Pasword.png'),
 };
 
 class LoginView extends React.Component {
@@ -52,7 +52,7 @@ class LoginView extends React.Component {
         secureTextEntry: true
       });
     return (
-      <Image source={require('../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />
+      <Image source={require('../../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />
     )
   }
 
@@ -114,9 +114,9 @@ class LoginView extends React.Component {
                   <TouchableOpacity onPress={this.onPressVisible}>
                     {this.state.secureTextEntry == true
                       ?
-                      <Image source={require('../../../assets/icons/visibility_off.png')} style={styles.visibleIcon} />
+                      <Image source={require('../../../../assets/icons/visibility_off.png')} style={styles.visibleIcon} />
                       :
-                      <Image source={require('../../../assets/icons/visibility.png')} style={styles.visibleIcon} />}
+                      <Image source={require('../../../../assets/icons/visibility.png')} style={styles.visibleIcon} />}
                   </TouchableOpacity>
 
                 </View>

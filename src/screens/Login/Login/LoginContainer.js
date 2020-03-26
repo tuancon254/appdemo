@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LoginView from './LoginView';
-import firebase from '../../services/FirebaseConfig';
+import firebase from '../../../services/FirebaseConfig';
 
 class LoginContainer extends Component {
   constructor(props) {

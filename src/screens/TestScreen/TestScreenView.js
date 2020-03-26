@@ -14,6 +14,7 @@ import Pagination, { Icon, Dot } from 'react-native-pagination';
 class TestScreenView extends React.Component {
   static navigationOptions = {
     header: null,
+    gestureEnabled:false
   };
 
   constructor(props) {

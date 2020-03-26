@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign:'center',
+    marginBottom:5
   },
   Questioncontainer: {
     flex: 1

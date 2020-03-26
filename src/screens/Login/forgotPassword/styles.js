@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
 
     Container: {
         flex: 1,
-        justifyContent:'space-between'
     },
     button:{
         backgroundColor:'#FF7F2D',
@@ -20,6 +19,8 @@ const styles = StyleSheet.create({
         marginBottom:12
     },
     Container1:{
+        flex:50,
+        justifyContent:'space-between'
     },
   
     img: {
@@ -28,7 +29,9 @@ const styles = StyleSheet.create({
         alignSelf:'center',
     },
     img1:{
-        marginTop:50
+        flexDirection:'row',
+        flex:50,
+        justifyContent:'center'
     },
     quenmatkhau:{
         fontSize:30,
@@ -50,6 +53,7 @@ const styles = StyleSheet.create({
         borderColor:"#999999",
         borderRadius:11,
         marginTop:25,
+        
     },
     input1:{
         alignSelf:'center',

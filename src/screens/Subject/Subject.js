@@ -70,7 +70,7 @@ class Subject extends Component {
     const data = value.Chapters;
 
     return (
-      <View style={{ backgroundColor: 'white' }}>
+      <View style={{ backgroundColor: 'white',flex:1 }}>
         <View style={styles.Menu}>
           <BackButton onPress={() => navigation.goBack()} />
           <View>
@@ -83,6 +83,7 @@ class Subject extends Component {
           </View>
         </View>
         <View>
+
           <ScrollView>
             {/* Header view */}
             <View style={styles.header}>
@@ -118,7 +119,7 @@ class Subject extends Component {
             <View>
               <Text style={styles.feedback}>Kiểm tra</Text>
             </View>
-
+            <View style={{paddingBottom:100}}>
             <FlatList
               showsVerticalScrollIndicator={false}
               numColumns={2}
@@ -126,6 +127,7 @@ class Subject extends Component {
               renderItem={this.renderChapter}
               keyExtractor={item => `${item}`}
             />
+            </View>
           </ScrollView>
         </View>
       </View>

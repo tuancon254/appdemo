@@ -10,7 +10,7 @@ const PHOTO_WIDTH = '20%';
 
 const recipeNumColums = 2;
 // item size
-const RECIPE_ITEM_HEIGHT = 130;
+const RECIPE_ITEM_HEIGHT = 120;
 const RECIPE_ITEM_MARGIN = 24;
 
 const styles = StyleSheet.create({
