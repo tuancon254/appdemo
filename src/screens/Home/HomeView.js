@@ -86,6 +86,7 @@ class HomeView extends Component {
 
   componentDidMount() {
     const currentUser = firebase.auth().currentUser;
+    console.log(firebase.auth())
   }
   
   render() {

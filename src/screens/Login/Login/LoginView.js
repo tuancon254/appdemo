@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../../services/FirebaseConfig';
@@ -54,15 +55,15 @@ class LoginView extends React.Component {
     return (
       <Image source={require('../../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />
     )
-  }
+  } 
+  
 
   render() {
-    const {errorMessage, email, password } = this.state;
-    const { logging, onPressLogin,onPressForgot} = this.props;
+    const {email, password} = this.state;
+    const { logging, onPressLogin,onPressForgot,errorMessage} = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">
-
         {/* logo  */}
         <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
@@ -126,10 +127,10 @@ class LoginView extends React.Component {
             </View>
 
           </View>
-          <View style={{ marginTop: 32 }}>
+          <View style={{}}>
             <View style={{ marginBottom: 10 }}>
               {errorMessage && (
-                <Text style={{ color: '#E9446A' }}>{errorMessage} Try Again!</Text>
+                <Text style={{ color: '#E9446A',fontSize:12 }}>{errorMessage} Try Again!</Text>
               )}
             </View>
             <TouchableOpacity
@@ -144,7 +145,7 @@ class LoginView extends React.Component {
           </View>
 
           <View style={{ marginTop: 16, marginLeft: 12 }}>
-            <TouchableOpacity onPress={onPressForgot}>
+            <TouchableOpacity onPress={()=>{Alert.alert('Chức năng này đang được cập nhật')}}>
               <Text style={{ color: "#586BCA" }}>Quên mật khẩu?</Text>
             </TouchableOpacity>
           </View>

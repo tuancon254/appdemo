@@ -4,7 +4,6 @@ const { width: viewportWidth } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1
   },
   carouselContainer: {
@@ -29,16 +28,18 @@ const styles = StyleSheet.create({
   },
 
   infoRecipeContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    margin:20,
+    alignItems: 'center',
+    borderRadius:30,
+    flex:60,
+    backgroundColor: 'white',
+    padding:20
   },
   
   infoContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth:1,
   },
   buttonContainer: {
     flex: 1,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     margin: 15
   },
   infoRecipeName: {
-    fontSize: 28,
+    fontSize: 20,
     margin: 10,
     fontWeight: 'bold',
     color: 'black',
@@ -82,9 +83,14 @@ const styles = StyleSheet.create({
     width: 34,
     height: 34
   },
-  button:{
-    marginRight:25,
-    marginTop:15
+  btnContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+    marginLeft: 24,
+  },
+  btnIcon: {
+    height: 22,
+    width: 16,
   },
 });
 

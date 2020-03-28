@@ -8,7 +8,7 @@ class LoginContainer extends Component {
 
     this.state = {
       logging: false,
-    
+      errorMessages: null
     };
   }
 
@@ -18,11 +18,19 @@ class LoginContainer extends Component {
       try {
         const result = await firebase
           .auth()
-          .signInWithEmailAndPassword(email, password);
+          .signInWithEmailAndPassword(email, password)
+          .catch((error) => { this.setState({ errorMessages: error.message }) })
         this.setState({ logging: false });
-        this.props.navigation.navigate('RootStackNavigator', {
-          email: result.user.email,
-        });
+        if (firebase.auth().additionalUserInfo.isNewUser === true) {
+          this.props.navigation.navigate('changePasswordStackNavigator', {
+            email: result.user.email,
+          });
+        }
+        else {
+          this.props.navigation.navigate('RootStackNavigator', {
+            email: result.user.email,
+          });
+        }
       } catch (error) {
         alert(e.message);
         this.setState({ logging: false });
@@ -46,18 +54,18 @@ class LoginContainer extends Component {
     }
   };
 
-  onPressForgot = () =>{
+  onPressForgot = () => {
     this.props.navigation.navigate('ForgotPassword')
   }
   render() {
     const { logging } = this.state.logging;
-   
     return (
       <LoginView
         onLoginDev={this.onLoginDev}
         logging={logging}
         onPressLogin={this.onPressLogin}
         onPressForgot={this.onPressForgot}
+        errorMessage={this.state.errorMessages}
       />
     );
   }

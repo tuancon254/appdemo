@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableHighlight } from 'react-native';
+import { Text, View, Image, TouchableHighlight, TouchableOpacity, ImageBackground } from 'react-native';
 import styles from './styles';
 import {
   getIngredientName,
@@ -52,27 +52,25 @@ class TestInfoView extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={{flex:40}}>
+        <ImageBackground source={require('../../../assets/images/backgro.png')} style={{width:"100%",flex:1}} imageStyle={{borderBottomLeftRadius:20,borderBottomRightRadius:20}}>
         <View style={styles.Menu}>
-          <BackButton onPress={() => navigation.goBack()} />
+          <TouchableOpacity
+            onPress={() => this.props.navigation.goBack()}
+            style={styles.btnContainer}>
+            <Image
+              source={require('../../../assets/icons/White1.png')}
+              style={styles.btnIcon}
+            />
+          </TouchableOpacity>
         </View>
-
-        <View style={styles.carouselContainer}>
-          <View style={styles.carousel}>
-            <Image style={styles.image} source={{ uri: item.photo_url }} />
-          </View>
-        </View>
-
+        </ImageBackground></View>
         <View style={styles.infoRecipeContainer}>
-          <Text style={styles.infoRecipeName}>{item.title}</Text>
-          <View>
-            <View>
-              <Text style={styles.category}>
-                {/*{getLessionName(item.LessionId).toUpperCase()}*/}
-              </Text>
-            </View>
-          </View>
 
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={styles.infoRecipeName}>{item.title}</Text>
+
+
+          <View style={{ flexDirection: 'row', alignItems: 'center'}}>
             <Image
               style={styles.infoPhoto}
               source={require('../../../assets/icons/time.png')}

@@ -8,7 +8,8 @@ import {
     ActivityIndicator,
     KeyboardAvoidingView,
     ImageBackground,
-    Alert
+    Alert,
+    BackHandler
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../../services/FirebaseConfig'
@@ -30,12 +31,35 @@ class NewPassword extends React.Component {
         };
     }
 
-
+    componentDidMount() {
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+      }
+    
+      componentWillUnmount() {
+        this.backHandler.remove()
+      }
+    
+      handleBackPress = () => {
+        Alert.alert(
+          'Thoát',
+          'Dữ liệu sẽ không được lưu lại, có muốn thoát?',
+          [
+            {
+              text: 'Không',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            {text: 'Có', onPress: () => this.props.navigation.goBack()},
+          ],
+          {cancelable: false},
+        );
+        return true;
+      }
 
 
     onPressXacNhan = () => {
         var user = firebase.auth().currentUser;
-        var newPassword = this.state.Newpassword;
+        var newPassword = this.state.Newpassword 
         user.updatePassword(newPassword)
             .then(() => { Alert.alert(
                     'Thành Công',

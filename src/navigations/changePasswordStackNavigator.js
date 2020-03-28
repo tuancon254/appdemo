@@ -7,7 +7,6 @@ const changePasswordStackNavigator = createStackNavigator(
     {
         changePassword,
         NewPassword
-
     },
     {
         navigationOptions: {
