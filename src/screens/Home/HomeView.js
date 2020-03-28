@@ -87,10 +87,10 @@ class HomeView extends Component {
   componentDidMount() {
     const currentUser = firebase.auth().currentUser;
   }
-
+  
   render() {
     const { navigation, chapters, profile } = this.props;
-
+    
     return (
       <View style={{ backgroundColor: 'white' }}>
         <ScrollView>
@@ -102,7 +102,7 @@ class HomeView extends Component {
                 {profile?.name}
               </Text>
             </View>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <TouchableOpacity onPress={() => navigation.openDrawer({})}>
               <Image
                 source={require('../../../assets/icons/menu.png')}
                 style={styles.iconMenu}

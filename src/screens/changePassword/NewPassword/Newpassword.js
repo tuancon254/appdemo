@@ -7,10 +7,11 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     KeyboardAvoidingView,
-    ImageBackground
+    ImageBackground,
+    Alert
 } from 'react-native';
 import styles from './styles';
-import { render } from 'react-dom';
+import firebase from '../../../services/FirebaseConfig'
 
 class NewPassword extends React.Component {
     static navigationOptions = {
@@ -24,11 +25,32 @@ class NewPassword extends React.Component {
         this.state = {
             email: '',
             errorMessage: null,
+            Newpassword: "",
+            ReText: "",
         };
     }
 
+
+
+
+    onPressXacNhan = () => {
+        var user = firebase.auth().currentUser;
+        var newPassword = this.state.Newpassword;
+        user.updatePassword(newPassword)
+            .then(() => { Alert.alert(
+                    'Thành Công',
+                    'Mật Khẩu của bạn đã được cập nhật',
+                    'Đề nghị đăng nhập lại',
+                    [
+                        { text: 'OK', onPress: () => this.props.navigation.navigate("Login") },
+                    ],
+                    { cancelable: false }
+                )
+            })
+            .catch((error) => { })
+    }
+
     render() {
-        const { navigation } = this.props;
         return (
             <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }} keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}>
                 <View style={styles.Container}>
@@ -46,18 +68,21 @@ class NewPassword extends React.Component {
                                     placeholder="Nhập mật khẩu mới"
                                     style={styles.input1}
                                     secureTextEntry={true}
-                                    value={this.state.value}
+                                    value={this.state.Newpassword}
+                                    onChangeText={(Text) => { this.setState({ Newpassword: Text }) }}
                                 />
                             </View>
-                            <View style={styles.input}>
+                            <View style={this.state.ReText === this.state.Newpassword ? styles.input : styles.input2}>
                                 <TextInput
                                     placeholder="Nhập lại mật khẩu mới"
-                                    style={styles.input1}
+                                    style={ styles.input1 }
                                     secureTextEntry={true}
+                                    value={this.state.ReText}
+                                    onChangeText={(Text) => { this.setState({ ReText: Text }) }}
                                 />
                             </View>
                         </View>
-                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Login")}>
+                        <TouchableOpacity style={styles.button} onPress={this.onPressXacNhan}>
                             <Text style={styles.guima}>Xác nhận</Text>
                         </TouchableOpacity>
                     </View>

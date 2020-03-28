@@ -3,6 +3,8 @@ import TestResultScreens from '../screens/TestResult/TestResultScreens';
 import SignOut from '../screens/SignOut';
 import HomeStackNavigator from './HomeStackNavigator';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import changePasswordStackNavigator from './changePasswordStackNavigator'
+
 
 const DrawerStackNavigator = createDrawerNavigator(
   {
@@ -24,6 +26,12 @@ const DrawerStackNavigator = createDrawerNavigator(
         drawerLabel: 'Đăng xuất',
       },
     },
+    changePassword:{
+      screen: changePasswordStackNavigator,
+      navigationOptions: {
+        drawerLabel: 'Đổi mật khẩu',
+      },
+    }
   },
   {
     navigationOptions:{

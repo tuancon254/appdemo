@@ -58,7 +58,7 @@ class LoginView extends React.Component {
 
   render() {
     const {errorMessage, email, password } = this.state;
-    const { logging, onPressLogin,onPressForgot } = this.props;
+    const { logging, onPressLogin,onPressForgot} = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">

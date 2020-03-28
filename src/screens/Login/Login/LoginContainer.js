@@ -8,6 +8,7 @@ class LoginContainer extends Component {
 
     this.state = {
       logging: false,
+    
     };
   }
 
@@ -49,8 +50,8 @@ class LoginContainer extends Component {
     this.props.navigation.navigate('ForgotPassword')
   }
   render() {
-    const { logging } = this.state;
-
+    const { logging } = this.state.logging;
+   
     return (
       <LoginView
         onLoginDev={this.onLoginDev}

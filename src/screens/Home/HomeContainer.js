@@ -48,7 +48,6 @@ class HomeContainer extends Component {
 
   render() {
     const { chapters, profile } = this.state;
-
     return <HomeView {...this.props} chapters={chapters} profile={profile} />;
   }
 }
