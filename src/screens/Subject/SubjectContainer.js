@@ -9,13 +9,21 @@ class SubjectContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      chapters: this.props.navigation.getParam('chapters'),
+      profile: this.props.navigation.getParam('profile'),
+      chapterDones: this.props.navigation.getParam('chapterDones'),
+    };
   }
 
   render() {
+    const { chapters, profile} = this.state;
     return (
-      <AppContext.Consumer>
-        {value => <Subject value={value} {...this.props} />}
-      </AppContext.Consumer>
+      <Subject {...this.props}
+      chapters={chapters}
+      profile={profile}
+      chapterDones={chapterDones}
+      ></Subject>
     );
   }
 }

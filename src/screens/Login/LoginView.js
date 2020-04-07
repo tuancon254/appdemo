@@ -25,8 +25,8 @@ class LoginView extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
+      email: 'test@gmail.com',
+      password: '123456',
       errorMessage: null,
       secureTextEntry: true
     };
@@ -40,9 +40,7 @@ class LoginView extends React.Component {
       logging: false,
     });
   }
-
-
-
+  
   onPressVisible = () => {
     this.state.secureTextEntry == true ?
       this.setState({
@@ -145,7 +143,7 @@ class LoginView extends React.Component {
 
           <View style={{ marginTop: 16, marginLeft: 12 }}>
             <TouchableOpacity onPress={onPressForgot}>
-              <Text style={{ color: "#586BCA" }}>Quên mật khẩu?</Text>
+              <Text style={{ color: "#586BCA", textAlign: 'center' }}>Quên mật khẩu?</Text>
             </TouchableOpacity>
           </View>
         </View>

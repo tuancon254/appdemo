@@ -15,6 +15,7 @@ const HomeStackNavigator = createStackNavigator(
   {
     navigationOptions: {
       headerShown: false,
+      gestureEnabled:false 
     },
   }
 );

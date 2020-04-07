@@ -14,6 +14,7 @@ import {
   Image,
   ImageBackground,
   TextInput,
+  Alert,
 } from 'react-native';
 import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -23,65 +24,182 @@ import firebase from '../../services/FirebaseConfig';
 class HomeView extends Component {
   constructor(props) {
     super(props);
-
+    global.chapterDones = new Array();
+    global.chapters = new Array();
     this.state = {
       email: '',
     };
   }
 
   // onPress Chapter
-  onPressChapter = (item, index) => {
-    console.log(index);
+  onPressChapter = (item, index, status) => {
+    console.log('status'+status);
     if (index + 1 == 1)
-      this.props.navigation.navigate('TestInfo', { item: item.CH1 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH1,
+        name: 'CH1',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 2)
-      this.props.navigation.navigate('TestInfo', { item: item.CH2 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH2,
+        name: 'CH2',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 3)
-      this.props.navigation.navigate('TestInfo', { item: item.CH3 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH3,
+        name: 'CH3',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 4)
-      this.props.navigation.navigate('TestInfo', { item: item.CH4 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH4,
+        name: 'CH4',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 5)
-      this.props.navigation.navigate('TestInfo', { item: item.CH5 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH5,
+        name: 'CH5',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 6)
-      this.props.navigation.navigate('TestInfo', { item: item.CH6 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH6,
+        name: 'CH6',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 7)
-      this.props.navigation.navigate('TestInfo', { item: item.CH7 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH7,
+        name: 'CH7',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 8)
-      this.props.navigation.navigate('TestInfo', { item: item.CH8 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH8,
+        name: 'CH8',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 9)
-      this.props.navigation.navigate('TestInfo', { item: item.CH9 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH9,
+        name: 'CH9',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
     else if (index + 1 == 10)
-      this.props.navigation.navigate('TestInfo', { item: item.CH10 });
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH10,
+        name: 'CH10',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
   };
 
-  // component Chapter not Recipes - chương...CHƯƠNG...CHƯƠNGGGGGGGGG
+  // component Chapter
   renderChapter = ({ item, index }) => (
-    <View style={styles.wellcome}>
-      <TouchableOpacity onPress={() => this.onPressChapter(item, index)}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View style={{ flex: 1 }}>
-            <Image
-              style={styles.iconChapter}
-              source={require('../../../assets/icons/C1.png')}
-            />
-          </View>
-          <View style={{ flex: 3, flexDirection: 'row' }}>
-            <View style={{ flex: 1.5, flexDirection: 'column' }}>
-              <Text style={styles.titleChapter}>Chương {index + 1}</Text>
-              <Text style={styles.timeChapter}>10 phút</Text>
+    <View>
+      {index === this.chapterDones[0] ||
+      index === this.chapterDones[1] ||
+      index === this.chapterDones[2] ||
+      index === this.chapterDones[3] ||
+      index === this.chapterDones[4] ||
+      index === this.chapterDones[5] ||
+      index === this.chapterDones[6] ||
+      index === this.chapterDones[7] ||
+      index === this.chapterDones[8] ||
+      index === this.chapterDones[9] ? (
+        <View></View>
+      ) : (
+        <View style={styles.wellcome}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index,'')}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/C2.png')}
+                />
+              </View>
+              <View style={{ flex: 3, flexDirection: 'row' }}>
+                <View style={{ flex: 1.5, flexDirection: 'column' }}>
+                  <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+                  <Text style={styles.timeChapter}>10 phút</Text>
+                </View>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/pass.png')}
+                />
+              </View>
             </View>
-            <Image
-              style={styles.iconChapter}
-              source={require('../../../assets/icons/pass.png')}
-            />
-          </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+      )}
+    </View>
+  );
+
+  // component renderChapterDone
+  renderChapterDone = ({ item, index }) => (
+    <View>
+      {index === this.chapterDones[0] ||
+      index === this.chapterDones[1] ||
+      index === this.chapterDones[2] ||
+      index === this.chapterDones[3] ||
+      index === this.chapterDones[4] ||
+      index === this.chapterDones[5] ||
+      index === this.chapterDones[6] ||
+      index === this.chapterDones[7] ||
+      index === this.chapterDones[8] ||
+      index === this.chapterDones[9] ? (
+        <View style={styles.wellcomeDone}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index,'inActive')}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/C1.png')}
+                />
+              </View>
+              <View style={{ flex: 3, flexDirection: 'row' }}>
+                <View style={{ flex: 1.5, flexDirection: 'column' }}>
+                  <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+                  <Text style={styles.timeChapter}>10 phút</Text>
+                </View>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/pass.png')}
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View></View>
+      )}
     </View>
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('SubjectContainer');
+    return this.props.navigation.navigate('SubjectContainer', {chapters: this.chapters, profile: this.props.profile, chapterDones: chapterDones});
   };
 
   componentDidMount() {
@@ -89,8 +207,9 @@ class HomeView extends Component {
   }
 
   render() {
-    const { navigation, chapters, profile } = this.props;
-
+    const { navigation, chapters, profile, chapterDone } = this.props;
+    this.chapterDones = chapterDones;
+    this.chapters = chapters;
     return (
       <View style={{ backgroundColor: 'white' }}>
         <ScrollView>
@@ -161,8 +280,24 @@ class HomeView extends Component {
               </TouchableOpacity>
             </ImageBackground>
           </View>
+
+          {/* view bài kiểm tra gần đây */}
           <View>
             <Text style={styles.feedback}>Bài kiểm tra gần đây</Text>
+          </View>
+          <View style={styles.div}>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              numColumns={1}
+              data={chapters}
+              renderItem={this.renderChapterDone}
+              keyExtractor={() => uuid()}
+            />
+          </View>
+
+          {/* Component các bài kiểm tra sắp tới */}
+          <View>
+            <Text style={styles.feedback}>Các bài kiểm tra sắp tới</Text>
           </View>
           <View style={styles.div}>
             <FlatList
@@ -173,6 +308,7 @@ class HomeView extends Component {
               keyExtractor={() => uuid()}
             />
           </View>
+
         </ScrollView>
       </View>
     );

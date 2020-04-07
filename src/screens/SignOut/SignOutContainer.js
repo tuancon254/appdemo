@@ -12,7 +12,7 @@ class SignOutContainer extends Component {
       .auth()
       .signOut()
       .then(() => {
-        // Handle when sign out successful
+        this.props.navigation.navigate('Login');
       })
       .catch(e => console.log(e.message));
   }

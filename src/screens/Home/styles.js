@@ -26,6 +26,25 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     marginRight: 24,
     marginBottom:20,
+    backgroundColor: '#FFE8F0',
+    // shadow
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 1,
+  },
+
+  wellcomeDone: {
+    flex: 1,
+    borderRadius: 15,
+    padding: 15,
+    marginLeft: 24,
+    marginRight: 24,
+    marginBottom:20,
     backgroundColor: '#F2FCF2',
     // shadow
     shadowColor: '#000',
@@ -37,6 +56,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 1,
   },
+
   wellcome1: {
     flex: 1,
     borderRadius: 5,
