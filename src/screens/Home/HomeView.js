@@ -88,7 +88,6 @@ class HomeView extends Component {
     const currentUser = firebase.auth().currentUser;
     console.log(firebase.auth())
   }
-  
   render() {
     const { navigation, chapters, profile } = this.props;
     
