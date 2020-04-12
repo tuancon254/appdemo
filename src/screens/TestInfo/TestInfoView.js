@@ -8,7 +8,9 @@ import {
   getLessionName,
 } from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
-import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
+// import {
+//   TouchableOpacity,
+// } from 'react-native-gesture-handler';
 
 class TestInfoView extends Component {
   constructor(props) {
@@ -49,7 +51,10 @@ class TestInfoView extends Component {
   render() {
     const { navigation } = this.props;
     const item = navigation.getParam('item');
-
+    const chapterName = navigation.getParam('name');
+    const yourClass = navigation.getParam('yourClass');
+    const userName = navigation.getParam('userName');
+    const status = navigation.getParam('status');
     return (
       <View style={styles.container}>
         <View style={{flex:40}}>
@@ -79,15 +84,47 @@ class TestInfoView extends Component {
           </View>
 
           <View>
-            <ViewIngredientsButton
-              onPress={() => {
-                const questions = this.shuffle(item.questions);
-                navigation.navigate('TestScreen', {
-                  question: questions,
-                  title: item.title,
-                });
-              }}
-            />
+            {item.status === 1?
+              <View style={{ alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Image
+                    style={styles.infoPhoto}
+                    source={require('../../../assets/icons/time.png')}
+                  />
+                  <Text style={styles.infoRecipe}>10 phút</Text>
+                </View>
+                <TouchableOpacity onPress={() => {
+                  const questions = this.shuffle(item.questions);
+                  this.props.navigation.navigate('TestScreen', {
+                    question: questions,
+                    chapterName: chapterName,
+                    yourClass: yourClass,
+                    userName: userName
+                  });
+                }}>
+                  <View style={styles.containerS}>
+                    <Text style={styles.textS}>Làm bài</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              : status === 'inActive' ? 
+              <View style={styles.containerS2}>
+                <Image
+                  style={{height: 130,width: 130,}}
+                  source={require('../../../assets/icons/iconManLock2.png')}
+                />
+                <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
+              </View>
+              :
+              <View style={styles.containerS2}>
+                <Image
+                  style={{height: 130,width: 130,}}
+                  source={require('../../../assets/icons/iconManLock1.png')}
+                />
+                <Text style={styles.textS}>Chưa kích hoạt</Text>
+              </View>
+            }
+            
           </View>
 
           <View>

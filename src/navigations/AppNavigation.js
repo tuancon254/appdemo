@@ -11,6 +11,7 @@ const AppNavigation = createSwitchNavigator(
     RootStackNavigator,
   },
   {
+    initialRouteName: 'login',
   }
 );
 

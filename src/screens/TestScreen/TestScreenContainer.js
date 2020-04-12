@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TestScreenView from './TestScreenView';
-import firebase from '../../services/FirebaseConfig';
 
 class TestScreenContainer extends Component {
   constructor(props) {
@@ -8,15 +7,16 @@ class TestScreenContainer extends Component {
 
     this.state = {
       questions: this.props.navigation.getParam('question'),
+      yourClass: this.props.navigation.getParam('yourClass'),
     };
   }
 
   render() {
-    console.log(this.props.navigation.getParam('question'));
     return (
       <TestScreenView
         {...this.props}
         questions={this.state.questions}
+        yourClass={this.state.yourClass}
       />
     );
   }

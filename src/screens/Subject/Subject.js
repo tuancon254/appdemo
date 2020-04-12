@@ -23,16 +23,105 @@ import BackButton from '../../components/BackButton/BackButton';
 
 class Subject extends Component {
   constructor(props) {
+    global.chapterDones = new Array();
     super(props);
   }
 
-  onPressChapter = item => {
-    this.props.navigation.navigate('TestInfo', { item });
+  onPressChapter = ( item, index, status ) => {
+    if (index + 1 == 1)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH1,
+        name: 'CH1',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 2)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH2,
+        name: 'CH2',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 3)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH3,
+        name: 'CH3',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 4)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH4,
+        name: 'CH4',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 5)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH5,
+        name: 'CH5',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 6)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH6,
+        name: 'CH6',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 7)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH7,
+        name: 'CH7',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 8)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH8,
+        name: 'CH8',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 9)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH9,
+        name: 'CH9',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
+    else if (index + 1 == 10)
+      this.props.navigation.navigate('TestInfo', {
+        item: item.CH10,
+        name: 'CH10',
+        yourClass: this.props.profile.class,
+        userName: this.props.profile.name,
+        status: status
+      });
   };
 
   renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
-
+      {index === this.chapterDones[0] ||
+      index === this.chapterDones[1] ||
+      index === this.chapterDones[2] ||
+      index === this.chapterDones[3] ||
+      index === this.chapterDones[4] ||
+      index === this.chapterDones[5] ||
+      index === this.chapterDones[6] ||
+      index === this.chapterDones[7] ||
+      index === this.chapterDones[8] ||
+      index === this.chapterDones[9] ? 
       <View style={{ flexDirection: 'column' }}>
         <View style={{ flexDirection: 'row', marginBottom: 20 }}>
           <Image
@@ -47,11 +136,10 @@ class Subject extends Component {
             <Text style={styles.titleChapter}>Chương {index + 1}</Text>
             <Text style={styles.timeChapter}>20 phút</Text>
           </View>
-          <TouchableOpacity onPress={() => this.onPressChapter(item)}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index, 'inActive')}>
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
               <Image
                 style={styles.iconChapter}
-                //source={{ uri: item.photo_url }}
                 source={require('../../../assets/icons/play-button.png')}
               />
               <Text style={{ paddingTop: 15, color: '#FF7F2D', fontSize: 17 }}>
@@ -61,20 +149,48 @@ class Subject extends Component {
           </TouchableOpacity>
         </View>
       </View>
+      :
+      <View style={{ flexDirection: 'column' }}>
+        <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+          <Image
+            style={styles.iconChapter}
+            //source={{ uri: item.photo_url }}
+            source={require('../../../assets/icons/iconBook.png')}
+          />
+          <Text style={{ paddingTop: 15, color: '#16A831' }}>Giới thiệu</Text>
+        </View>
+        <View>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+            <Text style={styles.timeChapter}>20 phút</Text>
+          </View>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index, '')}>
+            <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+              <Image
+                style={styles.iconChapter}
+                source={require('../../../assets/icons/play-button.png')}
+              />
+              <Text style={{ paddingTop: 15, color: '#FF7F2D', fontSize: 17 }}>
+                Làm bài
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+      }
     </View>
   );
 
   render() {
-    const { navigation, value } = this.props;
-
-    const data = value.Chapters;
-
+    const { navigation, chapters, chapterDones} = this.props;
+    const data = chapters;
+    this.chapterDones = chapterDones;
     return (
       <View style={{ backgroundColor: 'white',flex:1 }}>
         <View style={styles.Menu}>
           <BackButton onPress={() => navigation.goBack()} />
           <View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.openDrawer()}>
               <Image
                 source={require('../../../assets/icons/menu.png')}
                 style={styles.iconMenu}
@@ -92,7 +208,7 @@ class Subject extends Component {
                   Bộ môn: Tin học ứng dụng
                 </Text>
                 <Text style={{ fontSize: 12, color: '#999' }}>
-                  Giảng viên: Tin học ứng dụng
+                  Giảng viên: Dân Quốc Cương
                 </Text>
               </View>
             </View>
@@ -100,7 +216,7 @@ class Subject extends Component {
             {/* Get Started view */}
             <View style={styles.rootContainer}>
               <ImageBackground
-                source={require('../../../assets/backgrHome1.png')}
+                source={require('../../../assets/backgrHome.jpg')}
                 style={styles.backgroundImage}
                 imageStyle={{ borderRadius: 15 }}
               />

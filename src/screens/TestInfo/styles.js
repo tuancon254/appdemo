@@ -92,6 +92,37 @@ const styles = StyleSheet.create({
     height: 22,
     width: 16,
   },
+
+  // style component start test
+  containerS: {
+    height: 50,
+    width: 200,
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 100,
+    borderColor: '#2cd18a',
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+
+  textS: {
+    fontSize: 16,
+    color: '#2cd18a'
+  },
+
+  containerS2: {
+    height: 120,
+    width: '80%',
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default styles;

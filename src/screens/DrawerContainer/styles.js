@@ -4,13 +4,15 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
+    paddingTop:30,
+    borderLeftWidth:1,
+    borderColor:'silver',
+    paddingLeft:20
   },
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    paddingHorizontal: 20
+    
   }
 });
 

@@ -10,7 +10,7 @@ export default class MenuButton extends React.Component {
         onPress={this.props.onPress}
         style={styles.btnClickContain}
         underlayColor="rgba(128, 128, 128, 0.1)"
-      >
+        >
         <View style={styles.btnContainer}>
           <Image source={this.props.source} style={styles.btnIcon} />
           <Text style={styles.btnText}>{this.props.title}</Text>

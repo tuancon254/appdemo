@@ -4,6 +4,7 @@ import SignOut from '../screens/SignOut';
 import HomeStackNavigator from './HomeStackNavigator';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import changePasswordStackNavigator from './changePasswordStackNavigator'
+import CustomDrawerContent from '../screens/DrawerContainer/DrawerContainer';
 
 
 const DrawerStackNavigator = createDrawerNavigator(
@@ -26,7 +27,7 @@ const DrawerStackNavigator = createDrawerNavigator(
         drawerLabel: 'Đăng xuất',
       },
     },
-    changePassword:{
+    changePassword: {
       screen: changePasswordStackNavigator,
       navigationOptions: {
         drawerLabel: 'Đổi mật khẩu',
@@ -34,14 +35,19 @@ const DrawerStackNavigator = createDrawerNavigator(
     }
   },
   {
-    navigationOptions:{
-      header:null
+    navigationOptions: {
+      header: null
+
     },
     drawerPosition: "right",
     drawerType: "slide",
-    drawerWidth:220,
-    overlayColor:1,
+    drawerWidth: 220,
+    overlayColor: 1,
+    contentComponent: CustomDrawerContent
   }
+
 );
+
+
 
 export default DrawerStackNavigator;

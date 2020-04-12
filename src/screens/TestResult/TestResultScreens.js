@@ -10,6 +10,9 @@ import BackButtonBlack from '../../components/BackButton/BackButtonBlack';
 
 
 class TestResultScreens extends Component {
+    static navigationOptions = {
+        header: null,
+      };
     constructor(props) {
         super(props);
     }
