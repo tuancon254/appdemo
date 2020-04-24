@@ -70,15 +70,10 @@ class TestInfoView extends Component {
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.title}</Text>
           <View>
-            <View>
-              <Text style={styles.category}>
-                {/*{getLessionName(item.LessionId).toUpperCase()}*/}
-              </Text>
-            </View>
+            <Text style={styles.infoDescriptionRecipe}>{item.content}</Text>
           </View>
-
           <View>
-            {item.status === 1?
+            {status.slice(1) === 'active' && item.status === 1 || status.slice(0,1) == '0' && status.slice(1) === 'inActive' ?
               <View style={{ alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Image
@@ -101,15 +96,7 @@ class TestInfoView extends Component {
                   </View>
                 </TouchableOpacity>
               </View>
-              : status === 'inActive' ? 
-              <View style={styles.containerS2}>
-                <Image
-                  style={{height: 130,width: 130,}}
-                  source={require('../../../assets/icons/iconManLock2.png')}
-                />
-                <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
-              </View>
-              :
+              : status.slice(1) === 'active' && item.status === 0 ? 
               <View style={styles.containerS2}>
                 <Image
                   style={{height: 130,width: 130,}}
@@ -117,12 +104,15 @@ class TestInfoView extends Component {
                 />
                 <Text style={styles.textS}>Chưa kích hoạt</Text>
               </View>
+              :
+              <View style={styles.containerS2}>
+                <Image
+                  style={{height: 130,width: 130,}}
+                  source={require('../../../assets/icons/iconManLock2.png')}
+                />
+                <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
+              </View>
             }
-            
-          </View>
-
-          <View>
-            <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
           </View>
         </View>
       </View>

@@ -36,6 +36,7 @@ class TestScreenView extends React.Component {
       userName: this.props.navigation.getParam('userName'),
       textStyle: styles.textStyle,
       ImgContainer: null,
+      fucus: false,
     };
   }
 
@@ -68,6 +69,7 @@ class TestScreenView extends React.Component {
   _keyExtractor = (item, index) => item.ID;
 
   _insertYourTrueAnswer = (ID, answer) =>{
+    this.setState({fucus: true});
     yourTrueAnswer.set(ID, answer);
   }
 
@@ -202,8 +204,9 @@ class TestScreenView extends React.Component {
                 <Text
                   style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
                 >
-                  1 Điểm
+                  {this.state.fucus === false ? '123' : '22'} 
                   </Text>
+                  
               </View>
             </View>
             <View style={{justifyContent:'center',flex:1}}>
@@ -224,7 +227,7 @@ class TestScreenView extends React.Component {
           {/* Answer view */}
           <View style={styles.AnswerContainer}>
             <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
-              <TouchableOpacity key={'A'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress = {() => this._insertYourTrueAnswer(item.ID, 'A')}>
+              <TouchableOpacity key={'A'} style={{backgroundColor: (this.state.fucus ? '#000' : '#fff')}} onPress = {() => this._insertYourTrueAnswer(item.ID, 'A')}>
                 <View style={styles.Answer}>
                   {item.status === 2 ?
                     <Image

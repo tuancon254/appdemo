@@ -1,5 +1,5 @@
 import React from 'react';
-import TestResultScreens from '../screens/TestResult/TestResultScreens';
+import TestResultContainer from '../screens/TestResult/TestResultContainer';
 import SignOut from '../screens/SignOut';
 import HomeStackNavigator from './HomeStackNavigator';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -13,7 +13,7 @@ const DrawerStackNavigator = createDrawerNavigator(
       },
     },
     TestResultScreens: {
-      screen: TestResultScreens,
+      screen: TestResultContainer,
       navigationOptions: {
         drawerLabel: 'Hồ sơ',
       },

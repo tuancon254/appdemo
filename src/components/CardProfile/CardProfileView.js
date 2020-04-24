@@ -28,7 +28,7 @@ class CardProfileView extends Component {
         </View>
 
         <Image
-          source={require('../../../assets/Avatar.png')}
+          source={require('../../../assets/avataStudent.png')}
           style={styles.avatar}
         />
       </View>
