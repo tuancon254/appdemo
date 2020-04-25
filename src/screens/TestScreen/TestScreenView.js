@@ -1,10 +1,6 @@
 import React from 'react';
 import { FlatList, Text, View, Image,Alert,BackHandler} from 'react-native';
 import styles from './styles';
-import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
-import { recipes } from '../../data/dataArrays';
-import { CheckBox } from 'react-native-elements';
-import { Answers, Question } from '../../data/dataArrays';
 import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
@@ -12,6 +8,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import firebase from '../../services/FirebaseConfig';
 import CountDown from 'react-native-countdown-component';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
 class TestScreenView extends React.Component {
 
@@ -69,7 +66,7 @@ class TestScreenView extends React.Component {
   _keyExtractor = (item, index) => item.ID;
 
   _insertYourTrueAnswer = (ID, answer) =>{
-    this.setState({fucus: true});
+    answer = (answer == 0) ? 'A' : (answer == 1) ? 'B' : (answer == 2) ? 'C' : 'D';
     yourTrueAnswer.set(ID, answer);
   }
 
@@ -186,6 +183,12 @@ class TestScreenView extends React.Component {
   }
 
   _renderItem = ({ item }) => {
+    var radio_props = [
+          {label: 'A. '+ item.A, value: item.ID },
+          {label: 'B. '+ item.B, value: item.ID },
+          {label: 'C. '+ item.C, value: item.ID },
+          {label: 'D. '+ item.D, value: item.ID }
+        ];
     return (
       <View style={styles.Main}>
         <View style={styles.MainContainer}>
@@ -219,7 +222,6 @@ class TestScreenView extends React.Component {
                   style={{ width: 90, height: 90 }}
                 /> : null
                 }
-
               </View>
             </View>
           </View>
@@ -227,7 +229,18 @@ class TestScreenView extends React.Component {
           {/* Answer view */}
           <View style={styles.AnswerContainer}>
             <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
-              <TouchableOpacity key={'A'} style={{backgroundColor: (this.state.fucus ? '#000' : '#fff')}} onPress = {() => this._insertYourTrueAnswer(item.ID, 'A')}>
+            <RadioForm
+              radio_props={radio_props}
+              initial={0}
+              onPress={(value, label) => {
+                console.log(value + label);
+                this._insertYourTrueAnswer(value, label);
+                }}
+              isSelected={false}
+              selectedButtonColor={'#50C900'}
+            />
+              {/*
+              <TouchableOpacity key={'A'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress = {() => this._insertYourTrueAnswer(item.ID, 'A')}>
                 <View style={styles.Answer}>
                   {item.status === 2 ?
                     <Image
@@ -269,6 +282,7 @@ class TestScreenView extends React.Component {
                   }
                 </View>
               </TouchableOpacity>
+              */}
             </View>
           </View>
         </View>

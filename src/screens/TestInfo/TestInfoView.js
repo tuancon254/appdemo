@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
-import {
-  getIngredientName,
-  getCategoryName,
-  getCategoryById,
-  getLessionName,
-} from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
 import {
   TouchableOpacity,
@@ -28,12 +22,6 @@ class TestInfoView extends Component {
       </View>
     </TouchableHighlight>
   );
-
-  onPressIngredient = item => {
-    const name = getIngredientName(item);
-    let ingredient = item;
-    this.props.navigation.navigate('Ingredient', { ingredient, name });
-  };
 
   // trộn câu hỏi với thuật toán Fisher–Yates shuffle
   shuffle(array) {
