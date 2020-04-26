@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Text, View, Image, Alert, BackHandler } from 'react-native';
+import { FlatList, Text, View, Image, Alert, BackHandler, Button } from 'react-native';
 import styles from './styles';
 import { getIngredientName, getAllIngredients } from '../../data/MockDataAPI';
 import { recipes } from '../../data/dataArrays';
@@ -7,11 +7,15 @@ import { CheckBox } from 'react-native-elements';
 import { Answers, Question } from '../../data/dataArrays';
 import {
   TouchableOpacity,
+  TouchableWithoutFeedback
 } from 'react-native-gesture-handler';
 import BackButton from '../../components/BackButton/BackButton';
 import Pagination, { Icon, Dot } from 'react-native-pagination';
 import firebase from '../../services/FirebaseConfig';
 import CountDown from 'react-native-countdown-component';
+import { ButtonGroup } from 'react-native-elements'
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+
 
 class TestScreenView extends React.Component {
 
@@ -31,13 +35,21 @@ class TestScreenView extends React.Component {
     global.scores = 0;
     global.timer = 0;
 
+
     this.state = {
       items: this.props.questions,
       chapterName: this.props.navigation.getParam('chapterName'),
       userName: this.props.navigation.getParam('userName'),
       textStyle: styles.textStyle,
       ImgContainer: null,
+      activeAnswer: styles.StyleAnswer,
+      checked: false,
+      isActive: null,
+      isActives: null,
+      isQuestionActive: null,
+      value3Index: null,
     };
+    this.updateIndex = this.updateIndex.bind(this)
   }
 
   componentDidMount() {
@@ -66,7 +78,12 @@ class TestScreenView extends React.Component {
     return true;
   }
 
-  _keyExtractor = (item, index) => item.ID;
+  _keyExtractor = (item, index) => index;
+
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex })
+  }
+
 
   _insertYourTrueAnswer = (ID, answer) => {
     yourTrueAnswer.set(ID, answer);
@@ -184,97 +201,197 @@ class TestScreenView extends React.Component {
     this.setState({ viewableItems })
   }
 
-  _renderItem = ({ item }) => {
-    return (
-      <View style={styles.Main}>
-        <View style={styles.MainContainer}>
-          <View style={styles.Questioncontainer}>
-            <View
-              style={{
-                justifyContent: 'space-between',
-                flexDirection: 'row',
-                marginBottom: 10,
-              }}
-            >
-              <View style={styles.q1}>
-                <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{item.index + 1}.</Text>
+
+  render() {
+
+    const _renderItem = ({ item, index }) => {
+      // const datas = [item.A, item.B, item.C, item.D]
+
+      // var radio_props = [
+      //   { label: item.A, value: 'A' },
+      //   { label: item.B, value: 'B' },
+      //   { label: item.C, value: 'C' },
+      //   { label: item.D, value: 'D' }
+      // ];
+      // console.log(item)
+      // const { isActive, isActives } = this.state;
+      // const i = index;
+      return (
+        <View style={styles.Main}>
+          <View style={styles.MainContainer}>
+            <View style={styles.Questioncontainer}>
+              <View
+                style={{
+                  justifyContent: 'space-between',
+                  flexDirection: 'row',
+                  marginBottom: 10,
+                }}
+              >
+                <View style={styles.q1}>
+                  <Text style={{ fontWeight: 'bold', fontSize: 22 }}>{index + 1}.</Text>
+                </View>
+                <View style={styles.score}>
+                  <Text
+                    style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
+                  >
+                    1 Điểm
+                    </Text>
+                </View>
               </View>
-              <View style={styles.score}>
-                <Text
-                  style={{ color: '#FF7F2D', marginLeft: 8, marginRight: 8 }}
-                >
-                  1 Điểm
+              <View style={{ justifyContent: 'center', flex: 1 }}>
+                <View style={styles.Question}>
+                  <Text style={styles.question}>
+                    {item.question}
                   </Text>
+                  {item.status === 1 ? <Image
+                    source={{ uri: item.link }}
+                    style={{ width: 90, height: 90 }}
+                  /> : null
+                  }
+
+                </View>
               </View>
             </View>
-            <View style={{ justifyContent: 'center', flex: 1 }}>
-              <View style={styles.Question}>
-                <Text style={styles.question}>
-                  {item.question}
-                </Text>
-                {item.status === 1 ? <Image
-                  source={{ uri: item.link }}
-                  style={{ width: 90, height: 90 }}
-                /> : null
-                }
 
+            {/* Answer view */}
+            <View style={styles.AnswerContainer}>
+              <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
+                {/* {datas.map((data,index) => {
+                  return (
+                    <TouchableOpacity
+                      
+                      style={i  ? styles.StyleAnswer : isActive === index ? styles.activeAnswer : styles.StyleAnswer}
+                      onPress={() => {
+                        this._insertYourTrueAnswer(item.ID, `${data[index]}`);
+                        this.setState({isActive:index})
+                        this.setState({isActives:i})
+                      }}>
+
+                      <View style={styles.Answer}>
+                        {item.status === 2
+                          ?
+                          <Image
+                            source={{ uri: data }}
+                            style={{ width: 50, height: 50 }}
+                          /> :
+                          <Text style={styles.text}>{data}</Text>}
+                      </View>
+                    </TouchableOpacity>
+                  )
+                })} */}
+                {/* <RadioForm
+
+                  animation={true}
+                >
+                 
+                  {
+                    radio_props.map((obj, i) => (
+                      <RadioButton key={i} >
+                    
+                        <RadioButtonInput
+                          obj={obj}
+                          index={i}
+                          isSelected={this.state.value3Index === i}
+                          onPress={
+                            () => {
+                              this._insertYourTrueAnswer(item.ID, 'A');
+                              this.setState({ value3Index: i })
+                            }
+                          }
+                          borderWidth={1}
+                          buttonInnerColor={'#e74c3c'}
+                          buttonOuterColor={index ? this.state.value3Index === i ? '#2196f3' : '#000':null}
+                          buttonSize={8}
+                          buttonOuterSize={16}
+                          buttonStyle={{}}
+                          buttonWrapStyle={{ marginLeft: 10 }}
+                        />
+
+                        <RadioButtonLabel
+                          obj={obj}
+                          index={i}
+                          labelHorizontal={true}
+                          onPress={
+                            () => {
+                              this._insertYourTrueAnswer(item.ID, 'A');
+                              this.setState({ value3Index: i})
+
+                            }
+                          }
+                          labelStyle={{ fontSize: 20, color: '#2ecc71' }}
+                          labelWrapStyle={{}}
+                        />
+                      </RadioButton>
+                    ))
+                  }
+                </RadioForm> */}
+                <TouchableOpacity
+                  key={'A'}
+                  style={item.status === 2 ? styles.StyleImgAnswer : this.state.activeAnswer}
+                  onPress={
+                    () => {
+                      this._insertYourTrueAnswer(item.ID, 'A');
+                      // this.setState({activeAnswer: styles.activeAnswer})
+                    }
+                  }
+                >
+                  <View style={styles.Answer}>
+                    {item.status === 2 ?
+                      <Image
+                        source={{ uri: item.A }}
+                        style={{ width: 90, height: 90 }}
+                      /> : <Text style={styles.text}>{item.A}</Text>
+                    }
+
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  key={'B'}
+                  style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer}
+                  onPress={() => this._insertYourTrueAnswer(item.ID, 'B')}
+                >
+                  <View style={styles.Answer}>
+                    {item.status === 2 ?
+                      <Image
+                        source={{ uri: item.B }}
+                        style={{ width: 90, height: 90 }}
+                      /> : <Text style={styles.text}>{item.B}</Text>
+                    }
+
+
+                  </View>
+                </TouchableOpacity>
               </View>
-            </View>
-          </View>
+              <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
+                <TouchableOpacity key={'C'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'C')}>
+                  <View style={styles.Answer}>
+                    {item.status === 2 ?
+                      <Image
+                        source={{ uri: item.C }}
+                        style={{ width: 90, height: 90 }}
+                      /> : <Text style={styles.text}>{item.C}</Text>
+                    }
 
-          {/* Answer view */}
-          <View style={styles.AnswerContainer}>
-            <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
-              <TouchableOpacity key={'A'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'A')}>
-                <View style={styles.Answer}>
-                  {item.status === 2 ?
-                    <Image
-                      source={{ uri: item.A }}
-                      style={{ width: 90, height: 90 }}
-                    /> : <Text style={styles.text}>{item.A}</Text>
-                  }
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity key={'B'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'B')}>
-                <View style={styles.Answer}>
-                  {item.status === 2 ?
-                    <Image
-                      source={{ uri: item.B }}
-                      style={{ width: 90, height: 90 }}
-                    /> : <Text style={styles.text}>{item.B}</Text>
-                  }
-                </View>
-              </TouchableOpacity>
-            </View>
-            <View style={item.status === 2 ? styles.imgContainer : this.state.ImgContainer}>
-              <TouchableOpacity key={'C'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'C')}>
-                <View style={styles.Answer}>
-                  {item.status === 2 ?
-                    <Image
-                      source={{ uri: item.C }}
-                      style={{ width: 90, height: 90 }}
-                    /> : <Text style={styles.text}>{item.C}</Text>
-                  }
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity key={'D'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'D')}>
-                <View style={styles.Answer}>
-                  {item.status === 2 ?
-                    <Image
-                      source={{ uri: item.D }}
-                      style={{ width: 90, height: 90 }}
-                    /> : <Text style={styles.text}>{item.D}</Text>
-                  }
-                </View>
-              </TouchableOpacity>
+
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity key={'D'} style={item.status === 2 ? styles.StyleImgAnswer : styles.StyleAnswer} onPress={() => this._insertYourTrueAnswer(item.ID, 'D')}>
+                  <View style={styles.Answer}>
+                    {item.status === 2 ?
+                      <Image
+                        source={{ uri: item.D }}
+                        style={{ width: 90, height: 90 }}
+                      /> : <Text style={styles.text}>{item.D}</Text>
+                    }
+
+                  </View>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    )
-  };
-
-  render() {
+      )
+    };
     this.state.items.forEach(element => {
       myTrueAnswer.set(element.ID, element.true)
     });
@@ -349,9 +466,11 @@ class TestScreenView extends React.Component {
               onViewableItemsChanged={this.onViewableItemsChanged}
               keyExtractor={this._keyExtractor}
               ref={r => this.refs = r}
-              renderItem={this._renderItem}
+              renderItem={_renderItem}
               pagingEnabled={true}
-            /></View>
+
+            />
+          </View>
         </View>
       </View>
     );

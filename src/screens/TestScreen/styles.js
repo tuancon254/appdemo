@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   AnswerContainer: {
+ 
   },
   imgContainer:{
     flexDirection:'row',
@@ -69,8 +70,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#BFBFBF',
     borderRadius: 12,
-    alignItems: 'center',
     justifyContent:'center',
+    alignItems:'center'
+    
   },
   StyleImgAnswer:{
     marginTop: 15,
@@ -89,13 +91,16 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 5,
     paddingBottom: 5,
-    paddingRight: 20,
+    paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',
+    justifyContent:'space-between',
+    
   },
   text: {
     fontSize: 17,
     fontWeight: 'bold',
+    alignSelf:'center'
   },
   text1: {
     fontSize: 24,
@@ -226,6 +231,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 1,
     backgroundColor:'white',
+  },
+  activeAnswer:{
+    marginTop: 7,
+    marginBottom: 7,
+    minHeight: 59,
+    maxHeight: 95,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#FF7F2D',
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent:'center',
+    // backgroundColor:'#FF7F2D',
   }
 });
 

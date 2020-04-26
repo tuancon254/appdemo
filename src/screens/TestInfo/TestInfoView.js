@@ -57,25 +57,25 @@ class TestInfoView extends Component {
     const status = navigation.getParam('status');
     return (
       <View style={styles.container}>
-        <View style={{flex:40}}>
-        <ImageBackground source={require('../../../assets/images/backgro.png')} style={{width:"100%",flex:1}} imageStyle={{borderBottomLeftRadius:20,borderBottomRightRadius:20}}>
-        <View style={styles.Menu}>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.goBack()}
-            style={styles.btnContainer}>
-            <Image
-              source={require('../../../assets/icons/White1.png')}
-              style={styles.btnIcon}
-            />
-          </TouchableOpacity>
-        </View>
-        </ImageBackground></View>
+        <View style={{ flex: 40 }}>
+          <ImageBackground source={require('../../../assets/images/backgro.png')} style={{ width: "100%", flex: 1 }} imageStyle={{ borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
+            <View style={styles.Menu}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.goBack()}
+                style={styles.btnContainer}>
+                <Image
+                  source={require('../../../assets/icons/White1.png')}
+                  style={styles.btnIcon}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground></View>
         <View style={styles.infoRecipeContainer}>
 
           <Text style={styles.infoRecipeName}>{item.title}</Text>
 
 
-          <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Image
               style={styles.infoPhoto}
               source={require('../../../assets/icons/time.png')}
@@ -84,7 +84,7 @@ class TestInfoView extends Component {
           </View>
 
           <View>
-            {item.status === 1?
+            {item.status === 1 ?
               <View style={{ alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Image
@@ -107,24 +107,24 @@ class TestInfoView extends Component {
                   </View>
                 </TouchableOpacity>
               </View>
-              : status === 'inActive' ? 
-              <View style={styles.containerS2}>
-                <Image
-                  style={{height: 130,width: 130,}}
-                  source={require('../../../assets/icons/iconManLock2.png')}
-                />
-                <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
-              </View>
-              :
-              <View style={styles.containerS2}>
-                <Image
-                  style={{height: 130,width: 130,}}
-                  source={require('../../../assets/icons/iconManLock1.png')}
-                />
-                <Text style={styles.textS}>Chưa kích hoạt</Text>
-              </View>
+              : status === 'inActive' ?
+                <View style={styles.containerS2}>
+                  <Image
+                    style={{ height: 130, width: 130, }}
+                    source={require('../../../assets/icons/iconManLock2.png')}
+                  />
+                  <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
+                </View>
+                :
+                <View style={styles.containerS2}>
+                  <Image
+                    style={{ height: 130, width: 130, }}
+                    source={require('../../../assets/icons/iconManLock1.png')}
+                  />
+                  <Text style={styles.textS}>Chưa kích hoạt</Text>
+                </View>
             }
-            
+
           </View>
 
           <View>
