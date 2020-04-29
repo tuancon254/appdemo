@@ -20,7 +20,6 @@ import styles from './styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import uuid from 'uuid/v4';
 import firebase from '../../services/FirebaseConfig';
-import { DrawerActions } from 'react-navigation-drawer';
 
 class HomeView extends Component {
   constructor(props) {
@@ -29,13 +28,16 @@ class HomeView extends Component {
     global.chapters = new Array();
     this.state = {
       email: '',
-      profiles: '',
     };
   }
 
   // onPress Chapter
   onPressChapter = (item, index, status) => {
-    console.log('status' + status);
+    //console.log("DKM = "+this.chapterDones[index]);
+    if(this.chapterDones[index] != undefined){
+      //console.log("vào")
+      status = this.chapterDones[index].slice(2, 3) + status
+    }
     if (index + 1 == 1)
       this.props.navigation.navigate('TestInfo', {
         item: item.CH1,
@@ -121,99 +123,97 @@ class HomeView extends Component {
   // component Chapter
   renderChapter = ({ item, index }) => (
     <View>
-      {index === this.chapterDones[0] ||
-        index === this.chapterDones[1] ||
-        index === this.chapterDones[2] ||
-        index === this.chapterDones[3] ||
-        index === this.chapterDones[4] ||
-        index === this.chapterDones[5] ||
-        index === this.chapterDones[6] ||
-        index === this.chapterDones[7] ||
-        index === this.chapterDones[8] ||
-        index === this.chapterDones[9] ? (
-          <View></View>
-        ) : (
-          <View style={styles.wellcome}>
-            <TouchableOpacity onPress={() => this.onPressChapter(item, index, '')}>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}>
-                  <Image
-                    style={styles.iconChapter}
-                    source={require('../../../assets/icons/C2.png')}
-                  />
-                </View>
-                <View style={{ flex: 3, flexDirection: 'row' }}>
-                  <View style={{ flex: 1.5, flexDirection: 'column' }}>
-                    <Text style={styles.titleChapter}>Chương {index + 1}</Text>
-                    <Text style={styles.timeChapter}>10 phút</Text>
-                  </View>
-                  <Image
-                    style={styles.iconChapter}
-                    source={require('../../../assets/icons/pass.png')}
-                  />
-                </View>
+      {index == String(this.chapterDones[0]).slice(0, 1) ||
+      index == String(this.chapterDones[1]).slice(0, 1) ||
+      index == String(this.chapterDones[2]).slice(0, 1) ||
+      index == String(this.chapterDones[3]).slice(0, 1) ||
+      index == String(this.chapterDones[4]).slice(0, 1) ||
+      index == String(this.chapterDones[5]).slice(0, 1) ||
+      index == String(this.chapterDones[6]).slice(0, 1) ||
+      index == String(this.chapterDones[7]).slice(0, 1) ||
+      index == String(this.chapterDones[8]).slice(0, 1) ||
+      index == String(this.chapterDones[9]).slice(0, 1) ? (
+        <View></View>
+      ) : (
+        <View style={styles.wellcome}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index,'active')}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/C2.png')}
+                />
               </View>
-            </TouchableOpacity>
-          </View>
-        )}
+              <View style={{ flex: 3, flexDirection: 'row' }}>
+                <View style={{ flex: 1.5, flexDirection: 'column' }}>
+                  <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+                  <Text style={styles.timeChapter}>10 phút</Text>
+                </View>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/pass.png')}
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 
   // component renderChapterDone
   renderChapterDone = ({ item, index }) => (
     <View>
-      {index === this.chapterDones[0] ||
-        index === this.chapterDones[1] ||
-        index === this.chapterDones[2] ||
-        index === this.chapterDones[3] ||
-        index === this.chapterDones[4] ||
-        index === this.chapterDones[5] ||
-        index === this.chapterDones[6] ||
-        index === this.chapterDones[7] ||
-        index === this.chapterDones[8] ||
-        index === this.chapterDones[9] ? (
-          <View style={styles.wellcomeDone}>
-            <TouchableOpacity onPress={() => this.onPressChapter(item, index, 'inActive')}>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}>
-                  <Image
-                    style={styles.iconChapter}
-                    source={require('../../../assets/icons/C1.png')}
-                  />
-                </View>
-                <View style={{ flex: 3, flexDirection: 'row' }}>
-                  <View style={{ flex: 1.5, flexDirection: 'column' }}>
-                    <Text style={styles.titleChapter}>Chương {index + 1}</Text>
-                    <Text style={styles.timeChapter}>10 phút</Text>
-                  </View>
-                  <Image
-                    style={styles.iconChapter}
-                    source={require('../../../assets/icons/pass.png')}
-                  />
-                </View>
+      {index == String(this.chapterDones[0]).slice(0, 1) ||
+      index == String(this.chapterDones[1]).slice(0, 1) ||
+      index == String(this.chapterDones[2]).slice(0, 1) ||
+      index == String(this.chapterDones[3]).slice(0, 1) ||
+      index == String(this.chapterDones[4]).slice(0, 1) ||
+      index == String(this.chapterDones[5]).slice(0, 1) ||
+      index == String(this.chapterDones[6]).slice(0, 1) ||
+      index == String(this.chapterDones[7]).slice(0, 1) ||
+      index == String(this.chapterDones[8]).slice(0, 1) ||
+      index == String(this.chapterDones[9]).slice(0, 1) ? (
+        <View style={styles.wellcomeDone}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index,'inActive')}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/C1.png')}
+                />
               </View>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <View></View>
-        )}
+              <View style={{ flex: 3, flexDirection: 'row' }}>
+                <View style={{ flex: 1.5, flexDirection: 'column' }}>
+                  <Text style={styles.titleChapter}>Chương {index + 1}</Text>
+                  <Text style={styles.timeChapter}>10 phút</Text>
+                </View>
+                <Image
+                  style={styles.iconChapter}
+                  source={require('../../../assets/icons/pass.png')}
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View></View>
+      )}
     </View>
   );
 
   onPressGetStarted = () => {
-    return this.props.navigation.navigate('SubjectContainer', { chapters: this.chapters, profile: this.props.profile, chapterDones: chapterDones });
+    return this.props.navigation.navigate('SubjectContainer', {chapters: this.chapters, profile: this.props.profile, chapterDones: chapterDones});
   };
 
   componentDidMount() {
     const currentUser = firebase.auth().currentUser;
-    // console.log(firebase.auth())
   }
+
   render() {
     const { navigation, chapters, profile, chapterDone } = this.props;
     this.chapterDones = chapterDones;
     this.chapters = chapters;
-    console.log(profile)
-
     return (
       <View style={{ backgroundColor: 'white' }}>
         <ScrollView>
@@ -225,9 +225,7 @@ class HomeView extends Component {
                 {profile?.name}
               </Text>
             </View>
-            <TouchableOpacity onPress={() => {
-              navigation.openDrawer();
-            }}>
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Image
                 source={require('../../../assets/icons/menu.png')}
                 style={styles.iconMenu}

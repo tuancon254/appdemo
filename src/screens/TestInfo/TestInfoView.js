@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableHighlight, TouchableOpacity, ImageBackground } from 'react-native';
+import { Text, View, Image, TouchableHighlight, ImageBackground } from 'react-native';
 import styles from './styles';
-import {
-  getIngredientName,
-  getCategoryName,
-  getCategoryById,
-  getLessionName,
-} from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
-// import {
-//   TouchableOpacity,
-// } from 'react-native-gesture-handler';
+import {
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 
 class TestInfoView extends Component {
   constructor(props) {
@@ -28,12 +22,6 @@ class TestInfoView extends Component {
       </View>
     </TouchableHighlight>
   );
-
-  onPressIngredient = item => {
-    const name = getIngredientName(item);
-    let ingredient = item;
-    this.props.navigation.navigate('Ingredient', { ingredient, name });
-  };
 
   // trộn câu hỏi với thuật toán Fisher–Yates shuffle
   shuffle(array) {
@@ -71,20 +59,14 @@ class TestInfoView extends Component {
             </View>
           </ImageBackground></View>
         <View style={styles.infoRecipeContainer}>
-
           <Text style={styles.infoRecipeName}>{item.title}</Text>
-
-
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image
-              style={styles.infoPhoto}
-              source={require('../../../assets/icons/time.png')}
-            />
-            <Text style={styles.infoRecipe}>10 phút </Text>
-          </View>
-
           <View>
-            {item.status === 1 ?
+          {status.slice(1) === 'active' && item.status === 1 || status.slice(0, 1) == '0' && status.slice(1) === 'inActive' ?
+            <Text style={styles.infoDescriptionRecipe}>{item.content}</Text>
+           :null}
+          </View>
+          <View>
+            {status.slice(1) === 'active' && item.status === 1 || status.slice(0, 1) == '0' && status.slice(1) === 'inActive' ?
               <View style={{ alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Image
@@ -107,15 +89,7 @@ class TestInfoView extends Component {
                   </View>
                 </TouchableOpacity>
               </View>
-              : status === 'inActive' ?
-                <View style={styles.containerS2}>
-                  <Image
-                    style={{ height: 130, width: 130, }}
-                    source={require('../../../assets/icons/iconManLock2.png')}
-                  />
-                  <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
-                </View>
-                :
+              : status.slice(1) === 'active' && item.status === 0 ?
                 <View style={styles.containerS2}>
                   <Image
                     style={{ height: 130, width: 130, }}
@@ -123,12 +97,15 @@ class TestInfoView extends Component {
                   />
                   <Text style={styles.textS}>Chưa kích hoạt</Text>
                 </View>
+                :
+                <View style={styles.containerS2}>
+                  <Image
+                    style={{ height: 130, width: 130, }}
+                    source={require('../../../assets/icons/iconManLock2.png')}
+                  />
+                  <Text style={styles.textS}>Bạn đã làm đủ số lần quy định, vui lòng liên hệ với giáo viên bộ môn để được hỗ trợ!</Text>
+                </View>
             }
-
-          </View>
-
-          <View>
-            <Text style={styles.infoDescriptionRecipe}>{item.description}</Text>
           </View>
         </View>
       </View>

@@ -49,13 +49,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     textAlign:'center',
-    marginBottom:5
   },
   Questioncontainer: {
-    flex: 1
+    flex: 1,
   },
   AnswerContainer: {
- 
+   
   },
   imgContainer:{
     flexDirection:'row',
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     fontWeight: 'bold',
-    alignSelf:'center'
+    
   },
   text1: {
     fontSize: 24,

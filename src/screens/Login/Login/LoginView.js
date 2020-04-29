@@ -6,8 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
-  KeyboardAvoidingView,
-  Alert
+  KeyboardAvoidingView
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../../services/FirebaseConfig';
@@ -53,15 +52,15 @@ class LoginView extends React.Component {
     return (
       <Image source={require('../../../../assets/icons/visibility.png')} style={{ width: 24, height: 20, borderWidth: 1, marginRight: 4, marginTop: 8 }} />
     )
-  } 
-  
+  }
 
   render() {
-    const {email, password} = this.state;
-    const { logging, onPressLogin,onPressForgot,errorMessage} = this.props;
+    const {errorMessage, email, password } = this.state;
+    const { logging, onPressLogin,onPressForgot } = this.props;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="height">
+
         {/* logo  */}
         <View style={styles.logoContainer}>
           <Image source={Resource.logo} style={styles.logo} />
@@ -125,10 +124,10 @@ class LoginView extends React.Component {
             </View>
 
           </View>
-          <View style={{}}>
+          <View style={{ marginTop: 32 }}>
             <View style={{ marginBottom: 10 }}>
               {errorMessage && (
-                <Text style={{ color: '#E9446A',fontSize:12 }}>{errorMessage} Try Again!</Text>
+                <Text style={{ color: '#E9446A' }}>{errorMessage} Try Again!</Text>
               )}
             </View>
             <TouchableOpacity

@@ -28,6 +28,11 @@ class Subject extends Component {
   }
 
   onPressChapter = ( item, index, status ) => {
+    console.log("DDDDĐD = "+this.chapterDones[index]);
+    if(this.chapterDones[index] != undefined){
+      console.log("vào")
+        status = this.chapterDones[index].slice(2, 3) + status
+    }
     if (index + 1 == 1)
       this.props.navigation.navigate('TestInfo', {
         item: item.CH1,
@@ -112,16 +117,16 @@ class Subject extends Component {
 
   renderChapter = ({ item, index }) => (
     <View style={styles.wellcome}>
-      {index === this.chapterDones[0] ||
-      index === this.chapterDones[1] ||
-      index === this.chapterDones[2] ||
-      index === this.chapterDones[3] ||
-      index === this.chapterDones[4] ||
-      index === this.chapterDones[5] ||
-      index === this.chapterDones[6] ||
-      index === this.chapterDones[7] ||
-      index === this.chapterDones[8] ||
-      index === this.chapterDones[9] ? 
+      {index == String(this.chapterDones[0]).slice(0, 1) ||
+      index == String(this.chapterDones[1]).slice(0, 1) ||
+      index == String(this.chapterDones[2]).slice(0, 1) ||
+      index == String(this.chapterDones[3]).slice(0, 1) ||
+      index == String(this.chapterDones[4]).slice(0, 1) ||
+      index == String(this.chapterDones[5]).slice(0, 1) ||
+      index == String(this.chapterDones[6]).slice(0, 1) ||
+      index == String(this.chapterDones[7]).slice(0, 1) ||
+      index == String(this.chapterDones[8]).slice(0, 1) ||
+      index == String(this.chapterDones[9]).slice(0, 1) ? 
       <View style={{ flexDirection: 'column' }}>
         <View style={{ flexDirection: 'row', marginBottom: 20 }}>
           <Image
@@ -164,7 +169,7 @@ class Subject extends Component {
             <Text style={styles.titleChapter}>Chương {index + 1}</Text>
             <Text style={styles.timeChapter}>20 phút</Text>
           </View>
-          <TouchableOpacity onPress={() => this.onPressChapter(item, index, '')}>
+          <TouchableOpacity onPress={() => this.onPressChapter(item, index, 'active')}>
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
               <Image
                 style={styles.iconChapter}
@@ -186,7 +191,7 @@ class Subject extends Component {
     const data = chapters;
     this.chapterDones = chapterDones;
     return (
-      <View style={{ backgroundColor: 'white',flex:1 }}>
+      <View style={{ backgroundColor: 'white' }}>
         <View style={styles.Menu}>
           <BackButton onPress={() => navigation.goBack()} />
           <View>
@@ -199,7 +204,6 @@ class Subject extends Component {
           </View>
         </View>
         <View>
-
           <ScrollView>
             {/* Header view */}
             <View style={styles.header}>
@@ -235,7 +239,8 @@ class Subject extends Component {
             <View>
               <Text style={styles.feedback}>Kiểm tra</Text>
             </View>
-            <View style={{paddingBottom:100}}>
+            
+            <View style={{paddingBottom:160}}>
             <FlatList
               showsVerticalScrollIndicator={false}
               numColumns={2}

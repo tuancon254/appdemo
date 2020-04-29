@@ -7,6 +7,7 @@ import TestScreen from '../screens/TestScreen';
 import TestResultScreens from '../screens/TestResult/TestResultScreens';
 import SignOut from '../screens/SignOut'
 import changePasswordStackNavigator from '../navigations/changePasswordStackNavigator'
+import TestResultContainer from '../screens/TestResult/TestResultContainer';
 
 
 const HomeStackNavigator = createStackNavigator(
@@ -15,7 +16,7 @@ const HomeStackNavigator = createStackNavigator(
     SubjectContainer,
     TestInfo,
     TestScreen,
-    TestResultScreens,
+    TestResultContainer,
     SignOut,
     changePassword: changePasswordStackNavigator
   },

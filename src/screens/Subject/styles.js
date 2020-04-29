@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width:
       (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) /
       recipeNumColums,
-    height: RECIPE_ITEM_HEIGHT + 75,
+    height: RECIPE_ITEM_HEIGHT + 70,
     marginTop: 20,
     backgroundColor: "#F2FCF2",
     marginBottom:2,

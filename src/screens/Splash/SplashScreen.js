@@ -22,7 +22,6 @@ class SplashScreen extends React.Component {
     });
   }
 
-  
   render() {
     return (
       <View style={styles.container}>

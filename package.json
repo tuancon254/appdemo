@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
     "@react-native-community/masked-view": "^0.1.7",
+    "@react-navigation/native": "^5.1.4",
     "expo": "~36.0.0",
     "firebase": "^7.6.1",
     "install": "^0.13.0",
@@ -24,6 +25,8 @@
     "react-native-gesture-handler": "^1.6.0",
     "react-native-image-picker": "^2.3.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-multichoice-flatlist": "^1.0.9",
+    "react-native-multiple-choice-picker": "^1.0.6",
     "react-native-pagination": "^1.5.5",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",

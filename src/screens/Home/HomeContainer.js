@@ -127,8 +127,10 @@ class HomeContainer extends Component {
             .child('/TestInfo/'+index+'/'+'CH'+(index+1)+'/'+this.state.profile.class+'/'+ uid)
             .on('value', snap => {
               if(snap.val() != null){
-                chapterDones.push(index);
+                chapterDones.push(index + '-' + snap.val().status);
+                //console.log("vao day");
               }
+              //console.log("DKM = "+'/TestInfo/'+index+'/'+'CH'+(index+1)+'/'+this.state.profile.class+'/');
             });
         }
         this.setState({ chapterDone: chapterDones });

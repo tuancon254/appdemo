@@ -11,7 +11,6 @@ class LoginContainer extends Component {
     global.uid = '';
     this.state = {
       logging: false,
-      errorMessages: null
     };
   }
 
@@ -34,23 +33,8 @@ class LoginContainer extends Component {
       try {
         await firebase
           .auth()
-          .signInWithEmailAndPassword(email, password)
-          .catch((error) => { this.setState({ errorMessages: error.message }) })
+          .signInWithEmailAndPassword(email, password);
         this.setState({ logging: false });
-
-//         if (firebase.auth().additionalUserInfo.isNewUser === true) {
-//           this.props.navigation.navigate('changePasswordStackNavigator', {
-//             email: result.user.email,
-//           });
-//         }
-//         else {
-//           this.props.navigation.navigate('RootStackNavigator', {
-//             email: result.user.email,
-//           });
-//         }
-//       } catch (error) {
-//         alert(e.message);
-
         this.uid = firebase.auth().currentUser.uid;
         this.getProfile16KX1();
       } catch (e) {
@@ -67,7 +51,6 @@ class LoginContainer extends Component {
           ],
           {cancelable: true},
         );
-
         this.setState({ logging: false });
       }
     }
@@ -175,17 +158,14 @@ class LoginContainer extends Component {
     }
   };
 
-  onPressForgot = () => {
-    this.props.navigation.navigate('ForgotPassword')
-  }
   render() {
-    const { logging } = this.state.logging;
+    const { logging } = this.state;
+
     return (
       <LoginView
         logging={logging}
         onPressLogin={this.onPressLogin}
         onPressForgot={this.onPressForgot}
-        errorMessage={this.state.errorMessages}
       />
     );
   }

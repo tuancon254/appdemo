@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { FlatList, Text, View, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
-import demoData from './demoData';
 import ScoreItem from '../../components/ScoreItem';
 import CardProfile from '../../components/CardProfile';
 import BackButton from '../../components/BackButton/BackButton';
@@ -38,8 +37,7 @@ componentDidMount(){
     }}
 
     render() {
-        // console.log(this.state.Score)
-        const { navigation } = this.props
+        const { navigation, profile, chapterDone, averageScore } = this.props;
         return (
             <View style={styles.container}>
                 <View style={{ flex: 45 }}>
@@ -59,18 +57,18 @@ componentDidMount(){
                     </View>
 
                     <CardProfile
-                        fullName={'Trần Thị Hồng Ngọc'}
-                        studentId={'17103823412'}
-                        className={'17CN'}
+                        fullName={profile.name}
+                        studentId={profile.ID}
+                        className={String(profile.class).slice(1)}
                     /></View>
                 <View style={{ flex: 55, marginBottom: 20, marginTop: 20 }}>
                     <View style={styles.ResultContainer}>
                         <Text style={styles.Average}>Điểm trung Bình</Text>
-                        <Text style={styles.AverageScore}>8,0</Text>
+                        <Text style={styles.AverageScore}>{averageScore}</Text>
                     </View>
                     <View style={styles.result}>
                         <FlatList
-                            data={demoData.score}
+                            data={chapterDone}
                             keyExtractor={(item, index) => `${index}`}
                             renderItem={({ item }) => (
                                 <ScoreItem title={item.title} score={item.score} />
