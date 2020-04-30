@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
         marginLeft:41,
         marginRight:41,
         borderRadius:11,
-        marginBottom:35
+        marginBottom:35,
+        height:50,
+        justifyContent: 'center',
     },
     guima:{
         color:'white',

@@ -83,8 +83,10 @@ class LoginView extends React.Component {
                   placeholder="Email address"
                   value={this.state.email}
                   onChangeText={email => this.setState({ email })}
-                  returnKeyType="next"
+                  
+                  onSubmitEditing={() => this.secondInput.focus()}
                   style={{ fontSize: 17, color: "#586BCA", marginTop: 3, flex: 1 }}
+
                 />
 
               </View>
@@ -106,7 +108,9 @@ class LoginView extends React.Component {
                     onChangeText={password => this.setState({ password })}
                     style={styles.passwordInput}
                     returnKeyType="done"
-                    onFocus={() => { }}
+                    ref={ref => {
+                      this.secondInput = ref;
+                    }}
 
                   />
                   <TouchableOpacity onPress={this.onPressVisible}>
