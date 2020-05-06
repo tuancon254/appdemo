@@ -29,6 +29,7 @@ class OTPcode extends React.Component {
 
     render() {
         const { navigation } =this.props;
+
         return (
             
             <View style={styles.Container}>
@@ -39,7 +40,7 @@ class OTPcode extends React.Component {
                 
                     <Text style={styles.quenmatkhau}>Mã Xác Nhận</Text>
                         <Text style={styles.thongbao}>Mã OTP đã được gửi đến Email</Text>
-                        <Text style={styles.thongbao}><Text style={styles.color}>Tuancon254@gmail.com</Text></Text>
+                        <Text style={styles.thongbao}><Text style={styles.color}>{navigation.getParam('value')}</Text></Text>
                     <View style={styles.input}>
                         <TextInput
                             placeholder="*  *  *  *  *  *"
@@ -52,12 +53,12 @@ class OTPcode extends React.Component {
             </View>
             
             <View style={styles.Container1}>
-                <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('NewPassword')}>
+                <TouchableOpacity style={styles.button} onPress={()=>  navigation.navigate('NewPassword')}>
                     <Text style={styles.guima}>Xác nhận</Text>
                 </TouchableOpacity>
             </View>
         </View>
-        )
+        ) 
     }
 }
 

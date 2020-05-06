@@ -7,7 +7,8 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     KeyboardAvoidingView,
-    ImageBackground
+    ImageBackground,
+    Alert
 } from 'react-native';
 import styles from './styles';
 
@@ -24,6 +25,7 @@ class ForgotPassword extends React.Component {
         this.state = {
             email: '',
             errorMessage: null,
+            value: ''
         };
     }
     render() {
@@ -45,14 +47,15 @@ class ForgotPassword extends React.Component {
                                 <TextInput
                                     placeholder="Nhập Email hoặc số điện thoại"
                                     style={styles.input1}
+                                    value={this.state.value}
+                                    onChangeText={(text)=>{this.setState({value: text})}}
                                 />
                             </View>
                         </View>
                        
-                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('OTPcode')}>
+                        <TouchableOpacity style={styles.button} onPress={() =>this.state.value === '' ? Alert.alert("Thông báo",'Xin hãy nhập email'): navigation.navigate('OTPcode',{value:this.state.value})}>
                             <Text style={styles.guima}>Gửi Mã</Text>
                         </TouchableOpacity>
-        
                     </View>
 
                 </View>

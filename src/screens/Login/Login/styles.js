@@ -8,8 +8,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b5998',
   },
   logo: {
-    width: 128,
-    height: 118,
+    width: '30%',
+    height: '45%',
+    overflow: 'visible',
+    shadowColor: '#001',
+    shadowOffset: {
+      width: 3,
+      height: 10,
+    },
+    shadowOpacity: 0.65,
+    shadowRadius: 10,
+
+    elevation: 7,
   },
   logoContainer: {
     flex: 40,
