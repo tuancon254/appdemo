@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: '30%',
-    height: '45%',
+    height: '50%',
     overflow: 'visible',
     shadowColor: '#001',
     shadowOffset: {
@@ -33,17 +33,17 @@ const styles = StyleSheet.create({
   mailIconWrapper: {
     padding: 16,
     borderRadius: 12,
-    backgroundColor: "rgba(187, 197, 250, 0.2)"
+    backgroundColor: 'rgba(187, 197, 250, 0.2)',
   },
   usernameOrEmailWrapper: {
     flexDirection: 'row',
-    paddingBottom: 23
+    paddingBottom: 23,
   },
   textInput: {
     borderBottomWidth: 1,
     flex: 1,
     marginLeft: 15,
-    borderColor: "rgba(173, 173, 173, 0.6)"
+    borderColor: 'rgba(173, 173, 173, 0.6)',
   },
 
   passwordIcon: {
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     fontSize: 17,
-    color: "#586BCA",
+    color: '#586BCA',
     marginTop: 3,
-    flex: 1
+    flex: 1,
   },
   loginButton: {
     alignItems: 'center',
