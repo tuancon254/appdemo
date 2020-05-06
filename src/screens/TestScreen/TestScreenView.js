@@ -184,7 +184,14 @@ class TestScreenView extends React.Component {
 
   _renderItem = ({ item }) => {
     var radio_props = [
-          {label: 'A. '+ item.A, value: item.ID },
+          {label: <CountDown
+            until={60 * 10 + 5}
+            onChange={() => timer++ }
+            onFinish={() => this._checkTest()}
+            timeLabels={{d: '', h: '', m: '', s: ''}}
+            size={15}
+            timeToShow={['M', 'S']}
+          />, value: item.ID },
           {label: 'B. '+ item.B, value: item.ID },
           {label: 'C. '+ item.C, value: item.ID },
           {label: 'D. '+ item.D, value: item.ID }

@@ -11,7 +11,7 @@ import {
 import styles from './styles';
 import firebase from '../../services/FirebaseConfig';
 const Resource = {
-  logo: require('../../../assets/images/logo.png'),
+  logo: require('../../../assets/images/logoApp.png'),
   mail: require('../../../assets/icons/Email.png'),
   key: require('../../../assets/icons/Pasword.png'),
 };
