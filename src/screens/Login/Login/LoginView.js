@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import firebase from '../../../services/FirebaseConfig';
-import Loading from '../Loading/Loading'
+import Loading from '../../Loading/Loading';
 
 const Resource = {
   logo: require('../../../../assets/images/logoApp.png'),
