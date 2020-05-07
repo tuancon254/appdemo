@@ -27,7 +27,7 @@ class SplashScreen extends React.Component {
       <View style={styles.container}>
         <Image
           style={styles.photo}
-          source={require('../../../assets/images/logo.png')}
+          source={require('../../../assets/images/logoApp.png')}
         />
         <ActivityIndicator
           size="large"
